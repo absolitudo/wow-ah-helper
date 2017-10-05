@@ -1,7 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-const App = () => (
-    <div>This is the app</div>
+/* Components */
+import InputData from './inputData'
+import DisplayData from './displayData'
+
+
+const App = (props) => (
+    <div>
+        <InputData/>
+        {props.data && <DisplayData data={props.data}/>}
+    </div>
 )
 
-export default App
+const mapStateToProps = (state) => state
+
+export default connect(mapStateToProps)(App)
