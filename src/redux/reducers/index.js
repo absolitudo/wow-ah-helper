@@ -1,5 +1,7 @@
 import { handleActions } from 'redux-actions'
 
+import inputDataReducer from './inputDataReducer'
+
 export default handleActions({
-    INPUT_DATA: (state, action) => ({...state, data: action.payload})
+    INPUT_DATA: inputDataReducer
 }, {})

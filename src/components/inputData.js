@@ -13,10 +13,20 @@ const InputData = (props) => (
 )
 
 const handleSubmit = (event, inputData) => {
+    const reader = new FileReader()
     event.preventDefault()
-    console.log(event.target.data.files[0])
-    //use filereader
-    inputData('submitted')
+    
+    if(event.target.data.value.includes('Auc-ScanData') && event.target.data.value.includes('.lua')) {
+        reader.readAsText(event.target.data.files[0])
+
+    } else {
+        // make better error handling
+        alert('Error: invalid file.')
+    }
+    
+    
+    
+    reader.addEventListener('load', (event) => inputData(event.target.result))
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ inputData }, dispatch)
