@@ -8,7 +8,7 @@ import { loadAuctionData } from './../redux/actions'
 const GetAuctionData = (props) => (
     <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData)}>
         <input type="file" name='data'/>
-        <button type='submit'>Submit</button>
+        <button type='submit' disabled={props.disableButton}>Submit</button>
     </form>
 )
 

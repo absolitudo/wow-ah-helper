@@ -17,8 +17,8 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                {console.log(this.props.professionsData)}
-                <GetAuctionData/>
+                {console.log(this.props)}
+                <GetAuctionData disableButton={this.props.professionsData ? false : true}/>
             </div>
         )
     }
