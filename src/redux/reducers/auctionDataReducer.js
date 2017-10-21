@@ -1,4 +1,4 @@
-const inputDataReducer = (state, action) => ({...state, data: makeArray(action.payload)})
+const auctionDataReducer = (state, action) => ({...state, auctionData: makeArray(action.payload)})
 
 const makeArray = (data) => {
     let NoReturns = data.match(/"return/g).length
@@ -20,7 +20,7 @@ const makeArray = (data) => {
         .replace(/{/, '')
         .replace(/\\"/g, '')
         .split('},{')
-        .map(sale => sale.split(','))
+        .map(auction => auction.split(','))
 }
 
-export default inputDataReducer
+export default auctionDataReducer

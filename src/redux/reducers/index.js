@@ -1,7 +1,10 @@
 import { handleActions } from 'redux-actions'
 
-import inputDataReducer from './inputDataReducer'
+import auctionDataReducer from './auctionDataReducer'
+import professionsDataReducer from './professionsDataReducer'
+
 
 export default handleActions({
-    INPUT_DATA: inputDataReducer
+    LOAD_AUCTION_DATA: auctionDataReducer,
+    LOAD_PROFESSIONS_DATA: professionsDataReducer
 }, {})

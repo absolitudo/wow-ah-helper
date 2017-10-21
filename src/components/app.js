@@ -1,18 +1,33 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+/* Action creators */
+import { loadProfessionsData } from '../redux/actions'
 
 /* Components */
-import InputData from './inputData'
-import DisplayData from './displayData'
+import GetAuctionData from './getAuctionData'
+class App extends React.Component {
+    componentDidMount() {
+        fetch('https://my-wow-api.herokuapp.com/professions/all')
+            .then(res => res.json())
+            .then(res => this.props.loadProfessionsData(res))
+    }
+
+    render() {
+        return (
+            <div>
+                {console.log(this.props.professionsData)}
+                <GetAuctionData/>
+            </div>
+        )
+    }
+}
 
 
-const App = (props) => (
-    <div>
-        <InputData/>
-        {props.data && <DisplayData data={props.data}/>}
-    </div>
-)
 
 const mapStateToProps = (state) => state
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ loadProfessionsData }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

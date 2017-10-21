@@ -3,16 +3,16 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 /* Actions */
-import { inputData } from './../redux/actions'
+import { loadAuctionData } from './../redux/actions'
 
-const InputData = (props) => (
-    <form onSubmit={(event) => handleSubmit(event, props.inputData)}>
+const GetAuctionData = (props) => (
+    <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData)}>
         <input type="file" name='data'/>
         <button type='submit'>Submit</button>
     </form>
 )
 
-const handleSubmit = (event, inputData) => {
+const handleSubmit = (event, loadAuctionData) => {
     const reader = new FileReader()
     event.preventDefault()
     
@@ -26,9 +26,9 @@ const handleSubmit = (event, inputData) => {
     
     
     
-    reader.addEventListener('load', (event) => inputData(event.target.result))
+    reader.addEventListener('load', (event) => loadAuctionData(event.target.result))
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ inputData }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ loadAuctionData }, dispatch)
 
-export default connect(null, mapDispatchToProps)(InputData)
+export default connect(null, mapDispatchToProps)(GetAuctionData)

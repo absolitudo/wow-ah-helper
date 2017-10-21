@@ -1,3 +1,4 @@
 import { createAction } from 'redux-actions'
 
-export const inputData = createAction('INPUT_DATA')
+export const loadAuctionData = createAction('LOAD_AUCTION_DATA')
+export const loadProfessionsData = createAction('LOAD_PROFESSIONS_DATA')
