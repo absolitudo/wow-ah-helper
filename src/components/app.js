@@ -6,7 +6,9 @@ import { bindActionCreators } from 'redux'
 import { loadProfessionsData } from '../redux/actions'
 
 /* Components */
-import GetAuctionData from './getAuctionData'
+import Header from './header'
+
+
 class App extends React.Component {
     componentDidMount() {
         fetch('https://my-wow-api.herokuapp.com/professions/all')
@@ -17,8 +19,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                {console.log(this.props)}
-                <GetAuctionData disableButton={this.props.professionsData ? false : true}/>
+                <Header disableAuctionSubmit={this.props.professionsData ? false : true} />
             </div>
         )
     }
