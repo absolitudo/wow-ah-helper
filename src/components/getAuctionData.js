@@ -3,14 +3,14 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 /* Actions */
-import { loadAuctionData } from './../redux/actions'
+import { loadAuctionData, changeAuctionDataFileName } from './../redux/actions'
 
 const GetAuctionData = (props) => (
     <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData)} className='get-auction-data'>
         <label htmlFor="input-file">
-            Select auction data
+            {props.auctionDataFileName || 'Select auction data'}
         </label>
-        <input id='input-file' type="file" name='data'/>
+        <input id='input-file' type="file" name='data' onChange={(event) => handleFileChange(event, props.changeAuctionDataFileName)}/>
         <input type='submit' disabled={props.disableAuctionSubmit}/>
     </form>
 )
@@ -31,6 +31,8 @@ const handleSubmit = (event, loadAuctionData) => {
     reader.addEventListener('load', (event) => loadAuctionData(event.target.result))
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ loadAuctionData }, dispatch)
+const handleFileChange = (event, changeAuctionDataFileName) => changeAuctionDataFileName(event.target.files[0].name)
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ loadAuctionData, changeAuctionDataFileName }, dispatch)
 
 export default connect(null, mapDispatchToProps)(GetAuctionData)

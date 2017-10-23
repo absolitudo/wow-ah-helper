@@ -7,7 +7,7 @@ import GetAuctionData from './getAuctionData'
 const Header = (props) => (
     <header>
         {console.log(props.professionsData)}
-        <GetAuctionData disableAuctionSubmit={props.appState.professionsData ? false : true}/>
+        <GetAuctionData disableAuctionSubmit={props.appState.professionsData ? false : true} auctionDataFileName={props.appState.auctionDataFileName}/>
     </header>
 )
 

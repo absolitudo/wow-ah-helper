@@ -1,4 +1,9 @@
-const auctionDataReducer = (state, action) => ({...state, auctionData: convertToAuctionData(action.payload, state)})
+const auctionDataReducer = (state, action) => ({...state,
+    auctionData: convertToAuctionData(action.payload, state),
+    appState: {...state.appState,
+        auctionData: true
+    }
+})
 
 const convertToAuctionData = (data, state) => {
     let NoReturns = data.match(/"return/g).length
