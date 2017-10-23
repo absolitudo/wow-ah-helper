@@ -8,12 +8,10 @@ import { loadProfessionsData } from '../redux/actions'
 /* Components */
 import Header from './header'
 
-
 class App extends React.Component {
     componentDidMount() {
         fetch('https://my-wow-api.herokuapp.com/professions/all')
             .then(res => res.json())
-            .then(res => console.log(res))
             .then(res => this.props.loadProfessionsData(res))
     }
 
@@ -25,8 +23,6 @@ class App extends React.Component {
         )
     }
 }
-
-
 
 const mapStateToProps = (state) => state
 

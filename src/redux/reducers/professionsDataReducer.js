@@ -1,4 +1,9 @@
-const professionsDataReducer = (state, action) => ({...state, professionsData: action.payload})
+const professionsDataReducer = (state, action) => ({...state,
+    professionsData: action.payload,
+    appState: {...state.appState,
+        professionsData: true
+    }
+})
 
 
 
