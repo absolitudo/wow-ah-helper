@@ -13,13 +13,14 @@ class App extends React.Component {
     componentDidMount() {
         fetch('https://my-wow-api.herokuapp.com/professions/all')
             .then(res => res.json())
+            .then(res => console.log(res))
             .then(res => this.props.loadProfessionsData(res))
     }
 
     render() {
         return (
             <div>
-                <Header disableAuctionSubmit={this.props.professionsData ? false : true} />
+                <Header />
             </div>
         )
     }
