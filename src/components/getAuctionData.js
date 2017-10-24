@@ -2,16 +2,20 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+/* Components */
+import UploadIcon from './uploadIcon'
+
 /* Actions */
 import { loadAuctionData, changeAuctionDataFileName } from './../redux/actions'
 
 const GetAuctionData = (props) => (
     <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData)} className='get-auction-data'>
         <label htmlFor="input-file">
+            <UploadIcon />
             {props.appState.auctionDataFileName || 'Select auction data'}
         </label>
         <input id='input-file' type="file" name='data' onChange={(event) => handleFileChange(event, props.changeAuctionDataFileName)}/>
-        <input type='submit' disabled={!(props.appState.professionsData && props.appState.auctionDataFileName !== null)}/>
+        <input type='submit' value='Submit' disabled={!(props.appState.professionsData && props.appState.auctionDataFileName !== null)}/>
     </form>
 )
 

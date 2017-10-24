@@ -6,7 +6,6 @@ import GetAuctionData from './getAuctionData'
 
 const Header = (props) => (
     <header>
-        {console.log(props.professionsData)}
         <GetAuctionData />
     </header>
 )
