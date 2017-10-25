@@ -16,50 +16,84 @@ header
     height: 70px
     padding-top: 20px
     padding-left: 50px
-    display: flex
     *
         color: white
-
-  
-    .info-icon
-        width: 30px
-        fill: $blue
-        margin-left: 10px
-        cursor: pointer
-
-    .get-auction-data
-        width: 280px
-        display: inline-block
-        height: 30px
-
-        label
-            cursor: pointer
-            position: relative
-            display: inline-block
-            background-color: $orange
-            width: 200px
-            border-radius: 20px
+    /* State styles */
+    .state-wrapper
+        display: flex
+        float: right
+        p
+            color: $dark
             height: 30px
             line-height: 30px
-            padding-left: 40px
-            box-shadow: 0px 0px 5px $dark
-        
-            .upload-icon
-                width: 20px
-                position: absolute
-                left: 10px
-                top: 5px
-                fill: white
-
-    input[type=file]
-        display: none
-    input[type=submit]
-        cursor: pointer
-        margin-left: 10px
+            margin: 0px 20px
+    /* Get auction data + info button styles */
+    .form-wrapper
+        float: left
+        min-width: 300px
+        max-width: 350px
+        width: 100%
         height: 30px
-        border: none
-        border-radius: 20px
-        background-color: $dark
-        box-shadow: 0px 0px 5px $dark
-        padding: 0px 10px
+        
+        .get-auction-data
+            width: calc(100% - 40px)
+            display: inline-block
+            height: 30px
+
+            label
+                text-align: center
+                cursor: pointer
+                position: relative
+                display: inline-block
+                background-color: $orange
+                width: calc(70% - 10px)
+                border-radius: 20px
+                height: 30px
+                line-height: 30px
+                padding-left: 35px
+                padding-right: 5px
+                box-shadow: 0px 0px 5px $dark
+                overflow: hidden
+                white-space: nowrap
+                text-overflow: ellipsis
             
+                .upload-icon
+                    width: 20px
+                    position: absolute
+                    left: 10px
+                    top: 5px
+                    fill: white
+
+            input[type=file]
+                display: none
+
+            input[type=submit]
+                position: relative
+                top: -10px
+                left: 0
+                cursor: pointer
+                height: 30px
+                width: 30%
+                border: none
+                display: inline-block
+                border-radius: 20px
+                background-color: $dark
+                box-shadow: 0px 0px 5px $dark
+                padding: 0px 10px
+                margin-left: 10px
+
+        .info-icon-wrapper
+            display: inline-block
+            .info-icon
+                width: 30px
+                fill: $blue
+                margin-left: 10px
+                cursor: pointer
+@media(max-width: 350px)
+    header
+        padding-left: 0px !important
+        .form-wrapper
+            padding: 0px 5px !important
+            margin: auto !important
+
+
