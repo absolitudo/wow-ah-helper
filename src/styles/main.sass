@@ -13,22 +13,24 @@ body
 
 /* Header */
 header
-    height: 70px
-    padding-top: 20px
     padding-left: 50px
     *
         color: white
     /* State styles */
     .state-wrapper
+        padding-top: 20px
         display: flex
-        float: right
+        width: 300px
+        margin: auto
+
         p
             position: relative
             color: $dark
             height: 30px
             line-height: 30px
-            margin: 0px 20px
-            padding-right: 25px
+            margin: 0px 10px
+            padding-right: 30px
+
             span
                 position: absolute
                 display: inline-block
@@ -37,16 +39,21 @@ header
                 border-radius: 50%
                 top: 5px
                 right: 0px
+                box-shadow: 0px 0px 5px $dark
+                
 
 
     /* Get auction data + info button styles */
     .form-wrapper
+        margin-top: 20px
         float: left
         min-width: 300px
         max-width: 350px
         width: 100%
         height: 30px
-        
+        &:after
+            clear: both
+
         .get-auction-data
             width: calc(100% - 40px)
             display: inline-block
@@ -101,11 +108,15 @@ header
                 fill: $blue
                 margin-left: 10px
                 cursor: pointer
+                box-shadow: 0px 0px 5px $dark
+                border-radius: 50%
+                
 @media(max-width: 350px)
     header
         padding-left: 0px !important
         .form-wrapper
             padding: 0px 5px !important
             margin: auto !important
+            margin-top: 20px !important
 
 

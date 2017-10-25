@@ -2,9 +2,9 @@ import React from 'react'
 
 
 
-const AuctionState = (props) =>{
+const AuctionState = (props) => {
     let spanStyle = {
-        backgroundColor: props.state ? 'green' : 'red'
+        backgroundColor: props.state ? '#4caf50' : '#f44336'
     }
 
     return (
