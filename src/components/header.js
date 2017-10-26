@@ -17,14 +17,14 @@ const Header = (props) => (
         </div>
 
         <div className='state-wrapper'>
-            <ProfessionState state={props.appState.professionsData} />
-            <AuctionState state={props.appState.auctionData}/>
+            <ProfessionState state={props.professionsData} />
+            <AuctionState state={props.auctionData}/>
 
         </div>
     </header>
     
 )
 
-const mapStateToProps = (state) => state
+const mapStateToProps = (state) => state.appState
 
 export default connect(mapStateToProps)(Header)

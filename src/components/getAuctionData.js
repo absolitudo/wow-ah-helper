@@ -6,20 +6,20 @@ import { connect } from 'react-redux'
 import UploadIcon from './uploadIcon'
 
 /* Actions */
-import { loadAuctionData, changeAuctionDataFileName } from './../redux/actions'
+import { loadAuctionData, changeAuctionDataFileName, auctionDataProcessing } from './../redux/actions'
 
 const GetAuctionData = (props) => (
-    <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData)} className='get-auction-data'>
+    <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData, props.auctionDataProcessing)} className='get-auction-data'>
         <label htmlFor="input-file">
             <UploadIcon />
-            {props.appState.auctionDataFileName || 'Select auction data'}
+            {props.auctionDataFileName || 'Select auction data'}
         </label>
         <input id='input-file' type="file" name='data' onChange={(event) => handleFileChange(event, props.changeAuctionDataFileName)}/>
-        <input type='submit' value='Submit' disabled={!(props.appState.professionsData && props.appState.auctionDataFileName !== null)}/>
+        <input type='submit' value='Submit' disabled={!(props.professionsData && props.auctionDataFileName !== null && props.auctionDataProcessing)}/>
     </form>
 )
 
-const handleSubmit = (event, loadAuctionData) => {
+const handleSubmit = (event, loadAuctionData, auctionDataProcessing) => {
     const reader = new FileReader()
     event.preventDefault()
     
@@ -32,13 +32,19 @@ const handleSubmit = (event, loadAuctionData) => {
 
     }
 
-    reader.addEventListener('load', (event) => loadAuctionData(event.target.result))
+    reader.addEventListener('load', (event) => {
+        new Promise((resolve, reject) => {
+            resolve(auctionDataProcessing(true))
+        })
+            .then(() => loadAuctionData(event.target.result))
+        
+    })
 }
 
 const handleFileChange = (event, changeAuctionDataFileName) => changeAuctionDataFileName(event.target.files[0].name)
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ loadAuctionData, changeAuctionDataFileName }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ loadAuctionData, changeAuctionDataFileName, auctionDataProcessing }, dispatch)
 
-const mapStateToProps = (state) => state
+const mapStateToProps = (state) => state.appState
 
 export default connect(mapStateToProps, mapDispatchToProps)(GetAuctionData)

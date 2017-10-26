@@ -1,7 +1,8 @@
 const auctionDataReducer = (state, action) => ({...state,
     auctionData: convertToAuctionData(action.payload, state),
     appState: {...state.appState,
-        auctionData: true
+        auctionData: true,
+        auctionDataProcessing: false
     }
 })
 
