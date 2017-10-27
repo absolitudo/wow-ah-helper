@@ -12,7 +12,7 @@ const AuctionState = (props) => {
             Auction state:
                 <span
                     style={spanStyle}
-                    className={props.loading && 'auction-loading'}>
+                    className={props.loading ? 'auction-loading' : ''}>
                 </span>
         </p>
     )

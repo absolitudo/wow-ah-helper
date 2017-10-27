@@ -1,7 +1,7 @@
 const reducers = {
     loadAuctionData: (state, action) => (
         {...state,
-            auctionData: convertToAuctionData(action.payload, state),
+            auctionData: convertToAuctionData(state, action.payload),
             appState: {...state.appState,
                 auctionData: true,
                 auctionDataProcessing: false
@@ -37,7 +37,7 @@ const reducers = {
 
 
 
-const convertToAuctionData = (data, state) => {
+const convertToAuctionData = (state, data) => {
     let NoReturns = data.match(/"return/g).length
     let returnIndex = data.indexOf('"return') + 9
     let rawData = ''
@@ -61,8 +61,8 @@ const convertToAuctionData = (data, state) => {
         .replace(/{/, '')
         .replace(/\\"/g, '')
         .split('},{')
-        .map(auction => auction.split(','))
         .forEach(auction => {
+            auction = auction.split(',')
             if(auctionData[auction[8]]) {
                 auctionData[auction[8]].buyouts.push(+(auction[16] / auction[10]))
             } else {
