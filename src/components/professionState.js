@@ -6,7 +6,12 @@ const ProfessionState = (props) => {
     }
 
     return (
-        <p>Profession state: <span style={spanStyle}></span></p>
+        <p>
+            Profession state:
+            <span
+                style={spanStyle}>
+            </span>
+        </p>
     )
 }
 

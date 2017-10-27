@@ -13,16 +13,19 @@ const Header = (props) => (
         <div className='form-wrapper'>
             <GetAuctionData />
             <InfoCircle/>
-
         </div>
 
         <div className='state-wrapper'>
-            <ProfessionState state={props.professionsData} />
-            <AuctionState state={props.auctionData}/>
+            <ProfessionState
+                state={props.professionsData}
+            />
 
+            <AuctionState
+                state={props.auctionData}
+                loading={props.auctionDataProcessing}
+            />
         </div>
     </header>
-    
 )
 
 const mapStateToProps = (state) => state.appState

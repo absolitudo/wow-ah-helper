@@ -1,10 +1,41 @@
-const auctionDataReducer = (state, action) => ({...state,
-    auctionData: convertToAuctionData(action.payload, state),
-    appState: {...state.appState,
-        auctionData: true,
-        auctionDataProcessing: false
-    }
-})
+const reducers = {
+    loadAuctionData: (state, action) => (
+        {...state,
+            auctionData: convertToAuctionData(action.payload, state),
+            appState: {...state.appState,
+                auctionData: true,
+                auctionDataProcessing: false
+            }
+        }
+    ),
+
+    loadProfessionsData: (state, action) => (
+        {...state,
+            professionsData: action.payload,
+            appState: {...state.appState,
+                professionsData: true
+            }
+        }
+    ),
+
+    changeAuctionDataName: (state, action) => (
+        {...state,
+            appState: {...state.appState,
+                auctionDataFileName: action.payload
+            }
+        }
+    ),
+
+    auctionDataProcessing: (state, action) => (
+        {...state,
+            appState: {...state.appState,
+                auctionDataProcessing: action.payload
+            }
+        }
+    )
+}
+
+
 
 const convertToAuctionData = (data, state) => {
     let NoReturns = data.match(/"return/g).length
@@ -55,4 +86,4 @@ const convertToAuctionData = (data, state) => {
 const getAvgBuyout = (buyouts) => buyouts.reduce((acc, curr) => +acc + +curr, 0)/buyouts.length
 
 
-export default auctionDataReducer
+export default reducers

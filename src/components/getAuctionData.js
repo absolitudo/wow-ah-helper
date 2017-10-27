@@ -14,8 +14,19 @@ const GetAuctionData = (props) => (
             <UploadIcon />
             {props.auctionDataFileName || 'Select auction data'}
         </label>
-        <input id='input-file' type="file" name='data' onChange={(event) => handleFileChange(event, props.changeAuctionDataFileName)}/>
-        <input type='submit' value='Submit' disabled={!(props.professionsData && props.auctionDataFileName !== null && props.auctionDataProcessing)}/>
+        
+        <input
+            id='input-file'
+            type="file"
+            name='data'
+            onChange={(event) => handleFileChange(event, props.changeAuctionDataFileName)}
+        />
+
+        <input
+            type='submit'
+            value='Submit'
+            disabled={!(props.professionsData && props.auctionDataFileName !== null && props.auctionDataProcessing)}
+        />
     </form>
 )
 
@@ -35,15 +46,18 @@ const handleSubmit = (event, loadAuctionData, auctionDataProcessing) => {
     reader.addEventListener('load', (event) => {
         new Promise((resolve, reject) => {
             resolve(auctionDataProcessing(true))
-        })
-            .then(() => loadAuctionData(event.target.result))
+        }).then(() => loadAuctionData(event.target.result))
         
     })
 }
 
 const handleFileChange = (event, changeAuctionDataFileName) => changeAuctionDataFileName(event.target.files[0].name)
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ loadAuctionData, changeAuctionDataFileName, auctionDataProcessing }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    loadAuctionData,
+    changeAuctionDataFileName,
+    auctionDataProcessing
+}, dispatch)
 
 const mapStateToProps = (state) => state.appState
 

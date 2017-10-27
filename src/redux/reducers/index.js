@@ -1,19 +1,18 @@
 import { handleActions } from 'redux-actions'
 
-import auctionDataReducer from './auctionDataReducer'
-import professionsDataReducer from './professionsDataReducer'
+import reducers from './reducers'
 
 
 export default handleActions({
-    LOAD_AUCTION_DATA: auctionDataReducer,
-    LOAD_PROFESSIONS_DATA: professionsDataReducer,
-    CHANGE_AUCTION_DATA_NAME: (state, action) => ({...state, appState: {...state.appState, auctionDataFileName: action.payload}}),
-    AUCTION_DATA_PROCESSING: (state, action) => ({...state, appState: {...state.appState, auctionDataProcessing: action.payload}})
+    LOAD_AUCTION_DATA: reducers.loadAuctionData,
+    LOAD_PROFESSIONS_DATA: reducers.loadProfessionsData,
+    CHANGE_AUCTION_DATA_NAME: reducers.changeAuctionDataName,
+    AUCTION_DATA_PROCESSING: reducers.auctionDataProcessing
 }, {
     appState: {
         professionsData: false,
         auctionData: false,
         auctionDataFileName: null,
-        auctionDataProcessing: false
+        auctionDataProcessing: true
     }
 })
