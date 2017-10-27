@@ -24,6 +24,7 @@ const Header = (props) => (
                 state={props.auctionData}
                 loading={props.auctionDataProcessing}
             />
+
         </div>
     </header>
 )
