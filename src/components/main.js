@@ -9,8 +9,10 @@ import CalcProfit from './calcProfit'
 const Main = (props) => (
     <main>
         <RecipeList />
-        <DisplayRecipe />
-        <CalcProfit />
+        <div className='main-left-wrapper'>
+            <DisplayRecipe />
+            <CalcProfit />
+        </div>
     </main>
 )
 

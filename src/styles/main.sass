@@ -128,7 +128,31 @@ header
                 cursor: pointer
                 box-shadow: 0px 0px 5px $dark
                 border-radius: 50%
+/* Main */
+main
+    margin-top: 70px
+    display: flex
+    background-color: yellow
+    height: calc(100vh - 120px)
 
+    /* Recipe list */
+    .recipe-list
+        background-color: grey
+        width: 50%
+
+    .main-left-wrapper
+        width: 50%
+
+        /* Display recipe */
+        .display-recipe
+            background-color: $dark
+            height: 50%
+
+        /* Calc profit */
+        .calc-profit
+            background-color: $orange
+            height: 50%
+            
 /* Animations */     
 @keyframes spin
     from 
