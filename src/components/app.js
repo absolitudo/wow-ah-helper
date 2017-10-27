@@ -7,6 +7,7 @@ import { loadProfessionsData } from '../redux/actions'
 
 /* Components */
 import Header from './header'
+import Main from './main'
 
 class App extends React.Component {
     componentDidMount() {
@@ -19,6 +20,7 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
+                <Main />
             </div>
         )
     }
