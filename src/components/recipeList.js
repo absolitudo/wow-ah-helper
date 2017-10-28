@@ -26,7 +26,15 @@ const RecipeList = (props) =>  {
                     </option>
                 ))}
             </select>
-            <input type="text" placeholder='search' onChange={(e) => searchRecipe(e, props.updateSearchTerm)}/>
+
+            {console.log(props.recipeList)}
+            
+            <input
+                type="text"
+                placeholder='search'
+                value={props.recipeList.searchTerm} 
+                onChange={(e) => searchRecipe(e, props.updateSearchTerm)}
+            />
         </section>
     )
 }
@@ -35,12 +43,13 @@ const handleProfessionSelection = (event, selectProfession) => (
     selectProfession(event.target.value)
 )
 
-const searchRecipe = (event) => {
+const searchRecipe = (event, updateSearchTerm) => {
+    console.log(event.target.value)
     updateSearchTerm(event.target.value)
 }
 
 const mapStateToProps = (state) => state
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ selectProfession }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ selectProfession, updateSearchTerm }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeList)

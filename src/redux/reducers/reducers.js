@@ -40,7 +40,15 @@ const reducers = {
                 profession: action.payload
             }
         }
-    )
+    ),
+
+    updateSearchTerm: (state, action) => (
+        {...state,
+            recipeList: {...state.recipeList,
+                searchTerm: action.payload
+            }
+        }
+    ),
 }
 
 

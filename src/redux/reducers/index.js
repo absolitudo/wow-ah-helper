@@ -9,7 +9,7 @@ export default handleActions({
     CHANGE_AUCTION_DATA_NAME: reducers.changeAuctionDataName,
     AUCTION_DATA_PROCESSING: reducers.auctionDataProcessing,
     SELECT_PROFESSION: reducers.selectProfession,
-    UPDATE_SEARCH_TEARM: reducers.updateSearchTerm
+    UPDATE_SEARCH_TERM: reducers.updateSearchTerm
 }, {
     appState: {
         professionsData: false,
