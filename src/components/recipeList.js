@@ -11,6 +11,20 @@ const RecipeList = (props) =>  {
     for(let profession in props.professionsData) {
         professions.push(profession)
     }
+
+    if(props.appState.professionsData) {
+        var recipes = []
+        if(props.recipeList.searchTerm) {
+            recipes = props.professionsData[props.recipeList.profession].reduce((acc, recipe) =>{
+                if((recipe.name).toLowerCase().includes(props.recipeList.searchTerm.toLowerCase().trim())) {
+                    acc.push(recipe.name)
+                }
+                return acc
+            },[])
+        } else {
+            recipes = props.professionsData[props.recipeList.profession].map(recipe => recipe.name)
+        }
+    }
     
     
 
@@ -27,14 +41,19 @@ const RecipeList = (props) =>  {
                 ))}
             </select>
 
-            {console.log(props.recipeList)}
-            
             <input
                 type="text"
                 placeholder='search'
                 value={props.recipeList.searchTerm} 
                 onChange={(e) => searchRecipe(e, props.updateSearchTerm)}
             />
+                
+            <div>
+                {recipes && recipes.map((recipe, index) => (
+                    <p key={index}>{recipe}</p>
+                ))}
+            </div>
+
         </section>
     )
 }
@@ -44,7 +63,6 @@ const handleProfessionSelection = (event, selectProfession) => (
 )
 
 const searchRecipe = (event, updateSearchTerm) => {
-    console.log(event.target.value)
     updateSearchTerm(event.target.value)
 }
 
