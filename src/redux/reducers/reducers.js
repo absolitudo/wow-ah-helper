@@ -32,6 +32,14 @@ const reducers = {
                 auctionDataProcessing: action.payload
             }
         }
+    ),
+
+    selectProfession: (state, action) => (
+        {...state,
+            recipeList: {...state.recipeList,
+                profession: action.payload
+            }
+        }
     )
 }
 
