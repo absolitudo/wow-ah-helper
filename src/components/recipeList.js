@@ -14,15 +14,15 @@ const RecipeList = (props) =>  {
 
     if(props.appState.professionsData) {
         var recipes = []
-        if(props.recipeList.searchTerm) {
-            recipes = props.professionsData[props.recipeList.profession].reduce((acc, recipe) =>{
-                if((recipe.name).toLowerCase().includes(props.recipeList.searchTerm.toLowerCase().trim())) {
+        if(props.appState.searchTerm) {
+            recipes = props.professionsData[props.appState.profession].reduce((acc, recipe) =>{
+                if((recipe.name).toLowerCase().includes(props.appState.searchTerm.toLowerCase().trim())) {
                     acc.push(recipe.name)
                 }
                 return acc
             },[])
         } else {
-            recipes = props.professionsData[props.recipeList.profession].map(recipe => recipe.name)
+            recipes = props.professionsData[props.appState.profession].map(recipe => recipe.name)
         }
 
         return (
@@ -40,7 +40,7 @@ const RecipeList = (props) =>  {
                     <input
                         type="text"
                         placeholder='search'
-                        value={props.recipeList.searchTerm} 
+                        value={props.appState.searchTerm} 
                         onChange={(e) => searchRecipe(e, props.updateSearchTerm)}
                     />
                         
@@ -73,7 +73,12 @@ const searchRecipe = (event, updateSearchTerm) => {
     updateSearchTerm(event.target.value)
 }
 
-const mapStateToProps = (state) => state
+const mapStateToProps = (state) => {
+    return {
+        professionsData: state.professionsData,
+        appState: state.appState
+    }
+}
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ selectProfession, updateSearchTerm }, dispatch)
 

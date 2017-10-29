@@ -36,7 +36,7 @@ const reducers = {
 
     selectProfession: (state, action) => (
         {...state,
-            recipeList: {...state.recipeList,
+            appState: {...state.appState,
                 profession: action.payload
             }
         }
@@ -44,7 +44,7 @@ const reducers = {
 
     updateSearchTerm: (state, action) => (
         {...state,
-            recipeList: {...state.recipeList,
+            appState: {...state.appState,
                 searchTerm: action.payload
             }
         }
