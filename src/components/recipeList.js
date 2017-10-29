@@ -24,38 +24,45 @@ const RecipeList = (props) =>  {
         } else {
             recipes = props.professionsData[props.recipeList.profession].map(recipe => recipe.name)
         }
+
+        return (
+                <section className='recipe-list'>
+                    <select onChange={(e) => handleProfessionSelection(e, props.selectProfession)}>
+                        {professions.map((profession, index) => (
+                            <option
+                                value={profession}
+                                key={index}>
+                                {profession}
+                            </option>
+                        ))}
+                    </select>
+        
+                    <input
+                        type="text"
+                        placeholder='search'
+                        value={props.recipeList.searchTerm} 
+                        onChange={(e) => searchRecipe(e, props.updateSearchTerm)}
+                    />
+                        
+                    <div className='recipes-container'>
+                        {recipes && recipes.map((recipe, index) => (
+                            <p key={index}>{recipe}</p>
+                        ))}
+                    </div>
+        
+                </section>
+                )
+    } else {
+        return (
+            <section className='recipe-list'>
+                <p>skeleton</p>
+            </section>
+        )
     }
     
     
 
-    return (
-
-        <section className='recipe-list'>
-            <select onChange={(e) => handleProfessionSelection(e, props.selectProfession)}>
-                {professions.map((profession, index) => (
-                    <option
-                        value={profession}
-                        key={index}>
-                        {profession}
-                    </option>
-                ))}
-            </select>
-
-            <input
-                type="text"
-                placeholder='search'
-                value={props.recipeList.searchTerm} 
-                onChange={(e) => searchRecipe(e, props.updateSearchTerm)}
-            />
-                
-            <div>
-                {recipes && recipes.map((recipe, index) => (
-                    <p key={index}>{recipe}</p>
-                ))}
-            </div>
-
-        </section>
-    )
+    
 }
 
 const handleProfessionSelection = (event, selectProfession) => (

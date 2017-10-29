@@ -132,13 +132,32 @@ header
 main
     margin-top: 70px
     display: flex
-    background-color: yellow
     height: calc(100vh - 120px)
 
     /* Recipe list */
     .recipe-list
-        background-color: grey
         width: 50%
+        select
+            display: block
+            text-transform: capitalize
+            margin: auto
+        input[type=text]
+            display: block
+            margin: 20px auto
+        .recipes-container
+            width: 300px
+            margin: auto
+            padding: 5px
+            overflow-y: scroll
+            height: calc(100% - 80px)
+            p
+                height: 40px
+                line-height: 15px
+                padding: 4px 2px
+                cursor: pointer
+                border: 1px solid $light
+                &:hover
+                    background: linear-gradient(to bottom, $light-grey 0%,$light-grey 1%,rgba(191,191,191,0) 20%,rgba(191,191,191,0) 81%,$light-grey 100%)
 
     .main-left-wrapper
         width: 50%
@@ -152,7 +171,8 @@ main
         .calc-profit
             background-color: $orange
             height: 50%
-            
+
+        
 /* Animations */     
 @keyframes spin
     from 
