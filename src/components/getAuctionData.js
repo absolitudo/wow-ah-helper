@@ -10,6 +10,7 @@ import { loadAuctionData, changeAuctionDataFileName, auctionDataProcessing } fro
 
 const GetAuctionData = (props) => (
     <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData, props.auctionDataProcessing)} className='get-auction-data'>
+        {console.log('getAuctionData.js rendering')}
         <label htmlFor="input-file">
             <UploadIcon />
             {props.auctionDataFileName || 'Select auction data'}
@@ -59,6 +60,12 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     auctionDataProcessing
 }, dispatch)
 
-const mapStateToProps = (state) => state.appState
+const mapStateToProps = (state) => {
+    return {
+        auctionDataFileName: state.auctionDataFileName,
+        professionsData: state.professionsData,
+        auctionDataProcessing: state.auctionDataProcessing
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(GetAuctionData)

@@ -2,51 +2,37 @@ const reducers = {
     loadAuctionData: (state, action) => (
         {...state,
             auctionData: convertToAuctionData(state, action.payload),
-            appState: {...state.appState,
-                auctionData: true,
-                auctionDataProcessing: false
-            }
+            auctionDataProcessing: false
         }
     ),
 
     loadProfessionsData: (state, action) => (
         {...state,
             professionsData: action.payload,
-            appState: {...state.appState,
-                professionsData: true
-            }
         }
     ),
 
     changeAuctionDataName: (state, action) => (
         {...state,
-            appState: {...state.appState,
-                auctionDataFileName: action.payload
-            }
+            auctionDataFileName: action.payload
         }
     ),
 
     auctionDataProcessing: (state, action) => (
         {...state,
-            appState: {...state.appState,
-                auctionDataProcessing: action.payload
-            }
+            auctionDataProcessing: action.payload
         }
     ),
 
     selectProfession: (state, action) => (
         {...state,
-            recipeList: {...state.recipeList,
-                profession: action.payload
-            }
+            profession: action.payload
         }
     ),
 
     updateSearchTerm: (state, action) => (
         {...state,
-            recipeList: {...state.recipeList,
-                searchTerm: action.payload
-            }
+            searchTerm: action.payload
         }
     ),
 

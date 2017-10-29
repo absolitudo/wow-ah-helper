@@ -7,6 +7,7 @@ import { selectProfession, updateSearchTerm, selectRecipe } from '../redux/actio
 
 
 const RecipeList = (props) => {
+    console.log('recipeList.js rendering')
     let professions = []
     for(let profession in props.professionsData) {
         professions.push(profession)
@@ -14,15 +15,15 @@ const RecipeList = (props) => {
 
     if(props.professionsData) {
         var recipes = []
-        if(props.recipeList.searchTerm) {
-            recipes = props.professionsData[props.recipeList.profession].reduce((acc, recipe) =>{
-                if((recipe.name).toLowerCase().includes(props.recipeList.searchTerm.toLowerCase().trim())) {
+        if(props.searchTerm) {
+            recipes = props.professionsData[props.profession].reduce((acc, recipe) =>{
+                if((recipe.name).toLowerCase().includes(props.searchTerm.toLowerCase().trim())) {
                     acc.push(recipe.name)
                 }
                 return acc
             },[])
         } else {
-            recipes = props.professionsData[props.recipeList.profession].map(recipe => recipe.name)
+            recipes = props.professionsData[props.profession].map(recipe => recipe.name)
         }
 
         return (
@@ -40,7 +41,7 @@ const RecipeList = (props) => {
                     <input
                         type="text"
                         placeholder='search'
-                        value={props.recipeList.searchTerm} 
+                        value={props.searchTerm} 
                         onChange={(e) => searchRecipe(e, props.updateSearchTerm)}
                     />
                         
@@ -77,7 +78,8 @@ const handleRecipeClick = (event, selectRecipe) => {
 const mapStateToProps = (state) => {
     return {
         professionsData: state.professionsData,
-        recipeList: state.recipeList
+        profession: state.profession,
+        searchTerm: state.searchTerm,
     }
 }
 

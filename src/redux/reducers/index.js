@@ -12,16 +12,12 @@ export default handleActions({
     UPDATE_SEARCH_TERM: reducers.updateSearchTerm,
     SELECT_RECIPE: reducers.selectRecipe
 }, {
-    appState: {
-        professionsData: false,
-        auctionData: false,
-        auctionDataFileName: null,
-        auctionDataProcessing: false
-    },
-    recipeList: {
-        profession: 'alchemy',
-        searchTerm: ''
-    },
+    professionsData: false,
+    auctionData: false,
+    auctionDataFileName: null,
+    auctionDataProcessing: false,
+    profession: 'alchemy',
+    searchTerm: '',
     selectedRecipe: {
         name: null
     }

@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 
 const DisplayRecipe = (props) => {
-    console.log(props)
+    console.log('displayRecipe.js rendering')
+    
     if(props.name) {
         
         return (
@@ -22,6 +23,11 @@ const DisplayRecipe = (props) => {
 }
     
 
-const mapStateToProps = (state) => state.selectedRecipe
+const mapStateToProps = (state) => {
+    return {
+        auctionData: state.auctionData || undefined,
+        selectedRecipe: state.selectedRecipe
+    }
+}
 
 export default connect(mapStateToProps)(DisplayRecipe)

@@ -10,6 +10,7 @@ import AuctionState from './auctionState'
 
 const Header = (props) => (
     <header>
+        {console.log('header.js rendering')}
         <div className='form-wrapper'>
             <GetAuctionData />
             <InfoCircle/>
@@ -29,6 +30,12 @@ const Header = (props) => (
     </header>
 )
 
-const mapStateToProps = (state) => state.appState
+const mapStateToProps = (state) => {
+    return {
+        auctionData: state.auctionData,
+        professionsData: state.professionsData,
+        auctionDataProcessing: state.auctionDataProcessing
+    }
+}
 
 export default connect(mapStateToProps)(Header)
