@@ -2,72 +2,79 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-
 /* Action creators */
 import { selectProfession, updateSearchTerm } from '../redux/actions'
 
-const RecipeList = (props) =>  {
-    let professions = []
-    for(let profession in props.professionsData) {
-        professions.push(profession)
+
+class RecipeList extends React.Component {
+    componentDidUpdate() {
+        console.log('update')
     }
 
-    if(props.appState.professionsData) {
-        var recipes = []
-        if(props.appState.searchTerm) {
-            recipes = props.professionsData[props.appState.profession].reduce((acc, recipe) =>{
-                if((recipe.name).toLowerCase().includes(props.appState.searchTerm.toLowerCase().trim())) {
-                    acc.push(recipe.name)
-                }
-                return acc
-            },[])
-        } else {
-            recipes = props.professionsData[props.appState.profession].map(recipe => recipe.name)
+    render() {
+        console.log(this)
+        let professions = []
+        for(let profession in this.props.professionsData) {
+            professions.push(profession)
         }
-
-        return (
+    
+        if(this.props.professionsData) {
+            var recipes = []
+            if(this.props.recipeList.searchTerm) {
+                recipes = this.props.professionsData[this.props.recipeList.profession].reduce((acc, recipe) =>{
+                    if((recipe.name).toLowerCase().includes(this.props.recipeList.searchTerm.toLowerCase().trim())) {
+                        acc.push(recipe.name)
+                    }
+                    return acc
+                },[])
+            } else {
+                recipes = this.props.professionsData[this.props.recipeList.profession].map(recipe => recipe.name)
+            }
+    
+            return (
+                    <section className='recipe-list'>
+                        <select onChange={(e) => handleProfessionSelection(e, this.props.selectProfession)}>
+                            {professions.map((profession, index) => (
+                                <option
+                                    value={profession}
+                                    key={index}>
+                                    {profession}
+                                </option>
+                            ))}
+                        </select>
+            
+                        <input
+                            type="text"
+                            placeholder='search'
+                            value={this.props.recipeList.searchTerm} 
+                            onChange={(e) => searchRecipe(e, this.props.updateSearchTerm)}
+                        />
+                            
+                        <div className='recipes-container'>
+                            {recipes && recipes.map((recipe, index) => (
+                                <p key={index}>{recipe}</p>
+                            ))}
+                        </div>
+            
+                    </section>
+                    )
+        } else {
+            return (
                 <section className='recipe-list'>
-                    <select onChange={(e) => handleProfessionSelection(e, props.selectProfession)}>
-                        {professions.map((profession, index) => (
-                            <option
-                                value={profession}
-                                key={index}>
-                                {profession}
-                            </option>
-                        ))}
-                    </select>
-        
-                    <input
-                        type="text"
-                        placeholder='search'
-                        value={props.appState.searchTerm} 
-                        onChange={(e) => searchRecipe(e, props.updateSearchTerm)}
-                    />
-                        
-                    <div className='recipes-container'>
-                        {recipes && recipes.map((recipe, index) => (
-                            <p key={index}>{recipe}</p>
-                        ))}
-                    </div>
-        
+                    <p>skeleton</p>
                 </section>
-                )
-    } else {
-        return (
-            <section className='recipe-list'>
-                <p>skeleton</p>
-            </section>
-        )
+            )
+        }
+        
+        
+    
+        
     }
-    
-    
-
-    
 }
 
-const handleProfessionSelection = (event, selectProfession) => (
+const handleProfessionSelection = (event, selectProfession) => {
     selectProfession(event.target.value)
-)
+}
 
 const searchRecipe = (event, updateSearchTerm) => {
     updateSearchTerm(event.target.value)
@@ -76,7 +83,7 @@ const searchRecipe = (event, updateSearchTerm) => {
 const mapStateToProps = (state) => {
     return {
         professionsData: state.professionsData,
-        appState: state.appState
+        recipeList: state.recipeList
     }
 }
 

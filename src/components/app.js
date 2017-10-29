@@ -9,7 +9,7 @@ import { loadProfessionsData } from '../redux/actions'
 import Header from './header'
 import Main from './main'
 
-class App extends React.Component {
+class App extends React.PureComponent {
     componentDidMount() {
         fetch('https://my-wow-api.herokuapp.com/professions/all')
             .then(res => res.json())
