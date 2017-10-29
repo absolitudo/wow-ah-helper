@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 /* Action creators */
-import { selectProfession, updateSearchTerm } from '../redux/actions'
+import { selectProfession, updateSearchTerm, selectRecipe } from '../redux/actions'
 
 
 const RecipeList = (props) => {
@@ -46,7 +46,7 @@ const RecipeList = (props) => {
                         
                     <div className='recipes-container'>
                         {recipes && recipes.map((recipe, index) => (
-                            <p key={index}>{recipe}</p>
+                            <p key={index} onClick={(event) => handleRecipeClick(event, props.selectRecipe)}>{recipe}</p>
                         ))}
                     </div>
         
@@ -69,6 +69,11 @@ const searchRecipe = (event, updateSearchTerm) => {
     updateSearchTerm(event.target.value)
 }
 
+const handleRecipeClick = (event, selectRecipe) => {
+    console.log(selectRecipe)
+    selectRecipe(event.target.innerHTML)
+}
+
 const mapStateToProps = (state) => {
     return {
         professionsData: state.professionsData,
@@ -76,6 +81,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ selectProfession, updateSearchTerm }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ selectProfession, updateSearchTerm, selectRecipe }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeList)

@@ -6,3 +6,4 @@ export const changeAuctionDataFileName = createAction('CHANGE_AUCTION_DATA_NAME'
 export const auctionDataProcessing = createAction('AUCTION_DATA_PROCESSING')
 export const selectProfession = createAction('SELECT_PROFESSION')
 export const updateSearchTerm = createAction('UPDATE_SEARCH_TERM')
+export const selectRecipe = createAction('SELECT_RECIPE')

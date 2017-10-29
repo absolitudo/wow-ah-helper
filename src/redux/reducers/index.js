@@ -9,7 +9,8 @@ export default handleActions({
     CHANGE_AUCTION_DATA_NAME: reducers.changeAuctionDataName,
     AUCTION_DATA_PROCESSING: reducers.auctionDataProcessing,
     SELECT_PROFESSION: reducers.selectProfession,
-    UPDATE_SEARCH_TERM: reducers.updateSearchTerm
+    UPDATE_SEARCH_TERM: reducers.updateSearchTerm,
+    SELECT_RECIPE: reducers.selectRecipe
 }, {
     appState: {
         professionsData: false,
@@ -20,5 +21,8 @@ export default handleActions({
     recipeList: {
         profession: 'alchemy',
         searchTerm: ''
+    },
+    selectedRecipe: {
+        name: null
     }
 })
