@@ -84,6 +84,7 @@ const reducers = {
             }
 
         }
+            
 
         return {...state,
             selectedRecipe: newSelectedRecipe

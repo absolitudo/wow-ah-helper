@@ -21,20 +21,16 @@ const IngredientPrice = (props) => (
             <p>{props.ingredient.avgBuyout}</p>
             <p>{props.ingredient.minBuyout}</p>
             <input
-                type="text"
+                type="number"
                 value={props.ingredient.customPrice}
-                onChange={(event) => handleCustomPriceChange(event, props.ingredient, props.customPriceChange)}
+                onChange={(event) =>  customPriceChange({
+                    ingredientName: props.ingredient.name,
+                    customPrice: event.target.value
+                })}
             />
         </div>
     </div>
 )
-
-const handleCustomPriceChange = (event, ingredient, customPriceChange) => {
-    customPriceChange({
-        ingredientName: ingredient.name,
-        customPrice: event.target.value
-    })
-}
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ customPriceChange }, dispatch)
 
