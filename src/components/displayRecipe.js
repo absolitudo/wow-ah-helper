@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 const DisplayRecipe = (props) => {
     console.log('displayRecipe.js rendering')
     
-    if(props.name) {
+    if(props.selectedRecipeName) {
         
         return (
             <section className='display-recipe'>
-                display recipe
+                {props.selectedRecipeName}
             </section>
         )
     } else {
@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
     return {
         auctionData: state.auctionData ? true : false,
         selectedRecipe: state.selectedRecipe,
-        
+        selectedRecipeName: state.selectedRecipeName
     }
 }
 

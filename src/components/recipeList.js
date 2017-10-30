@@ -71,7 +71,6 @@ const searchRecipe = (event, updateSearchTerm) => {
 }
 
 const handleRecipeClick = (event, selectRecipe) => {
-    console.log(selectRecipe)
     selectRecipe(event.target.innerHTML)
 }
 
