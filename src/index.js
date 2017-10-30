@@ -8,6 +8,10 @@ import "./styles/main.css"
 import store from './redux/store'
 import App from './components/app'
 
+
+
+
+
 ReactDOM.render(
     <Provider store={store}>
         <App />

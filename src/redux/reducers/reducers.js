@@ -36,12 +36,36 @@ const reducers = {
         }
     ),
 
-    selectRecipe: (state, action) => (
-        {...state,
-            selectedRecipeName: action.payload,
-            selectedRecipe: state.auctionData ? state.auctionData[action.payload] : undefined
+    selectRecipe: (state, action) => {
+
+        /* Search for recipe in the professionsData to be able get the metadata of the recipe */
+        let index
+
+        for(let j = 0; j < state.professionsData[state.profession].length; j += 1) {
+            if(action.payload === state.professionsData[state.profession][j].name) {
+                index = j
+                break
+            }
         }
-    )
+
+        /* If auction data avilable to the recipe then use it otherwise only use the metadata of the recipe */
+        let newState = {...state,
+            selectedRecipeName: action.payload,
+            selectedRecipe: !state.auctionData ? {...state.professionsData[state.profession][index]} : {...state.auctionData[action.payload],
+                ...state.professionsData[state.profession][index]
+            }
+        }
+
+        /* Get the auctionData of the recipe ingredients, the metadata of them is included in the recipe metadata already, smash the metadata with the auctiondata of the ingredients together*/
+        if(newState.selectedRecipe.ingredients){
+            newState.selectedRecipe.ingredients.map((ingredient, i) => {
+                return Object.assign(ingredient, state.auctionData[newState.selectedRecipe.ingredients[i].name])
+            })
+        }
+
+
+        return newState
+    }
         
 }
 
