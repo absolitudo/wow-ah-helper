@@ -65,6 +65,29 @@ const reducers = {
 
 
         return newState
+    },
+
+    customPriceChange: (state, action) => {
+        let newSelectedRecipe = {...state.selectedRecipe}
+
+        /* If the recipe is getting a custom price */ 
+        if(action.payload.ingredientName === newSelectedRecipe.name) {
+            newSelectedRecipe.customPrice = action.payload.customPrice
+        
+        /* Else loop to search the ingredient to give it a custom price */
+        } else {
+            for(let i = 0; i < newSelectedRecipe.ingredients.map; i += 1) {
+                if(action.payload.ingredientName === newSelectedRecipe.ingredients[i].name) {
+                    newSelectedRecipe.ingredients[i].customPrice = action.payload.customPrice
+                }
+
+            }
+
+        }
+
+        return {...state,
+            selectedRecipe: newSelectedRecipe
+        }
     }
         
 }

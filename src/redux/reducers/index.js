@@ -10,7 +10,8 @@ export default handleActions({
     AUCTION_DATA_PROCESSING: reducers.auctionDataProcessing,
     SELECT_PROFESSION: reducers.selectProfession,
     UPDATE_SEARCH_TERM: reducers.updateSearchTerm,
-    SELECT_RECIPE: reducers.selectRecipe
+    SELECT_RECIPE: reducers.selectRecipe,
+    CUSTOM_PRICE_CHANGE: reducers.customPriceChange
 }, {
     professionsData: false,
     auctionData: false,

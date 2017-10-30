@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+/* Components */
+import IngredientPrice from './ingredientPriceDisplay'
 
 const DisplayRecipe = (props) => {
     console.log('displayRecipe.js rendering')
@@ -12,30 +14,22 @@ const DisplayRecipe = (props) => {
                 <h3>
                     {props.selectedRecipeName}
                 </h3>
-                <table className='recipe-price'>
-                    <thead>
-                        <tr>
-                            <th>M</th>
-                            <th>Avg BO</th>
-                            <th>Min BO</th>
-                            <th>C</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{props.selectedRecipe.medianBuyout}</td>
-                            <td>{props.selectedRecipe.avgBuyout}</td>
-                            <td>{props.selectedRecipe.minBuyout}</td>
-                            <td className='custom-price-cell'></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div className='ingredient-price-container'>
-                    <table>
-                        <thead>
-                        </thead>
-                    </table>
-                </div>
+
+                <IngredientPrice
+                    ingredient={props.selectedRecipe}
+                    recipe={true}
+                />
+
+                <div className='ingredient-wrapper'>
+                    {props.selectedRecipe.ingredients.map((ingredient, index) => (
+                        <IngredientPrice
+                            ingredient={ingredient}
+                            recipe={false}
+                            key={index}
+                        />
+                    ))}
+                </div>           
+
             </section>
         )
     } else {
