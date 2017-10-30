@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 const DisplayRecipe = (props) => {
     console.log('displayRecipe.js rendering')
-    
+    console.log(props.selectedRecipe)
     if(props.selectedRecipeName) {
         
         return (

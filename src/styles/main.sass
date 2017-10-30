@@ -5,6 +5,7 @@
     padding: 0
     box-sizing: border-box
     font-size: 14px
+    outline: none
 
 body
     color: $dark
@@ -29,15 +30,16 @@ header
             height: 30px
             line-height: 30px
             margin: 0px 10px
-            padding-right: 30px
+            padding-right: 20px
+            font-size: 13px
 
             span
                 position: absolute
                 display: inline-block
-                width: 20px
-                height: 20px
+                width: 15px
+                height: 15px
                 border-radius: 50%
-                top: 5px
+                top: 7px
                 right: 0px
                 box-shadow: 0px 0px 5px $dark
 
@@ -138,10 +140,14 @@ main
     .recipe-list
         width: 50%
         select
+            font-weight: bold
+            border: none
             display: block
             text-transform: capitalize
             margin: auto
         input[type=text]
+            padding: 2px
+            border: 1px solid $dark
             display: block
             margin: 20px auto
         .recipes-container
@@ -158,6 +164,7 @@ main
                 line-height: 15px
                 padding: 4px 2px
                 cursor: pointer
+                font-size: 13px
                 &:hover
                     background: linear-gradient(to bottom, $light-grey 0%,$light-grey 1%,rgba(191,191,191,0) 20%,rgba(191,191,191,0) 81%,$light-grey 100%)
 

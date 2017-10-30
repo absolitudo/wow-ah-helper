@@ -52,7 +52,7 @@ const handleSubmit = (event, loadAuctionData, auctionDataProcessing) => {
     })
 }
 
-const handleFileChange = (event, changeAuctionDataFileName) => changeAuctionDataFileName(event.target.files[0].name)
+const handleFileChange = (event, changeAuctionDataFileName) => changeAuctionDataFileName(event.target.files[0] ? event.target.files[0].name : null)
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     loadAuctionData,
