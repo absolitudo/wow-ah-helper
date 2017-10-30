@@ -25,8 +25,9 @@ const DisplayRecipe = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        auctionData: state.auctionData || undefined,
-        selectedRecipe: state.selectedRecipe
+        auctionData: state.auctionData ? true : false,
+        selectedRecipe: state.selectedRecipe,
+        
     }
 }
 

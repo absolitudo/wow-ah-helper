@@ -36,20 +36,12 @@ const reducers = {
         }
     ),
 
-    selectRecipe: (state, action) => {
-        console.log(action.payload)
-        console.log(state)
-        if(state.auctionData) {
-            return {...state,
-                selectedRecipe: {...state.auctionData[action.payload]}
-            }
-        } else {
-            return {...state,
-                selectedRecipe: {name: 'fail'}
-            }
+    selectRecipe: (state, action) => (
+        {...state,
+            selectedRecipeName: action.payload,
+            selectedRecipe: state.auctionData ? state.auctionData[action.payload] : undefined
         }
-        
-    }
+    )
         
 }
 

@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 const mapStateToProps = (state) => {
     return {
         auctionDataFileName: state.auctionDataFileName,
-        professionsData: state.professionsData,
+        professionsData: state.professionsData ? true : false,
         auctionDataProcessing: state.auctionDataProcessing
     }
 }

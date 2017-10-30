@@ -32,8 +32,8 @@ const Header = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        auctionData: state.auctionData,
-        professionsData: state.professionsData,
+        auctionData: state.auctionData ? true : false,
+        professionsData: state.professionsData ? true : false,
         auctionDataProcessing: state.auctionDataProcessing
     }
 }

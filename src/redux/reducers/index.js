@@ -18,7 +18,6 @@ export default handleActions({
     auctionDataProcessing: false,
     profession: 'alchemy',
     searchTerm: '',
-    selectedRecipe: {
-        name: null
-    }
+    selectedRecipeName: null,
+    selectedRecipe: undefined
 })
