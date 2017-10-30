@@ -47,7 +47,12 @@ const RecipeList = (props) => {
                         
                     <div className='recipes-container'>
                         {recipes && recipes.map((recipe, index) => (
-                            <p key={index} onClick={(event) => handleRecipeClick(event, props.selectRecipe)}>{recipe}</p>
+                            <p
+                                key={index}
+                                onClick={(event) => handleRecipeClick(event, props.selectRecipe)}
+                                className={recipe === props.selectedRecipeName ? 'selected-recipe-name' : ''}>
+                                {recipe}
+                            </p>
                         ))}
                     </div>
         
@@ -79,6 +84,7 @@ const mapStateToProps = (state) => {
         professionsData: state.professionsData,
         profession: state.profession,
         searchTerm: state.searchTerm,
+        selectedRecipeName: state.selectedRecipeName
     }
 }
 
