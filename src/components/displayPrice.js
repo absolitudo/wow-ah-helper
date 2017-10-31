@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux'
 /* Action creators */
 import { customPriceChange } from '../redux/actions'
 
-const IngredientPrice = (props) => (
-    <div className='ingredient-price'>
-        <div className='ingredient-price-row'>
+const DisplayPrice = (props) => (
+    <div className='display-price'>
+        <div className='display-price-row'>
             {!props.recipe && <p>Name</p>}
             <p>M</p>
             <p>Avg BO</p>
@@ -15,15 +15,15 @@ const IngredientPrice = (props) => (
             <p>C</p>
         </div>
 
-        <div className='ingredient-price-row'>
+        <div className='display-price-row'>
             {!props.recipe && <p>{props.ingredient.name}</p>}
             <p>{props.ingredient.medianBuyout}</p>
             <p>{props.ingredient.avgBuyout}</p>
             <p>{props.ingredient.minBuyout}</p>
             <input
-                type="number"
+                type="text"
                 value={props.ingredient.customPrice}
-                onChange={(event) =>  customPriceChange({
+                onChange={(event) =>  props.customPriceChange({
                     ingredientName: props.ingredient.name,
                     customPrice: event.target.value
                 })}
@@ -34,4 +34,4 @@ const IngredientPrice = (props) => (
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ customPriceChange }, dispatch)
 
-export default connect(null, mapDispatchToProps)(IngredientPrice)
+export default connect(null, mapDispatchToProps)(DisplayPrice)

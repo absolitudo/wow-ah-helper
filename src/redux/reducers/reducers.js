@@ -51,15 +51,20 @@ const reducers = {
         /* If auction data avilable to the recipe then use it otherwise only use the metadata of the recipe */
         let newState = {...state,
             selectedRecipeName: action.payload,
-            selectedRecipe: !state.auctionData ? {...state.professionsData[state.profession][index]} : {...state.auctionData[action.payload],
-                ...state.professionsData[state.profession][index]
+            selectedRecipe: !state.auctionData
+            ? {...state.professionsData[state.profession][index],
+                customPrice: ''
+            }
+            : {...state.auctionData[action.payload],
+                ...state.professionsData[state.profession][index],
+                customPrice: ''
             }
         }
 
         /* Get the auctionData of the recipe ingredients, the metadata of them is included in the recipe metadata already, smash the metadata with the auctiondata of the ingredients together*/
         if(newState.selectedRecipe.ingredients){
             newState.selectedRecipe.ingredients.map((ingredient, i) => {
-                return Object.assign(ingredient, state.auctionData[newState.selectedRecipe.ingredients[i].name])
+                return Object.assign(ingredient, state.auctionData[newState.selectedRecipe.ingredients[i].name], {customPrice: ''})
             })
         }
 
@@ -70,22 +75,28 @@ const reducers = {
     customPriceChange: (state, action) => {
         let newSelectedRecipe = {...state.selectedRecipe}
 
+
         /* If the recipe is getting a custom price */ 
         if(action.payload.ingredientName === newSelectedRecipe.name) {
-            newSelectedRecipe.customPrice = action.payload.customPrice
-        
-        /* Else loop to search the ingredient to give it a custom price */
-        } else {
-            for(let i = 0; i < newSelectedRecipe.ingredients.map; i += 1) {
-                if(action.payload.ingredientName === newSelectedRecipe.ingredients[i].name) {
-                    newSelectedRecipe.ingredients[i].customPrice = action.payload.customPrice
-                }
-
+            newSelectedRecipe = {...newSelectedRecipe,
+                customPrice: action.payload.customPrice
             }
 
+        /* Else loop to search the ingredient to give it a custom price */
+        } else {
+            newSelectedRecipe = {...newSelectedRecipe,
+                ingredients: newSelectedRecipe.ingredients.map((ingredient) => {
+                    if(action.payload.ingredientName === ingredient.name) {
+                        return {...ingredient,
+                            customPrice: action.payload.customPrice
+                        }
+                    } else {
+                        return ingredient
+                    }
+                })
+            }
         }
             
-
         return {...state,
             selectedRecipe: newSelectedRecipe
         }

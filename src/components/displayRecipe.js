@@ -2,27 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 /* Components */
-import IngredientPrice from './ingredientPriceDisplay'
+import DisplayPrice from './displayPrice'
 
 const DisplayRecipe = (props) => {
     console.log('displayRecipe.js rendering')
-    console.log(props.selectedRecipe)
-    if(props.selectedRecipeName && props.selectedRecipe) {
+    if(props.selectedRecipe) {
         
         return (
             <section className='display-recipe'>
                 <h3>
-                    {props.selectedRecipeName}
+                    {props.selectedRecipe.name}
                 </h3>
 
-                <IngredientPrice
+                <DisplayPrice
                     ingredient={props.selectedRecipe}
                     recipe={true}
                 />
 
                 <div className='ingredient-wrapper'>
                     {props.selectedRecipe.ingredients.map((ingredient, index) => (
-                        <IngredientPrice
+                        <DisplayPrice
                             ingredient={ingredient}
                             recipe={false}
                             key={index}
@@ -35,7 +34,7 @@ const DisplayRecipe = (props) => {
     } else {
         return (
             <section className='display-recipe'>
-                skeleton of recipe
+                skeleton
             </section>
         )
     }
@@ -43,12 +42,10 @@ const DisplayRecipe = (props) => {
 }
     
 
-const mapStateToProps = (state) => {
-    return {
-        auctionData: state.auctionData ? true : false,
-        selectedRecipe: state.selectedRecipe,
-        selectedRecipeName: state.selectedRecipeName
+const mapStateToProps = (state) => (
+    {
+        selectedRecipe: state.selectedRecipe
     }
-}
+)
 
 export default connect(mapStateToProps)(DisplayRecipe)
