@@ -21,7 +21,7 @@ const DisplayPrice = (props) => (
             <p>{props.ingredient.avgBuyout}</p>
             <p>{props.ingredient.minBuyout}</p>
             <input
-                type="text"
+                type="number"
                 value={props.ingredient.customPrice}
                 onChange={(event) =>  props.customPriceChange({
                     ingredientName: props.ingredient.name,

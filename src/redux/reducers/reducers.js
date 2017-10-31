@@ -78,9 +78,7 @@ const reducers = {
 
         /* If the recipe is getting a custom price */ 
         if(action.payload.ingredientName === newSelectedRecipe.name) {
-            newSelectedRecipe = {...newSelectedRecipe,
-                customPrice: action.payload.customPrice
-            }
+            newSelectedRecipe.customPrice = action.payload.customPrice
 
         /* Else loop to search the ingredient to give it a custom price */
         } else {
