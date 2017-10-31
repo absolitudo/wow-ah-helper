@@ -11,7 +11,10 @@ export default handleActions({
     SELECT_PROFESSION: reducers.selectProfession,
     UPDATE_SEARCH_TERM: reducers.updateSearchTerm,
     SELECT_RECIPE: reducers.selectRecipe,
-    CUSTOM_PRICE_CHANGE: reducers.customPriceChange
+    CUSTOM_PRICE_CHANGE: reducers.customPriceChange,
+    CHANGE_CALC_QUANTITY: reducers.changeCalcQuantity,
+    TOGGLE_CALC_AUCTION_CUT: reducers.toggleCalcAuctionCut,
+    CHANGE_CALC_CALCULATEBY: reducers.changeCalcCalculateBy
 }, {
     professionsData: false,
     auctionData: false,
@@ -20,5 +23,12 @@ export default handleActions({
     profession: 'alchemy',
     searchTerm: '',
     selectedRecipeName: null,
-    selectedRecipe: undefined
+    selectedRecipe: undefined,
+    /* ---- */
+    calcProfit: {
+        quantity: 1,
+        auctionCut: false,
+        calculateBy: 'customPrice',
+        profit: 0
+    }
 })

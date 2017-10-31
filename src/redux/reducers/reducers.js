@@ -53,18 +53,24 @@ const reducers = {
             selectedRecipeName: action.payload,
             selectedRecipe: !state.auctionData
             ? {...state.professionsData[state.profession][index],
-                customPrice: ''
+                customPrice: undefined
             }
             : {...state.auctionData[action.payload],
                 ...state.professionsData[state.profession][index],
-                customPrice: ''
+                customPrice: state.auctionData[action.payload]
+                    ? state.auctionData[action.payload].medianBuyout
+                    : undefined
             }
         }
 
         /* Get the auctionData of the recipe ingredients, the metadata of them is included in the recipe metadata already, smash the metadata with the auctiondata of the ingredients together*/
         if(newState.selectedRecipe.ingredients){
             newState.selectedRecipe.ingredients.map((ingredient, i) => {
-                return Object.assign(ingredient, state.auctionData[newState.selectedRecipe.ingredients[i].name], {customPrice: ''})
+                return Object.assign(ingredient, state.auctionData[newState.selectedRecipe.ingredients[i].name], {
+                    customPrice: state.auctionData[newState.selectedRecipe.ingredients[i].name]
+                        ? state.auctionData[newState.selectedRecipe.ingredients[i].name].medianBuyout
+                        : undefined
+                })
             })
         }
 
@@ -98,7 +104,31 @@ const reducers = {
         return {...state,
             selectedRecipe: newSelectedRecipe
         }
-    }
+    },
+
+    changeCalcQuantity: (state, action) => (
+        {...state,
+            calcProfit: {...state.calcProfit,
+                quantity: action.payload
+            }
+        }
+    ),
+
+    toggleCalcAuctionCut: (state, action) => (
+        {...state,
+            calcProfit: {...state.calcProfit,
+                auctionCut: state.calcProfit.auctionCut ? false : true
+            }
+        }
+    ),
+
+    changeCalcCalculateBy: (state, action) => (
+        {...state,
+            calcProfit: {...state.calcProfit,
+                calculateBy: action.payload
+            }
+        }
+    )
         
 }
 

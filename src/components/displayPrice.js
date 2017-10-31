@@ -34,15 +34,15 @@ const DisplayPrice = (props) => (
                     {Math.round(props.ingredient.avgBuyout) / 10000 || 'NaN'}
                 </td>
                 <td>
-                {Math.round(props.ingredient.minBuyout) / 10000 || 'NaN'}
+                    {Math.round(props.ingredient.minBuyout) / 10000 || 'NaN'}
                 </td>
                 <td>
                 <input
                     type="number"
-                    value={props.ingredient.customPrice}
+                    value={(isNaN(props.ingredient.customPrice / 10000) || props.ingredient.customPrice === '') ? '' : props.ingredient.customPrice / 10000}
                     onChange={(event) =>  props.customPriceChange({
                         ingredientName: props.ingredient.name,
-                        customPrice: event.target.value
+                        customPrice: event.target.value === '' ? '' : event.target.value * 10000
                     })}
                 />
                 </td>
