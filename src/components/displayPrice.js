@@ -6,30 +6,52 @@ import { bindActionCreators } from 'redux'
 import { customPriceChange } from '../redux/actions'
 
 const DisplayPrice = (props) => (
-    <div className='display-price'>
-        <div className='display-price-row'>
-            {!props.recipe && <p>Name</p>}
-            <p>M</p>
-            <p>Avg BO</p>
-            <p>Min BO</p>
-            <p>C</p>
-        </div>
+    <table className={props.recipe ? 'display-price display-price-recipe' : 'display-price'}>
+        <thead>
+            <tr>
+                {!props.recipe && (
+                    <th className='display-price-ingredient-name'>
+                        Name
+                    </th>)
+                }
+                <th>M</th>
+                <th>Avg Bo</th>
+                <th>Min Bo</th>
+                <th>C</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {!props.recipe && (
+                    <td className='display-price-ingredient-name'>
+                        {props.ingredient.name}
+                    </td>)
+                }
+                <td>
+                    {Math.round(props.ingredient.medianBuyout) / 10000 || 'NaN'}
+                </td>
+                <td>
+                    {Math.round(props.ingredient.avgBuyout) / 10000 || 'NaN'}
+                </td>
+                <td>
+                {Math.round(props.ingredient.minBuyout) / 10000 || 'NaN'}
+                </td>
+                <td>
+                <input
+                    type="number"
+                    value={props.ingredient.customPrice}
+                    onChange={(event) =>  props.customPriceChange({
+                        ingredientName: props.ingredient.name,
+                        customPrice: event.target.value
+                    })}
+                />
+                </td>
+            </tr>
+        </tbody>
 
-        <div className='display-price-row'>
-            {!props.recipe && <p>{props.ingredient.name}</p>}
-            <p>{props.ingredient.medianBuyout}</p>
-            <p>{props.ingredient.avgBuyout}</p>
-            <p>{props.ingredient.minBuyout}</p>
-            <input
-                type="number"
-                value={props.ingredient.customPrice}
-                onChange={(event) =>  props.customPriceChange({
-                    ingredientName: props.ingredient.name,
-                    customPrice: event.target.value
-                })}
-            />
-        </div>
-    </div>
+        
+    </table>
+
 )
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ customPriceChange }, dispatch)

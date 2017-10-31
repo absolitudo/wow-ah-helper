@@ -174,8 +174,53 @@ main
 
         /* Display recipe */
         .display-recipe
-            background-color: $yellow
             height: 50%
+            text-align: center
+            min-height: 200px
+
+            .display-price-recipe 
+                display: block !important
+                margin: 10px auto !important
+                *
+                    font-size: 13px !important
+                    color: black !important
+                td,
+                th
+                    width: 25% !important
+
+            .display-price
+                display: inline-block
+                width: 300px
+                min-width: 300px
+                border-collapse: collapse
+                margin: 5px
+
+                *
+                    font-size: 12px
+
+                .display-price-ingredient-name
+                    width: 100px
+                    max-width: 100px
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    white-space: nowrap
+
+                td,
+                th
+                    width: 50px
+                    border: 1px solid $light-grey
+
+                input[type=number]
+                    width: 100%
+                    border: 1px solid $dark
+
+                    
+
+
+
+
+            .ingredient-wrapper
+                text-align: center
 
         /* Calc profit */
         .calc-profit
@@ -199,5 +244,7 @@ main
         .form-wrapper
             margin: auto !important
             margin-top: 20px !important
+    .display-price
+        margin: 0px !important
 
 
