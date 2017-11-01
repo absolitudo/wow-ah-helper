@@ -11,7 +11,7 @@ const DisplayRecipe = (props) => {
         return (
             <section className='display-recipe'>
                 <h3>
-                    {props.selectedRecipe.name}
+                    {props.selectedRecipe.amount > 1 ? props.selectedRecipe.amount + 'x' + props.selectedRecipe.name : props.selectedRecipe.name}
                 </h3>
 
                 <DisplayPrice
