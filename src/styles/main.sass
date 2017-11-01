@@ -177,6 +177,9 @@ main
             text-align: center
             min-height: 200px
 
+            .ingredient-wrapper
+                text-align: center
+
             .display-price-recipe 
                 display: block !important
                 margin: 10px auto !important
@@ -213,20 +216,59 @@ main
                     width: 100%
                     border: 1px solid $dark
 
-                    
-
-
-
-
-            .ingredient-wrapper
-                text-align: center
+            
 
         /* Calc profit */
         .calc-profit
-            background-color: $orange
             height: 50%
 
-        
+            .calc-profit-left
+                height: calc(100% - 50px)
+                width: 50%
+                float: left
+                padding-left: 30px
+
+                .calc-quantity
+                    display: block
+                    margin: 20px 0px
+
+                    input[type=number]
+                        display: inline-block
+                        width: 50px
+
+                .calc-auction-cut
+                    display: block
+                    
+                    input
+
+            .calc-profit-right
+                height: calc(100% - 50px)
+                width: 50%
+                float: left
+                padding-left: 20px
+                padding-top: 20px
+                &:after
+                    clear: both
+
+                label
+                    margin: 10px 0px
+                    display: block
+
+            .profit-container
+                height: 50px
+                width: 100%
+                text-align: center
+
+                h2
+                    display: inline-block
+                    margin-top: 10px
+                    border: 1px solid $dark
+                    padding: 5px 10px
+                    border-radius: 2px
+                    box-shadow: 0px 0px 3px $dark
+
+
+
 /* Animations */     
 @keyframes spin
     from 

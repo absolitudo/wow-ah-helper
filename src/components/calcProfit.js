@@ -12,24 +12,29 @@ import {
 const CalcProfit = (props) => (
     <section className='calc-profit'>
     {console.log('calcProfit.js rendering')}
-        <label>Quantity:
-            <input
-                type="number" 
-                value={props.calcProfit.quantity}
-                onChange={(event) => props.changeCalcQuantity(event.target.value)}
-            />
-        </label>
-        <label>
-            <input
-                type="checkbox"
-                checked={props.calcProfit.auctionCut}
-                onChange={props.toggleCalcAuctionCut}
-            />
+        <div className='calc-profit-left'>
+            <label className='calc-quantity'>
+                Quantity:
+                <input
+                    type="number" 
+                    value={props.calcProfit.quantity}
+                    onChange={(event) => props.changeCalcQuantity(event.target.value)}
+                />
 
-            AuctionCut
-        </label>
+            </label>
+            <label className='calc-auction-cut'>
+                AuctionCut:
+                <input
+                    type="checkbox"
+                    checked={props.calcProfit.auctionCut}
+                    onChange={props.toggleCalcAuctionCut}
+                />
+
+            </label>
+
+        </div>
             
-        <div className="select-calculate by">
+        <div className="calc-profit-right">
 
             <label>
                 <input
@@ -73,9 +78,11 @@ const CalcProfit = (props) => (
                 Custom Price
             </label>
         </div>
-        <h2>
-            {calculateProfit(props)}
-        </h2>
+        <div className='profit-container'>
+            <h2>
+                {calculateProfit(props)}
+            </h2>
+        </div>
     </section>
 )
 
