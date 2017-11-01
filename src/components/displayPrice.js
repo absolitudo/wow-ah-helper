@@ -24,7 +24,7 @@ const DisplayPrice = (props) => (
             <tr>
             {!props.recipe && (
                     <td className='display-price-ingredient-name'>
-                        {props.ingredient.name}
+                        {props.ingredient.amount + 'x' + props.ingredient.name}
                     </td>)
                 }
                 <td>

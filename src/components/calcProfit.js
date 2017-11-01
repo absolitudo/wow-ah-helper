@@ -95,7 +95,7 @@ const calculateProfit = (props) => {
 
         }, 0)
         /* Calculate profit */
-        let profit = ((props.selectedRecipe[props.calcProfit.calculateBy] || 0) - ingredientsPrice) * props.calcProfit.quantity / 10000
+        let profit = ((props.selectedRecipe[props.calcProfit.calculateBy] * props.selectedRecipe.amount || 0) - ingredientsPrice) * props.calcProfit.quantity / 10000
 
         /* Return profit with or without auction cut */
         return props.calcProfit.auctionCut ? profit - (profit * 0.05) : profit
