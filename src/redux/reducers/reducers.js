@@ -1,10 +1,18 @@
 const reducers = {
-    loadAuctionData: (state, action) => (
-        {...state,
-            auctionData: convertToAuctionData(state, action.payload),
-            auctionDataProcessing: false
+    loadAuctionData: (state, action) => {
+        
+        let auctionData = convertToAuctionData(state, action.payload)
+        let recipeObject
+        if (state.selectedRecipe) {
+            recipeObject = createSelectRecipeObject(state, auctionData, state.selectedRecipeName)
+
         }
-    ),
+        return {...state,
+            auctionData: auctionData,
+            auctionDataProcessing: false,
+            ...recipeObject
+        }
+    },
 
     loadProfessionsData: (state, action) => (
         {...state,
@@ -36,47 +44,9 @@ const reducers = {
         }
     ),
 
-    selectRecipe: (state, action) => {
-
-        /* Search for recipe in the professionsData to be able get the metadata of the recipe */
-        let index
-
-        for(let j = 0; j < state.professionsData[state.profession].length; j += 1) {
-            if(action.payload === state.professionsData[state.profession][j].name) {
-                index = j
-                break
-            }
-        }
-
-        /* If auction data avilable to the recipe then use it otherwise only use the metadata of the recipe */
-        let newState = {...state,
-            selectedRecipeName: action.payload,
-            selectedRecipe: !state.auctionData
-            ? {...state.professionsData[state.profession][index],
-                customPrice: undefined
-            }
-            : {...state.auctionData[action.payload],
-                ...state.professionsData[state.profession][index],
-                customPrice: state.auctionData[action.payload]
-                    ? state.auctionData[action.payload].medianBuyout
-                    : undefined
-            }
-        }
-
-        /* Get the auctionData of the recipe ingredients, the metadata of them is included in the recipe metadata already, smash the metadata with the auctiondata of the ingredients together*/
-        if(newState.selectedRecipe.ingredients){
-            newState.selectedRecipe.ingredients.map((ingredient, i) => {
-                return Object.assign(ingredient, state.auctionData[newState.selectedRecipe.ingredients[i].name], {
-                    customPrice: state.auctionData[newState.selectedRecipe.ingredients[i].name]
-                        ? state.auctionData[newState.selectedRecipe.ingredients[i].name].medianBuyout
-                        : undefined
-                })
-            })
-        }
-
-
-        return newState
-    },
+    selectRecipe: (state, action) => ({...state,
+        ...createSelectRecipeObject(state, state.auctionData, action.payload)
+    }),
 
     customPriceChange: (state, action) => {
         let newSelectedRecipe = {...state.selectedRecipe}
@@ -182,5 +152,48 @@ const convertToAuctionData = (state, data) => {
 
 const getAvgBuyout = (buyouts) => buyouts.reduce((acc, curr) => +acc + +curr, 0)/buyouts.length
 
+const createSelectRecipeObject = (state, auctionData, recipeName) => {
+    let newIngredients = []
+    
+    let index = 0
+    
+    /* Search for recipe in the professionsData to be able get the metadata of the recipe */
+    for(let j = 0; j < state.professionsData[state.profession].length; j += 1) {
+        if(recipeName === state.professionsData[state.profession][j].name) {
+
+            /* Metadata of the ingredients */
+            state.professionsData[state.profession][j].ingredients.forEach((ingredient, i) => {
+                newIngredients.push(Object.assign(ingredient, auctionData[ingredient.name], {
+                    customPrice: auctionData[ingredient.name]
+                        ? auctionData[ingredient.name].medianBuyout
+                        : undefined
+                }))
+            })
+
+            index = j
+            break
+        }
+    }
+
+
+
+    /* If auction data avilable to the recipe then use it otherwise only use the metadata of the recipe */
+    let recipeInformation = {
+        selectedRecipeName: recipeName,
+        selectedRecipe: !auctionData
+        ? {...state.professionsData[state.profession][index],
+            customPrice: undefined
+        }
+        : {...auctionData[recipeName],
+            ...state.professionsData[state.profession][index],
+            customPrice: auctionData[recipeName]
+                ? auctionData[recipeName].medianBuyout
+                : undefined,
+            ingredients: newIngredients
+        }
+    }
+
+    return recipeInformation
+}
 
 export default reducers

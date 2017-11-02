@@ -79,9 +79,11 @@ const CalcProfit = (props) => (
             </label>
         </div>
         <div className='profit-container'>
-            <h2>
-                {calculateProfit(props)}
-            </h2>
+            {props.selectedRecipe && (
+                <h2>
+                    {calculateProfit(props)}
+                </h2>
+            )}
         </div>
     </section>
 )

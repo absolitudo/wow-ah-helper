@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 /* Components */
 import DisplayPrice from './displayPrice'
-
+import IngredientsWrapper from './ingredientsWrapper'
 const DisplayRecipe = (props) => {
     console.log('displayRecipe.js rendering')
     if(props.selectedRecipe) {
@@ -18,16 +18,8 @@ const DisplayRecipe = (props) => {
                     ingredient={props.selectedRecipe}
                     recipe={true}
                 />
-
-                <div className='ingredient-wrapper'>
-                    {props.selectedRecipe.ingredients.map((ingredient, index) => (
-                        <DisplayPrice
-                            ingredient={ingredient}
-                            recipe={false}
-                            key={index}
-                        />
-                    ))}
-                </div>           
+                
+                <IngredientsWrapper />
 
             </section>
         )

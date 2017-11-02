@@ -7,6 +7,7 @@ import { customPriceChange } from '../redux/actions'
 
 const DisplayPrice = (props) => (
     <table className={props.recipe ? 'display-price display-price-recipe' : 'display-price'}>
+        {console.log('displayPrice.js rendering')}
         <thead>
             <tr>
                 {!props.recipe && (
@@ -24,7 +25,7 @@ const DisplayPrice = (props) => (
             <tr>
             {!props.recipe && (
                     <td className='display-price-ingredient-name'>
-                        {props.ingredient.amount + 'x' + props.ingredient.name}
+                        {props.ingredient.amount > 1 ?  props.ingredient.amount + 'x' + props.ingredient.name : props.ingredient.name}
                     </td>)
                 }
                 <td>

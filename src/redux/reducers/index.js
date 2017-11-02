@@ -27,7 +27,7 @@ export default handleActions({
     /* ---- */
     calcProfit: {
         quantity: 1,
-        auctionCut: false,
+        auctionCut: true,
         calculateBy: 'customPrice',
         profit: 0
     }
