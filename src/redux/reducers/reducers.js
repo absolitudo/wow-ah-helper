@@ -161,15 +161,6 @@ const createSelectRecipeObject = (state, auctionData, recipeName) => {
     for(let j = 0; j < state.professionsData[state.profession].length; j += 1) {
         if(recipeName === state.professionsData[state.profession][j].name) {
 
-            /* Metadata of the ingredients */
-            state.professionsData[state.profession][j].ingredients.forEach((ingredient, i) => {
-                newIngredients.push(Object.assign(ingredient, auctionData[ingredient.name], {
-                    customPrice: auctionData[ingredient.name]
-                        ? auctionData[ingredient.name].medianBuyout
-                        : undefined
-                }))
-            })
-
             index = j
             break
         }
@@ -189,7 +180,14 @@ const createSelectRecipeObject = (state, auctionData, recipeName) => {
             customPrice: auctionData[recipeName]
                 ? auctionData[recipeName].medianBuyout
                 : undefined,
-            ingredients: newIngredients
+            /* Metadata and prices of ingredients smashed into one object */
+            ingredients: state.professionsData[state.profession][index].ingredients.map((ingredient, i) => {
+                return Object.assign({}, ingredient, auctionData[ingredient.name], {
+                    customPrice: auctionData[ingredient.name]
+                        ? auctionData[ingredient.name].medianBuyout
+                        : undefined
+                })
+            })
         }
     }
 
