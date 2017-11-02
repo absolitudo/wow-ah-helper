@@ -98,6 +98,12 @@ const reducers = {
                 calculateBy: action.payload
             }
         }
+    ),
+
+    toggleShowInfoModal: (state, action) => (
+        {...state,
+            showInfoModal: state.showInfoModal ? false : true
+        }
     )
         
 }
@@ -153,8 +159,6 @@ const convertToAuctionData = (state, data) => {
 const getAvgBuyout = (buyouts) => buyouts.reduce((acc, curr) => +acc + +curr, 0)/buyouts.length
 
 const createSelectRecipeObject = (state, auctionData, recipeName) => {
-    let newIngredients = []
-    
     let index = 0
     
     /* Search for recipe in the professionsData to be able get the metadata of the recipe */

@@ -8,6 +8,7 @@ import { loadProfessionsData } from '../redux/actions'
 /* Components */
 import Header from './header'
 import Main from './main'
+import InfoModal from './infoModal'
 
 class App extends React.PureComponent {
     componentDidMount() {
@@ -20,6 +21,7 @@ class App extends React.PureComponent {
         console.log('app.js rendering')
         return (
             <div>
+                {this.props.showInfoModal && <InfoModal />}
                 <Header />
                 <Main />
             </div>
@@ -27,6 +29,10 @@ class App extends React.PureComponent {
     }
 }
 
+const mapStateToProps = (state) => ({
+    showInfoModal: state.showInfoModal
+})
+
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadProfessionsData }, dispatch)
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
