@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux'
 /* Action creators */
 import { toggleShowInfoModal } from '../redux/actions'
 
+/* Components */
+import UploadIcon from './uploadIcon'
 
 const InfoModal = (props) => (
     <div className='info-modal-container' onClick={props.toggleShowInfoModal}>
@@ -22,6 +24,16 @@ const InfoModal = (props) => (
                     "<span className='hightlight-span'>{'{YOURWOWCLIENT}'}</span>/WTF/Account/<span className='hightlight-span'>{'{YOURACCOUNTNAME}'}</span>/SavedVariables/Auc-ScanData.lua".
                 </code>
             </p>
+
+            <div className='get-auction-preview'>
+                <button className='upload'>
+                    <UploadIcon />
+                    Select auction data
+                </button>
+                <button className='submit'>
+                    Submit
+                </button>
+            </div>
 
 
 
