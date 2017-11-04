@@ -10,6 +10,10 @@
 body
     color: $dark
     font-family: "source-sans-pro","Helvetica Neue",Helvetica,Arial,sans-serif
+
+.hidden-body
+    overflow: hidden
+
  
 
 /* Header */
@@ -17,52 +21,12 @@ header
     padding-left: 50px
     *
         color: white
-    /* State styles */
-    .state-wrapper
-        padding-top: 20px
-        display: flex
-        width: 300px
-        margin: auto
-
-        p
-            position: relative
-            color: $dark
-            height: 30px
-            line-height: 30px
-            margin: 0px 10px
-            padding-right: 20px
-            font-size: 13px
-
-            span
-                position: absolute
-                display: inline-block
-                width: 15px
-                height: 15px
-                border-radius: 50%
-                top: 7px
-                right: 0px
-                box-shadow: 0px 0px 5px $dark
-
-            .auction-loading
-                &:after
-                    content: ''
-                    position: absolute
-                    top: -3px
-                    left: -3px
-                    display: block
-                    height: 100%
-                    width: 100%
-                    border-radius: 50%
-                    border: 3px solid transparent
-                    border-top-color: $dark-beige
-                    border-bottom-color: $dark-beige
-                    animation: spin 1500ms linear infinite
 
     /* Get auction data + info button styles */
     .form-wrapper
         margin-top: 20px
         float: left
-        min-width: 300px
+        min-width: 285px
         max-width: 350px
         width: 100%
         height: 30px
@@ -137,7 +101,7 @@ main
     /* Recipe list */
     .recipe-list
         width: 50%
-        min-width: 300px
+        min-width: 285px
         display: inline-block
         float: left
         select
@@ -154,7 +118,7 @@ main
         .recipes-container
             min-height: 400px
             max-height: 400px
-            width: 300px
+            width: 285px
             margin: auto
             margin-bottom: 5px
             padding: 5px
@@ -277,24 +241,28 @@ main
 /* Info modal */
 .info-modal-container
     position: absolute
-    height: 100vh
-    width: 100vw
+    height: 100%
+    min-height: 100%
+    width: 100%
     background-color: rgba(0, 0, 0, 0.5)
     z-index: 10
 
     .info-modal
         overflow-y: scroll
-        height: 100%
+        height: calc(100% - 100px)
         width: 50%
-        min-width: 300px
+        min-width: 285px
         background-color: white
-        margin: auto
         word-wrap: break-word
+        padding: 5px
+        margin: 50px auto
+        
 
+        /* Get auction preview */
         .get-auction-preview
-            width: 300px
+            width: 260px
             height: 30px
-            margin: 10px auto
+            margin: 20px auto
 
             .upload
                 color: white
@@ -329,6 +297,86 @@ main
                 box-shadow: 0px 0px 5px $dark
                 padding: 0px 10px
                 margin-left: 10px
+        /* Recipe preview */
+        .recipe-preview
+            text-align: center
+            margin: 10px auto
+            width: 260px
+
+            .display-price-recipe 
+                display: block !important
+                margin: 10px auto !important
+                *
+                    font-size: 13px !important
+                    color: black !important
+                td,
+                th
+                    width: 25% !important
+
+            .display-price
+                display: inline-block
+                width: 250px
+                border-collapse: collapse
+
+                *
+                    font-size: 12px
+
+                .display-price-ingredient-name
+                    width: 100px
+                    max-width: 100px
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    white-space: nowrap
+
+                td,
+                th
+                    width: 50px
+                    border: 1px solid $light-grey
+
+                input[type=number]
+                    width: 100%
+                    border: 1px solid $dark
+                    height: 22px
+/* State styles */
+.state-wrapper
+    padding-top: 20px
+    display: flex
+    width: 300px
+    margin: auto
+
+    p
+        position: relative
+        color: $dark
+        height: 30px
+        line-height: 30px
+        margin: 0px 10px
+        padding-right: 20px
+        font-size: 13px
+
+        span
+            position: absolute
+            display: inline-block
+            width: 15px
+            height: 15px
+            border-radius: 50%
+            top: 7px
+            right: 0px
+            box-shadow: 0px 0px 5px $dark
+
+        .auction-loading
+            &:after
+                content: ''
+                position: absolute
+                top: -3px
+                left: -3px
+                display: block
+                height: 100%
+                width: 100%
+                border-radius: 50%
+                border: 3px solid transparent
+                border-top-color: $dark-beige
+                border-bottom-color: $dark-beige
+                animation: spin 1500ms linear infinite
 
 /* Animations */     
 @keyframes spin

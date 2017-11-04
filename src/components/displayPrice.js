@@ -40,7 +40,7 @@ const DisplayPrice = (props) => (
                 <td>
                 <input
                     type="number"
-                    value={(isNaN(props.ingredient.customPrice / 10000) || props.ingredient.customPrice === '') ? '' : props.ingredient.customPrice / 10000}
+                    value={getInputValue(props.ingredient.customPrice)}
                     onChange={(event) =>  props.customPriceChange({
                         ingredientName: props.ingredient.name,
                         customPrice: event.target.value === '' ? '' : event.target.value * 10000
@@ -54,6 +54,8 @@ const DisplayPrice = (props) => (
     </table>
 
 )
+
+const getInputValue = (customPrice) => (isNaN(customPrice / 10000) || customPrice === '') ? '' : customPrice / 10000
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ customPriceChange }, dispatch)
 
