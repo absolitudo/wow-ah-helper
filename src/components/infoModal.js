@@ -73,7 +73,7 @@ class InfoModal extends React.Component {
                         To calculate the profits you have to select a recipe. First select a profession from the dropdown, then click on a recipe name. You can use the search function to quickly find a recipe.
                     </p>
                     <h2>Recipe view:</h2>
-                    <div className='recipe-preview'>
+                    <div className='display-recipe'>
                         <RecipePreview
                             ingredient={previewRecipe}
                             recipe={true}
@@ -141,13 +141,11 @@ const previewIngredient3 = {
 
 const RecipePreview = (props) => (
     <table className={props.recipe ? 'display-price display-price-recipe' : 'display-price'}>
+        {!props.recipe && (
+            <caption>{props.ingredient.amount > 1 ?  props.ingredient.amount + 'x ' + props.ingredient.name : props.ingredient.name}</caption>
+        )}
         <thead>
             <tr>
-                {!props.recipe && (
-                    <th className='display-price-ingredient-name'>
-                        Name
-                    </th>)
-                }
                 <th>M</th>
                 <th>Avg Bo</th>
                 <th>Min Bo</th>
@@ -156,11 +154,6 @@ const RecipePreview = (props) => (
         </thead>
         <tbody>
             <tr>
-            {!props.recipe && (
-                    <td className='display-price-ingredient-name'>
-                        {props.ingredient.name}
-                    </td>)
-                }
                 <td>
                     {props.ingredient.medianBuyout}
                 </td>

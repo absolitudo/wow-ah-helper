@@ -6,15 +6,13 @@ import { bindActionCreators } from 'redux'
 import { customPriceChange } from '../redux/actions'
 
 const DisplayPrice = (props) => (
-    <table className={props.recipe ? 'display-price display-price-recipe' : 'display-price'}>
+    <table className={props.recipe ? 'display-price display-recipe-price' : 'display-price'}>
         {console.log('displayPrice.js rendering')}
+        {!props.recipe && (
+            <caption>{props.ingredient.amount > 1 ?  props.ingredient.amount + 'x ' + props.ingredient.name : props.ingredient.name}</caption>
+        )}
         <thead>
             <tr>
-                {!props.recipe && (
-                    <th className='display-price-ingredient-name'>
-                        Name
-                    </th>)
-                }
                 <th>M</th>
                 <th>Avg Bo</th>
                 <th>Min Bo</th>
@@ -23,11 +21,6 @@ const DisplayPrice = (props) => (
         </thead>
         <tbody>
             <tr>
-            {!props.recipe && (
-                    <td className='display-price-ingredient-name'>
-                        {props.ingredient.amount > 1 ?  props.ingredient.amount + 'x' + props.ingredient.name : props.ingredient.name}
-                    </td>)
-                }
                 <td>
                     {Math.round(props.ingredient.medianBuyout) / 10000 || 'NaN'}
                 </td>

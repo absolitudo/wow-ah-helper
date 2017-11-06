@@ -100,6 +100,7 @@ main
     display: flex
     flex-wrap: wrap
     justify-content: space-around
+    /* Recipe list */
     .recipe-list
         width: 270px
         text-align: center
@@ -145,7 +146,49 @@ main
                 &.selected-recipe
                     border: 1px solid $orange
                     background-color: $light
-            
+
+/* Display recipe */
+.display-recipe
+    width: 270px
+    text-align: center
+
+    h2
+        margin: 10px 0px 40px
+
+    table
+        width: 270px
+        min-width: 270px
+        max-width: 270px
+        border-collapse: collapse
+        margin-bottom: 5px
+
+        &:nth-child(odd)
+            background-color: $light
+            caption
+                background-color: $light
+
+        caption
+            font-weight: bold
+        
+        *
+            border: 1px solid transparent
+            font-size: 13px
+
+        input
+            width: 50px
+            border: 1px solid $dark
+            height: 20px
+            float: right
+            margin-right: 5px
+        
+        td:nth-child(4)
+            min-width: 60px
+            width: 60px
+            max-width: 60px
+
+    .display-recipe-price
+        margin-bottom: 20px
+        background-color: $light-orange
 
 
 
@@ -167,6 +210,10 @@ main
         word-wrap: break-word
         padding: 5px
         margin: 50px auto
+
+        /* Display recipe */
+        .display-recipe
+            margin: auto
         
 
         /* Get auction preview */
