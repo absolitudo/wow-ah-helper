@@ -50,7 +50,7 @@ const RecipeList = (props) => {
                             <p
                                 key={index}
                                 onClick={(event) => handleRecipeClick(event, props.selectRecipe)}
-                                className={recipe === props.selectedRecipeName ? 'selected-recipe-name' : ''}>
+                                className={recipe === props.selectedRecipeName ? 'selected-recipe' : ''}>
                                 {recipe}
                             </p>
                         ))}

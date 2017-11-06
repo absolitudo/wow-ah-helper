@@ -10,10 +10,8 @@ const Main = (props) => (
     <main>
         {console.log('main.js rendering')}
         <RecipeList />
-        <div className='main-left-wrapper'>
-            <DisplayRecipe />
-            <CalcProfit />
-        </div>
+        <DisplayRecipe />
+        <CalcProfit />
     </main>
 )
 

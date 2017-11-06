@@ -1,4 +1,5 @@
 @import 'colors'
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
 
 *
     margin: 0
@@ -9,7 +10,7 @@
 
 body
     color: $dark
-    font-family: "source-sans-pro","Helvetica Neue",Helvetica,Arial,sans-serif
+    font-family: 'Roboto', "source-sans-pro","Helvetica Neue",Helvetica,Arial,sans-serif
 
 .hidden-body
     overflow: hidden
@@ -95,156 +96,66 @@ header
                 border-radius: 50%
 /* Main */
 main
-    width: 100%
-    margin-top: 70px
-
-    /* Recipe list */
+    margin-top: 50px
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
     .recipe-list
-        width: 50%
-        min-width: 285px
-        display: inline-block
-        float: left
+        width: 270px
+        text-align: center
+
         select
-            font-weight: bold
-            border: none
-            display: block
             text-transform: capitalize
-            margin: auto
+            border: none
+            margin: 10px 0px
+
+            *
+                text-transform: capitalize
+
+
         input[type=text]
             padding: 2px
             border: 1px solid $dark
-            display: block
-            margin: 20px auto
+            &:hover
+                box-shadow: 0px 0px 3px $dark
+
         .recipes-container
-            min-height: 400px
-            max-height: 400px
-            width: 285px
-            margin: auto
-            margin-bottom: 5px
-            padding: 5px
+            margin-top: 10px
+            text-align: left
+            height: 300px
             overflow-y: scroll
-            height: calc(100% - 80px)
-            border-radius: 5px
-            background: $light
-            box-shadow: 0px 0px 5px 2px $light
+            &:hover
+                box-shadow: 0px 0px 3px $dark
+
             p
-                height: 40px
-                line-height: 15px
-                padding: 4px 2px
+                background-image: url('./../assets/recipe-background.png')
+                border-radius: 3px
+                background-color: #eee
+                padding: 2px
+                padding-left: 5px
+                margin: 2px 0px
                 cursor: pointer
-                font-size: 13px
+                border: 1px solid transparent
+                
+                
                 &:hover
-                    background: linear-gradient(to bottom, $light-grey 0%,$light-grey 1%,rgba(191,191,191,0) 20%,rgba(191,191,191,0) 81%,$light-grey 100%)
-                &.selected-recipe-name
-                    background: linear-gradient(to bottom, $light-grey 0%,$light-grey 1%,rgba(191,191,191,0) 20%,rgba(191,191,191,0) 81%,$light-grey 100%)
-    .main-left-wrapper
-        width: 50%
-        min-width: 300px
-        display: inline-block
-        float: left
-        
-        
-        /* Display recipe */
-        .display-recipe
-            height: 50%
-            text-align: center
-            min-height: 250px
+                    border: 1px solid $orange
+                    background-color: $light
 
-            .ingredient-wrapper
-                text-align: center
-
-            .display-price-recipe 
-                display: block !important
-                margin: 10px auto !important
-                *
-                    font-size: 13px !important
-                    color: black !important
-                td,
-                th
-                    width: 25% !important
-
-            .display-price
-                display: inline-block
-                width: 300px
-                min-width: 300px
-                border-collapse: collapse
-                margin: 5px 0px
-
-                *
-                    font-size: 12px
-
-                .display-price-ingredient-name
-                    width: 100px
-                    max-width: 100px
-                    overflow: hidden
-                    text-overflow: ellipsis
-                    white-space: nowrap
-
-                td,
-                th
-                    width: 50px
-                    border: 1px solid $light-grey
-
-                input[type=number]
-                    width: 100%
-                    border: 1px solid $dark
-                    height: 22px
+                &.selected-recipe
+                    border: 1px solid $orange
+                    background-color: $light
             
 
-        /* Calc profit */
-        .calc-profit
-            height: 50%
-            min-height: 230px
 
-            .calc-profit-left
-                height: calc(100% - 50px)
-                width: 50%
-                float: left
-                padding-left: 30px
 
-                .calc-quantity
-                    display: block
-                    margin: 20px 0px
-
-                    input[type=number]
-                        display: inline-block
-                        width: 50px
-
-                .calc-auction-cut
-                    display: block
-
-            .calc-profit-right
-                height: calc(100% - 50px)
-                width: 50%
-                float: left
-                padding-left: 20px
-                padding-top: 20px
-                &:after
-                    clear: both
-
-                label
-                    margin: 10px 0px
-                    display: block
-
-            .profit-container
-                height: 50px
-                width: 100%
-                text-align: center
-
-                h2
-                    display: inline-block
-                    margin-top: 10px
-                    border: 1px solid $dark
-                    padding: 5px 10px
-                    border-radius: 2px
-                    box-shadow: 0px 0px 3px $dark
 /* Info modal */
 .info-modal-container
     position: absolute
     height: 100%
     min-height: 100%
     width: 100%
-    background-color: rgba(0, 0, 0, 0.5)
+    background-color: rgba(0, 0, 0, 0.7)
     z-index: 10
 
     .info-modal
@@ -297,46 +208,6 @@ main
                 box-shadow: 0px 0px 5px $dark
                 padding: 0px 10px
                 margin-left: 10px
-        /* Recipe preview */
-        .recipe-preview
-            text-align: center
-            margin: 10px auto
-            width: 260px
-
-            .display-price-recipe 
-                display: block !important
-                margin: 10px auto !important
-                *
-                    font-size: 13px !important
-                    color: black !important
-                td,
-                th
-                    width: 25% !important
-
-            .display-price
-                display: inline-block
-                width: 250px
-                border-collapse: collapse
-
-                *
-                    font-size: 12px
-
-                .display-price-ingredient-name
-                    width: 100px
-                    max-width: 100px
-                    overflow: hidden
-                    text-overflow: ellipsis
-                    white-space: nowrap
-
-                td,
-                th
-                    width: 50px
-                    border: 1px solid $light-grey
-
-                input[type=number]
-                    width: 100%
-                    border: 1px solid $dark
-                    height: 22px
 /* State styles */
 .state-wrapper
     padding-top: 20px
@@ -388,16 +259,8 @@ main
     
 
 /* Mobile */
-@media(max-width: 620px)
-    main
-        width: 300px !important
-        margin-left: auto !important
-        margin-right: auto !important
 @media(max-width: 350px)
     header
         padding-left: 0px !important
-        .form-wrapper
-            margin: auto !important
-            margin-top: 20px !important
 
 
