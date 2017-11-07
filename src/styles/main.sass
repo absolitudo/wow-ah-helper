@@ -379,6 +379,7 @@ main
                 animation: spin 1500ms linear infinite
 
 /* Skeletons */
+/* Recipe list skeleton */
 .recipe-list-skeleton
     p
         display: block
@@ -402,6 +403,31 @@ main
             width: 150px
             height: 20px
             margin: 20px auto
+
+/* Display recipe skeleton */
+.display-recipe-skeleton
+    p
+        display: block
+        background-color: $light
+        border-radius: 10px
+        width: 150px
+        height: 20px
+        margin: 20px auto
+    
+    .skeleton-table
+        width: 270px
+        height: 60px
+        background-color: $light
+        margin: 10px 0px
+        padding-left: 5px
+        padding-top: 5px
+        p
+            display: inline-block
+            background-color: $light-grey
+            border-radius: 10px
+            width: 60px
+            height: 20px
+            margin: 2px
 
 /* Animations */     
 @keyframes spin

@@ -33,8 +33,38 @@ const DisplayRecipe = (props) => {
         )
     } else {
         return (
-            <section className='display-recipe'>
-                skeleton
+            <section className='display-recipe-skeleton'>
+                <p></p>
+                <div className="skeleton-table">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div className="skeleton-table">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div className="skeleton-table">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
             </section>
         )
     }
