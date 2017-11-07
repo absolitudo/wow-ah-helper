@@ -45,16 +45,16 @@ const RecipeList = (props) => {
                         onChange={(e) => searchRecipe(e, props.updateSearchTerm)}
                     />
                         
-                    <div className='recipes-container'>
+                    <ul className='recipes-container'>
                         {recipes && recipes.map((recipe, index) => (
-                            <p
+                            <li
                                 key={index}
                                 onClick={(event) => handleRecipeClick(event, props.selectRecipe)}
                                 className={recipe === props.selectedRecipeName ? 'selected-recipe' : ''}>
                                 {recipe}
-                            </p>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
         
                 </section>
                 )
