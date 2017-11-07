@@ -20,7 +20,7 @@ export default handleActions({
     professionsData: false,
     auctionData: false,
     auctionDataFileName: null,
-    auctionDataProcessing: false,
+    auctionDataProcessing: true,
     profession: 'alchemy',
     searchTerm: '',
     selectedRecipeName: null,

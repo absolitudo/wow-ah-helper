@@ -100,52 +100,53 @@ main
     display: flex
     flex-wrap: wrap
     justify-content: space-around
-    /* Recipe list */
-    .recipe-list
-        width: 270px
-        text-align: center
 
-        select
+/* Recipe list */
+.recipe-list
+    width: 270px
+    text-align: center
+
+    select
+        text-transform: capitalize
+        border: none
+        margin: 10px 0px
+
+        *
             text-transform: capitalize
-            border: none
-            margin: 10px 0px
-
-            *
-                text-transform: capitalize
 
 
-        input[type=text]
+    input[type=text]
+        padding: 2px
+        border: 1px solid $dark
+        &:hover
+            box-shadow: 0px 0px 3px $dark
+
+    .recipes-container
+        margin-top: 10px
+        text-align: left
+        height: 300px
+        overflow-y: scroll
+        &:hover
+            box-shadow: 0px 0px 3px $dark
+
+        p
+            background-image: url('./../assets/recipe-background.png')
+            border-radius: 3px
+            background-color: #eee
             padding: 2px
-            border: 1px solid $dark
+            padding-left: 5px
+            margin: 2px 0px
+            cursor: pointer
+            border: 1px solid transparent
+            
+            
             &:hover
-                box-shadow: 0px 0px 3px $dark
+                border: 1px solid $orange
+                background-color: $light
 
-        .recipes-container
-            margin-top: 10px
-            text-align: left
-            height: 300px
-            overflow-y: scroll
-            &:hover
-                box-shadow: 0px 0px 3px $dark
-
-            p
-                background-image: url('./../assets/recipe-background.png')
-                border-radius: 3px
-                background-color: #eee
-                padding: 2px
-                padding-left: 5px
-                margin: 2px 0px
-                cursor: pointer
-                border: 1px solid transparent
-                
-                
-                &:hover
-                    border: 1px solid $orange
-                    background-color: $light
-
-                &.selected-recipe
-                    border: 1px solid $orange
-                    background-color: $light
+            &.selected-recipe
+                border: 1px solid $orange
+                background-color: $light
 
 /* Display recipe */
 .display-recipe
@@ -163,9 +164,11 @@ main
         margin-bottom: 5px
 
         &:nth-child(odd)
-            background-color: $light
+            background-color: $dark
+            color: white
             caption
-                background-color: $light
+                background-color: $dark
+                color: white
 
         caption
             font-weight: bold
@@ -190,6 +193,22 @@ main
         margin-bottom: 20px
         background-color: $light-orange
 
+/* Calc profit */
+.calc-profit
+    width: 270px
+    h2
+        margin: 10px 0px 30px
+        text-align: center
+
+    label
+        display: block
+        padding: 10px 0px
+        &:nth-child(even)
+            background-color: $light
+    
+    input[type=number]
+        width: 50px
+        border: 1px solid $dark
 
 
 /* Info modal */
@@ -255,6 +274,7 @@ main
                 box-shadow: 0px 0px 5px $dark
                 padding: 0px 10px
                 margin-left: 10px
+
 /* State styles */
 .state-wrapper
     padding-top: 20px
@@ -282,18 +302,20 @@ main
             box-shadow: 0px 0px 5px $dark
 
         .auction-loading
+            background-color: $regular-text !important
+            box-shadow: none
             &:after
                 content: ''
                 position: absolute
-                top: -3px
-                left: -3px
+                top: -2px
+                left: -2px
                 display: block
                 height: 100%
                 width: 100%
                 border-radius: 50%
-                border: 3px solid transparent
-                border-top-color: $dark-beige
-                border-bottom-color: $dark-beige
+                border: 2px solid transparent
+                border-top-color: $green
+                border-bottom-color: $green
                 animation: spin 1500ms linear infinite
 
 /* Animations */     

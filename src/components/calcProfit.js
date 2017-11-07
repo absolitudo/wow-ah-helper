@@ -12,79 +12,75 @@ import {
 const CalcProfit = (props) => (
     <section className='calc-profit'>
     {console.log('calcProfit.js rendering')}
-        <div className='calc-profit-left'>
-            <label className='calc-quantity'>
-                Quantity:
-                <input
-                    type="number" 
-                    value={props.calcProfit.quantity}
-                    onChange={(event) => props.changeCalcQuantity(event.target.value)}
-                />
+        <h2>Profit</h2>
+        <label>
+            <input
+                type="number" 
+                value={props.calcProfit.quantity}
+                onChange={(event) => props.changeCalcQuantity(event.target.value)}
+            />
+            Quantity
+        </label>
 
-            </label>
-            <label className='calc-auction-cut'>
-                AuctionCut:
-                <input
-                    type="checkbox"
-                    checked={props.calcProfit.auctionCut}
-                    onChange={props.toggleCalcAuctionCut}
-                />
-
-            </label>
-
-        </div>
+        <label>
             
-        <div className="calc-profit-right">
+            <input
+                type="checkbox"
+                checked={props.calcProfit.auctionCut}
+                onChange={props.toggleCalcAuctionCut}
+            />
+            AuctionCut
+        </label>
 
-            <label>
-                <input
-                    type="radio"
-                    name="calcBy"
-                    value={'medianBuyout'}
-                    checked={'medianBuyout' === props.calcProfit.calculateBy}
-                    onChange={(event) => props.changeCalcCalculateBy(event.target.value)}
-                />
-                Median
-            </label>
+        <label>
+            <input
+                type="radio"
+                name="calcBy"
+                value={'medianBuyout'}
+                checked={'medianBuyout' === props.calcProfit.calculateBy}
+                onChange={(event) => props.changeCalcCalculateBy(event.target.value)}
+            />
+            Median
+        </label>
 
-            <label>
-                <input
-                    type="radio"
-                    name="calcBy"
-                    value={'avgBuyout'}
-                    checked={'avgBuyout' === props.calcProfit.calculateBy}
-                    onChange={(event) => props.changeCalcCalculateBy(event.target.value)}
-                />
-                Average buyout
-            </label>
-            <label>
-                <input
-                    type="radio"
-                    name="calcBy"
-                    value={'minBuyout'}
-                    checked={'minBuyout' === props.calcProfit.calculateBy}
-                    onChange={(event) => props.changeCalcCalculateBy(event.target.value)}
-                />
-                Minimum buyout
-            </label>
-            <label>
-                <input
-                    type="radio"
-                    name="calcBy"
-                    value={'customPrice'}
-                    checked={'customPrice' === props.calcProfit.calculateBy}
-                    onChange={(event) => props.changeCalcCalculateBy(event.target.value)}
-                />
-                Custom Price
-            </label>
-        </div>
-        <div className='profit-container'>
-            {props.selectedRecipe && (
-                <h2>
-                    {calculateProfit(props)}
-                </h2>
-            )}
-        </div>
+        <label>
+            <input
+                type="radio"
+                name="calcBy"
+                value={'avgBuyout'}
+                checked={'avgBuyout' === props.calcProfit.calculateBy}
+                onChange={(event) => props.changeCalcCalculateBy(event.target.value)}
+            />
+            Average buyout
+        </label>
+
+        <label>
+            <input
+                type="radio"
+                name="calcBy"
+                value={'minBuyout'}
+                checked={'minBuyout' === props.calcProfit.calculateBy}
+                onChange={(event) => props.changeCalcCalculateBy(event.target.value)}
+            />
+            Minimum buyout
+        </label>
+
+        <label>
+            <input
+                type="radio"
+                name="calcBy"
+                value={'customPrice'}
+                checked={'customPrice' === props.calcProfit.calculateBy}
+                onChange={(event) => props.changeCalcCalculateBy(event.target.value)}
+            />
+            Custom Price
+        </label>
+
+        {props.selectedRecipe && (
+            <h2>
+                {calculateProfit(props)}
+            </h2>
+        )}
     </section>
 )
 
@@ -100,7 +96,7 @@ const calculateProfit = (props) => {
         let profit = ((props.selectedRecipe[props.calcProfit.calculateBy] * props.selectedRecipe.amount || 0) - ingredientsPrice) * props.calcProfit.quantity / 10000
 
         /* Return profit with or without auction cut */
-        return props.calcProfit.auctionCut ? profit - (profit * 0.05) : profit
+        return (props.calcProfit.auctionCut ? profit - (profit * 0.05) : profit).toFixed(4)
 
     } else {
         return ''
