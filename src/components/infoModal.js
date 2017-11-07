@@ -140,7 +140,7 @@ const previewIngredient3 = {
 }
 
 const RecipePreview = (props) => (
-    <table className={props.recipe ? 'display-price display-price-recipe' : 'display-price'}>
+    <table className={props.recipe ? 'display-price display-recipe-price' : 'display-price'}>
         {!props.recipe && (
             <caption>{props.ingredient.amount > 1 ?  props.ingredient.amount + 'x ' + props.ingredient.name : props.ingredient.name}</caption>
         )}

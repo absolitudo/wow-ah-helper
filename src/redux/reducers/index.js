@@ -31,6 +31,6 @@ export default handleActions({
         calculateBy: 'customPrice',
         profit: 0
     },
-    showInfoModal: true
+    showInfoModal: false
 
 })

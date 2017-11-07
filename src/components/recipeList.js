@@ -60,8 +60,16 @@ const RecipeList = (props) => {
                 )
     } else {
         return (
-            <section className='recipe-list'>
-                <p>skeleton</p>
+            <section className='recipe-list-skeleton'>
+                <p></p>
+                <p></p>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </section>
         )
     }

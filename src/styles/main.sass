@@ -290,7 +290,10 @@ main
         /* Display recipe */
         .display-recipe
             margin: auto
-        
+
+        .display-recipe-price
+            background-color: $light-orange
+            color: black
 
         /* Get auction preview */
         .get-auction-preview
@@ -374,6 +377,31 @@ main
                 border-top-color: $green
                 border-bottom-color: $green
                 animation: spin 1500ms linear infinite
+
+/* Skeletons */
+.recipe-list-skeleton
+    p
+        display: block
+        background-color: $light
+        border-radius: 10px
+        width: 150px
+        height: 20px
+        margin: 20px auto
+        &:nth-child(2)
+            width: 200px
+
+    ul
+        list-style: none
+        background-color: $light
+        padding: 10px
+        width: 270px
+        li
+            display: block
+            background-color: $light-grey
+            border-radius: 10px
+            width: 150px
+            height: 20px
+            margin: 20px auto
 
 /* Animations */     
 @keyframes spin
