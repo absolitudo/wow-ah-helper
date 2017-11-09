@@ -19,6 +19,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/styles/*.css
-*.map
+/src/styles/*.map
 *.sassc
 *-lock.json
