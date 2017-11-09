@@ -7,7 +7,6 @@ import { selectProfession, updateSearchTerm, selectRecipe } from '../redux/actio
 
 
 const RecipeList = (props) => {
-    console.log('recipeList.js rendering')
     let professions = []
     for(let profession in props.professionsData) {
         professions.push(profession)

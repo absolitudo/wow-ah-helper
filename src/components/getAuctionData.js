@@ -10,7 +10,6 @@ import { loadAuctionData, changeAuctionDataFileName, auctionDataProcessing } fro
 
 const GetAuctionData = (props) => (
     <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData, props.auctionDataProcessing)} className='get-auction-data'>
-        {console.log('getAuctionData.js rendering')}
         <label htmlFor="input-file">
             <UploadIcon />
             {props.auctionDataFileName || 'Select auction data'}

@@ -10,7 +10,6 @@ import AuctionState from './auctionState'
 
 const Header = (props) => (
     <header>
-        {console.log('header.js rendering')}
         <div className='form-wrapper'>
             <GetAuctionData />
             <InfoCircle/>

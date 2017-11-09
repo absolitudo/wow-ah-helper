@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import DisplayPrice from './displayPrice'
 
 const DisplayRecipe = (props) => {
-    console.log('displayRecipe.js rendering')
     if(props.selectedRecipe) {
         
         return (

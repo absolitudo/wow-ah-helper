@@ -18,7 +18,6 @@ class App extends React.PureComponent {
     }
 
     render() {
-        console.log('app.js rendering')
         return (
             <div>
                 {this.props.showInfoModal && <InfoModal />}

@@ -7,7 +7,6 @@ const ProfessionState = (props) => {
 
     return (
         <p>
-            {console.log('professionState.js rendering')}
             Profession state:
             <span
                 style={spanStyle}>

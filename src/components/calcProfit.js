@@ -11,7 +11,6 @@ import {
 
 const CalcProfit = (props) => (
     <section className='calc-profit'>
-    {console.log('calcProfit.js rendering')}
         <h2>Profit</h2>
         <div>
             <input

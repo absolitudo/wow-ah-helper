@@ -22,7 +22,6 @@ class InfoModal extends React.Component {
     render() {
         return (
             <div className='info-modal-container' onClick={this.props.toggleShowInfoModal}>
-                {console.log('infoModal.js rendering')}
                 <section className='info-modal' onClick={handleModalClick}>
                     <button onClick={this.props.toggleShowInfoModal} className='close-button'>X</button>
                     <div className="text-wrapper">
