@@ -10,6 +10,7 @@ import Header from './header'
 import Main from './main'
 import InfoModal from './infoModal'
 
+
 class App extends React.PureComponent {
     componentDidMount() {
         fetch('https://my-wow-api.herokuapp.com/professions/all')

@@ -15,7 +15,9 @@ export default handleActions({
     CHANGE_CALC_QUANTITY: reducers.changeCalcQuantity,
     TOGGLE_CALC_AUCTION_CUT: reducers.toggleCalcAuctionCut,
     CHANGE_CALC_CALCULATEBY: reducers.changeCalcCalculateBy,
-    TOGGLE_SHOW_INFO_MODAL: reducers.toggleShowInfoModal
+    TOGGLE_SHOW_INFO_MODAL: reducers.toggleShowInfoModal,
+    SHOW_NOTIFICATION: reducers.showNotification,
+    REMOVE_NOTIFICATION: reducers.removeNotification
 }, {
     professionsData: false,
     auctionData: false,
@@ -31,6 +33,7 @@ export default handleActions({
         calculateBy: 'customPrice',
         profit: 0
     },
-    showInfoModal: false
+    showInfoModal: false,
+    notifications: []
 
 })

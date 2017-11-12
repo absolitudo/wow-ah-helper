@@ -104,6 +104,18 @@ const reducers = {
         {...state,
             showInfoModal: state.showInfoModal ? false : true
         }
+    ),
+
+    showNotification: (state, action) => (
+        {...state,
+            notifications: [...state.notifications, action.payload]
+        }
+    ),
+
+    removeNotification: (state, action) => (
+        {...state,
+            notifications: state.notifications.filter(notification => notification !== action.payload)
+        }
     )
         
 }
