@@ -12,12 +12,15 @@ const Notification = (props) => {
     setTimeout(() => {
         props.removeNotification(props.notification)
     }, 3000)
+
+    let notificationStyles = {
+        backgroundColor: props.notification.type === 'Error' ? '#f44336' : '#2196f3'
+    }
     
     return (
-        <div className='notification'>
+        <div className='notification' style={notificationStyles}>
             <h3>{props.notification.type}</h3>
             <p>{props.notification.message}</p>
-    
         </div>
     )
 }
