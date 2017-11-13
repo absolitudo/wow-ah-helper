@@ -6,10 +6,15 @@ import { connect } from 'react-redux'
 import UploadIcon from './uploadIcon'
 
 /* Actions */
-import { loadAuctionData, changeAuctionDataFileName, auctionDataProcessing } from './../redux/actions'
+import {
+    loadAuctionData,
+    changeAuctionDataFileName,
+    auctionDataProcessing,
+    showNotification
+} from './../redux/actions'
 
 const GetAuctionData = (props) => (
-    <form onSubmit={(event) => handleSubmit(event, props.loadAuctionData, props.auctionDataProcessing)} className='get-auction-data'>
+    <form onSubmit={(event) => handleSubmit(event, props)} className='get-auction-data'>
         <label htmlFor="input-file">
             <UploadIcon />
             {props.auctionDataFileName || 'Select auction data'}
@@ -30,23 +35,23 @@ const GetAuctionData = (props) => (
     </form>
 )
 
-const handleSubmit = (event, loadAuctionData, auctionDataProcessing) => {
+const handleSubmit = (event, props) => {
     const reader = new FileReader()
     event.preventDefault()
     
     if(event.target.data.value.includes('Auc-ScanData') && event.target.data.value.includes('.lua')) {
         reader.readAsText(event.target.data.files[0])
-
     } else {
-        // make better error handling
-        alert('Error: invalid file.')
-
+        props.showNotification({
+            type: 'Error',
+            message: 'Invalid file.'
+        })
     }
 
     reader.addEventListener('load', (event) => {
         new Promise((resolve, reject) => {
-            resolve(auctionDataProcessing(true))
-        }).then(() => loadAuctionData(event.target.result))
+            resolve(props.auctionDataProcessing(true))
+        }).then(() => props.loadAuctionData(event.target.result))
         
     })
 }
@@ -56,7 +61,8 @@ const handleFileChange = (event, changeAuctionDataFileName) => changeAuctionData
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     loadAuctionData,
     changeAuctionDataFileName,
-    auctionDataProcessing
+    auctionDataProcessing,
+    showNotification
 }, dispatch)
 
 const mapStateToProps = (state) => {
