@@ -51,7 +51,12 @@ const handleSubmit = (event, props) => {
     reader.addEventListener('load', (event) => {
         new Promise((resolve, reject) => {
             resolve(props.auctionDataProcessing(true))
-        }).then(() => props.loadAuctionData(event.target.result))
+        })
+            .then(() => props.loadAuctionData(event.target.result))
+            .then(() => props.showNotification({
+                type: 'Notification',
+                message: 'Auction data loaded.'
+            }))
         
     })
 }
