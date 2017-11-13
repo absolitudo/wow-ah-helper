@@ -9,7 +9,7 @@ import { loadProfessionsData } from '../redux/actions'
 import Header from './header'
 import Main from './main'
 import InfoModal from './infoModal'
-
+import Notifier from './notifier'
 
 class App extends React.PureComponent {
     componentDidMount() {
@@ -24,6 +24,7 @@ class App extends React.PureComponent {
                 {this.props.showInfoModal && <InfoModal />}
                 <Header />
                 <Main />
+                <Notifier />
             </div>
         )
     }

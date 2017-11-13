@@ -123,7 +123,7 @@ const reducers = {
 
 
 const convertToAuctionData = (state, data) => {
-    let NoReturns = data.match(/"return/g).length
+    const NoReturns = data.match(/"return/g).length
     let returnIndex = data.indexOf('"return') + 9
     let rawData = ''
     let auctionData = {}
