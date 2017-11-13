@@ -11,9 +11,6 @@ import Main from './main'
 import InfoModal from './infoModal'
 import Notifier from './notifier'
 
-
-import Error from './error'
-
 class App extends React.PureComponent {
     componentDidMount() {
         fetch('https://my-wow-api.herokuapp.com/professions/all')
@@ -28,7 +25,6 @@ class App extends React.PureComponent {
                 <Header />
                 <Main />
                 <Notifier />
-                <Error />
             </div>
         )
     }

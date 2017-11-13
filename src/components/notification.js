@@ -18,7 +18,11 @@ const Notification = (props) => {
     }
     
     return (
-        <div className='notification' style={notificationStyles}>
+        <div
+            className='notification'
+            style={notificationStyles}
+            onClick={() => props.removeNotification(props.notification)}
+        >
             <h3>{props.notification.type}</h3>
             <p>{props.notification.message}</p>
         </div>

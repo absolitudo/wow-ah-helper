@@ -34,9 +34,6 @@ export default handleActions({
         profit: 0
     },
     showInfoModal: false,
-    notifications: [{
-        type: 'Error',
-        message: 'my random error message'
-    }]
+    notifications: []
 
 })
