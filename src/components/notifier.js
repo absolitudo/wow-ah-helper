@@ -1,16 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
-/* Action creators */
-import {
-    showNotification,
-    removeNotification
-} from '../redux/actions'
+/* Components */
+import Notification from './notification'
 
 const Notifier = (props) => (
     <div className='notifier'>
         
+        {props.notifications.map((notification, index) => (
+            <Notification
+                key={index}
+                notification={notification}
+            />
+        ))}
     </div>
 )
 
@@ -18,9 +20,4 @@ const mapStateToProps = state => ({
     notifications: state.notifications
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    showNotification,
-    removeNotification
-}, dispatch)
-
-export default connect(mapStateToProps, mapDispatchToProps)(Notifier)
+export default connect(mapStateToProps)(Notifier)
