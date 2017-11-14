@@ -10,6 +10,7 @@ import Header from './header'
 import Main from './main'
 import InfoModal from './infoModal'
 import Notifier from './notifier'
+import Footer from './footer'
 
 class App extends React.PureComponent {
     componentDidMount() {
@@ -25,6 +26,7 @@ class App extends React.PureComponent {
                 <Header />
                 <Main />
                 <Notifier />
+                <Footer />
             </div>
         )
     }
