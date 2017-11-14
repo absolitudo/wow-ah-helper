@@ -159,7 +159,9 @@ const convertToAuctionData = (state, data) => {
 
     /* Extra data for each auction */
     for(let auction in auctionData) {
-        auctionData[auction].buyouts.sort((a, b) => a - b)
+        auctionData[auction].buyouts = auctionData[auction].buyouts
+            .filter(buyout => buyout !== 0)
+            .sort((a, b) => a - b)
         auctionData[auction].avgBuyout = getAvgBuyout(auctionData[auction].buyouts)
         auctionData[auction].minBuyout = auctionData[auction].buyouts[0]
         auctionData[auction].medianBuyout = (auctionData[auction].buyouts[Math.floor((auctionData[auction].buyouts.length + 1)/2) - 1] + auctionData[auction].buyouts[Math.ceil((auctionData[auction].buyouts.length + 1)/2) - 1]) / 2
