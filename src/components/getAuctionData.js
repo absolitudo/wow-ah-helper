@@ -38,7 +38,7 @@ const GetAuctionData = (props) => (
 const handleSubmit = (event, props) => {
     const reader = new FileReader()
     event.preventDefault()
-    
+    props.auctionDataProcessing(true)
     if(event.target.data.value.includes('Auc-ScanData') && event.target.data.value.includes('.lua')) {
         reader.readAsText(event.target.data.files[0])
     } else {
@@ -50,9 +50,8 @@ const handleSubmit = (event, props) => {
 
     reader.addEventListener('load', (event) => {
         new Promise((resolve, reject) => {
-            resolve(props.auctionDataProcessing(true))
+            resolve(props.loadAuctionData(event.target.result))
         })
-            .then(() => props.loadAuctionData(event.target.result))
             .then(() => props.showNotification({
                 type: 'Notification',
                 message: 'Auction data loaded.'
