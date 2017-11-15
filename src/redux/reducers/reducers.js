@@ -17,6 +17,8 @@ const reducers = {
     loadProfessionsData: (state, action) => (
         {...state,
             professionsData: action.payload,
+            selectedRecipeName: action.payload.alchemy[0].name,
+            selectedRecipe: action.payload.alchemy[0]
         }
     ),
 
