@@ -38,7 +38,7 @@ const GetAuctionData = (props) => (
 const handleSubmit = (event, props) => {
     const reader = new FileReader()
     event.preventDefault()
-    if(event.target.data.value.includes(' ') && event.target.data.value.includes('.lua')) {
+    if(event.target.data.value.includes('Auc-ScanData') && event.target.data.value.includes('.lua')) {
         props.auctionDataProcessing(true)
         reader.readAsText(event.target.data.files[0])
     } else {
