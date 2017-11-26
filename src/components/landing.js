@@ -1,4 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+/* Action creators */
+import {
+    getDataFileName
+} from './../redux/actions'
 
 const Landing = (props) => (
     <header className='landing'>
@@ -7,11 +14,55 @@ const Landing = (props) => (
             <div className="get-data">
                 <p>Data is stored:</p>
                 <code>/YOURWOWCLIENT/WTF/Account/YOURACCOUNTNAME/SavedVariables/Auc-ScanData.lua</code>
-                <input type="file" />
-                <button>Provide Data</button>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="file-input">{props.dataFileName ? props.dataFileName : 'Select Data'}</label>
+                    <input
+                        type="file"
+                        id='file-input'
+                        onChange={(event) => handleFileChange(event, props.getDataFileName)}
+                    />
+                    <button type='submit'>Provide Data</button>
+                </form>
             </div>
         </div>
     </header>
 )
 
-export default Landing
+const handleSubmit = (event) => {
+    event.preventDefault()
+    
+    /*    
+    const reader = new FileReader()
+    if(event.target.data.value.includes('Auc-ScanData') && event.target.data.value.includes('.lua')) {
+        props.auctionDataProcessing(true)
+        reader.readAsText(event.target.data.files[0])
+    } else {
+        alert('errur')
+        props.showNotification({
+            type: 'Error',
+            message: 'Invalid file.'
+        })
+    }
+
+    reader.addEventListener('load', (event) => {
+        new Promise((resolve, reject) => {
+            resolve(props.loadAuctionData(event.target.result))
+        })
+            .then(() => props.showNotification({
+                type: 'Notification',
+                message: 'Auction data loaded.'
+            }))
+    })
+    */
+    
+}
+
+const handleFileChange = (event, getDataFileName) => getDataFileName(event.target.files[0] ? event.target.files[0].name : 'Select Data')
+
+const mapStateToProps = (state) => ({
+    dataFileName: state.dataFileName
+})
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getDataFileName }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing)

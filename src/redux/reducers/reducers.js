@@ -5,7 +5,11 @@ const reducers = {
         return {...state,
             auctionData: auctionData,
         }
-    }
+    },
+
+    getDataFileName: (state, action) => ({...state,
+            dataFileName: action.payload
+    })
 }
 
 
