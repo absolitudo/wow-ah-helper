@@ -20,10 +20,49 @@
     height: 300px
     width: 100%
 
+
+
     .container
         background-color: rgba(0, 0, 0, 0.7)
         height: 100%
         width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
 
-        input[type=file]
-            display: none
+        .get-data
+            padding: 5px
+            label
+                display: inline-block
+                text-align: center
+                height: 40px
+                background-color: $light
+                border-radius: 2px
+                cursor: pointer
+                width: calc(100% - 95px)
+                vertical-align: middle
+                p
+                    height: 100%
+                    line-height: 40px             
+                    width: 100%
+                    padding: 0 5px
+                    color: $dark-text
+                    overflow: hidden
+                    white-space: nowrap
+                    text-overflow: ellipsis
+                    
+            button
+                width: 90px
+                height: 40px
+                line-height: 40px
+                text-align: center
+                background-color: $deep-orange
+                border: none
+                border-radius: 2px
+                margin-left: 5px                
+                cursor: pointer
+                vertical-align: middle
+                
+
+            input[type=file]
+                display: none

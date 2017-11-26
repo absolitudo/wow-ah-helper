@@ -12,10 +12,15 @@ const Landing = (props) => (
         {console.log('landing rendering')}
         <div className="container">
             <div className="get-data">
-                <p>Data is stored:</p>
+                <p>Data is stored at:</p>
                 <code>/YOURWOWCLIENT/WTF/Account/YOURACCOUNTNAME/SavedVariables/Auc-ScanData.lua</code>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="file-input">{props.dataFileName ? props.dataFileName : 'Select Data'}</label>
+                    <label htmlFor="file-input">
+                        <p>
+                            {props.dataFileName ? props.dataFileName : 'Select Data'}
+                        </p>
+                    </label>
+    
                     <input
                         type="file"
                         id='file-input'
