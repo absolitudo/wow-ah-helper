@@ -22,3 +22,5 @@ yarn-error.log*
 /src/styles/*.map
 *.sassc
 *-lock.json
+
+testDependencies
