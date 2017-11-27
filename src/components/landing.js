@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 
 /* Action creators */
 import {
-    getDataFileName
+    getDataFileName,
+    loadAuctionData
 } from './../redux/actions'
 
 const Landing = (props) => (
@@ -16,7 +17,7 @@ const Landing = (props) => (
                 <code><span className="highlight">YOURWOWCLIENT</span>/WTF/Account/<span className="highlight">YOURACCOUNTNAME</span>/SavedVariables/Auc-ScanData.lua</code>
                 
          
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(event) => handleSubmit(props, event)}>
                     <label htmlFor="file-input">
                         <p>
                             {props.dataFileName ? props.dataFileName : 'Select Data'}
@@ -43,32 +44,32 @@ const Landing = (props) => (
     </header>
 )
 
-const handleSubmit = (event) => {
+const handleSubmit = (props, event) => {
     event.preventDefault()
     
-    /*    
     const reader = new FileReader()
-    if(event.target.data.value.includes('Auc-ScanData') && event.target.data.value.includes('.lua')) {
-        props.auctionDataProcessing(true)
-        reader.readAsText(event.target.data.files[0])
+    if(event.target['file-input'].value.includes('Auc-ScanData') && event.target['file-input'].value.includes('.lua')) {
+        reader.readAsText(event.target['file-input'].files[0])
     } else {
         alert('errur')
+        /*
         props.showNotification({
             type: 'Error',
             message: 'Invalid file.'
         })
+        */
     }
 
     reader.addEventListener('load', (event) => {
         new Promise((resolve, reject) => {
             resolve(props.loadAuctionData(event.target.result))
-        })
+        })/*
             .then(() => props.showNotification({
                 type: 'Notification',
                 message: 'Auction data loaded.'
             }))
+            */
     })
-    */
     
 }
 
@@ -78,6 +79,9 @@ const mapStateToProps = (state) => ({
     dataFileName: state.dataFileName
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ getDataFileName }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    getDataFileName,
+    loadAuctionData
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)

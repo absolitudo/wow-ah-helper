@@ -1,7 +1,7 @@
 const reducers = {
     loadAuctionData: (state, action) => {
         
-        let auctionData = convertToAuctionData(state, action.payload)
+        let auctionData = convertToAuctionData(action.payload)
         return {...state,
             auctionData: auctionData,
         }
@@ -14,7 +14,7 @@ const reducers = {
 
 
 
-const convertToAuctionData = (state, data) => {
+const convertToAuctionData = (data) => {
     const NoReturns = data.match(/"return/g).length
     let returnIndex = data.indexOf('"return') + 9
     let rawData = ''
@@ -41,10 +41,16 @@ const convertToAuctionData = (state, data) => {
         .forEach(auction => {
             auction = auction.split(',')
             if(auctionData[auction[8]]) {
-                auctionData[auction[8]].buyouts.push(+(auction[16] / auction[10]))
+                for(let i = 0; i < +auction[10]; i += 1) {
+                    auctionData[auction[8]].buyouts.push(((+auction[16] / +auction[10]) / 10000).toFixed(4))
+                }
             } else {
+                let buyouts = []
+                for(let i = 0; i < +auction[10]; i += 1) {
+                    buyouts.push(((+auction[16] / +auction[10]) / 10000).toFixed(4))
+                }
                 auctionData[auction[8]] = {
-                    buyouts: [+(auction[16] / auction[10])]
+                    buyouts: buyouts
                 }
             }
         })
@@ -54,14 +60,15 @@ const convertToAuctionData = (state, data) => {
         auctionData[auction].buyouts = auctionData[auction].buyouts
             .filter(buyout => buyout !== 0)
             .sort((a, b) => a - b)
-        auctionData[auction].avgBuyout = getAvgBuyout(auctionData[auction].buyouts)
+        auctionData[auction].avgBuyout = getAvgBuyout(auctionData[auction].buyouts).toFixed(4)
         auctionData[auction].minBuyout = auctionData[auction].buyouts[0]
-        auctionData[auction].medianBuyout = (auctionData[auction].buyouts[Math.floor((auctionData[auction].buyouts.length + 1)/2) - 1] + auctionData[auction].buyouts[Math.ceil((auctionData[auction].buyouts.length + 1)/2) - 1]) / 2
+        auctionData[auction].medianBuyout = ((auctionData[auction].buyouts[Math.floor((auctionData[auction].buyouts.length + 1)/2) - 1] + auctionData[auction].buyouts[Math.ceil((auctionData[auction].buyouts.length + 1)/2) - 1]) / 2).toFixed(4)
+        auctionData[auction].amount = auctionData[auction].buyouts.length
     }
 
     return auctionData
 }
 
-const getAvgBuyout = (buyouts) => buyouts.reduce((acc, curr) => +acc + +curr, 0)/buyouts.length
+const getAvgBuyout = (buyouts) => buyouts.reduce((acc, curr) => +acc + +curr, 0) / buyouts.length
 
 export default reducers
