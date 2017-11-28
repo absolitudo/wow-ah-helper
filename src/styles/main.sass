@@ -17,7 +17,8 @@ html
 
 a
     color: $blue 
-
+ul
+    list-style: none
 
 /* Landing */
 .landing
@@ -27,93 +28,99 @@ a
     background-repeat: no-repeat
     width: 100%
     min-height: 300px
-    color: $light-text
+    color: $dark-text
+    box-shadow: 0px 0px 7px black
     
     .highlight
-        color: $deep-orange
+        color: $blue
+        font-size: 12px
 
     
 
-    .container
-        background-color: rgba(0, 0, 0, 0.8)
+    .landing-background
+        background-color: rgba(0, 0, 0, 0.5)
         min-height: 300px
         width: 100%
-        text-shadow: 0px 0px 5px $dark-text
+        padding: 150px 5px 150px
 
-        .get-data
-            padding: 5px
+        .landing-container
             max-width: 700px
             margin: auto
-            padding-top: 200px
-            
-            code
-                display: block
-                margin: 2px 0 10px
+            padding: 10px
+            background-color: rgba(255, 255, 255, 0.85)
+            box-shadow: 0px 0px 10px $dark-text
+            position: relative
+            .url-code
+                margin-top: 30px
+                margin-bottom: -5px
+                code
+                    font-size: 12px
+                    display: block
+                    margin: 2px 0 10px
+                p
+                    margin-bottom: -5px
 
             label
                 display: inline-block
                 text-align: center
                 height: 40px
-                background-color: $light
+                background-color: $dark-text
                 border-radius: 2px
                 cursor: pointer
                 width: calc(100% - 95px)
                 vertical-align: middle
+                box-shadow: 0px 0px 10px grey
                 p
                     height: 100%
                     line-height: 40px             
                     width: 100%
                     padding: 0 5px
-                    color: $dark-text
+                    color: #fff
                     overflow: hidden
                     white-space: nowrap
                     text-overflow: ellipsis
-                    text-shadow: none
                     
             button
                 width: 90px
                 height: 40px
                 line-height: 40px
                 text-align: center
-                background-color: $deep-orange
+                background-color: $teal
                 border: none
                 border-radius: 2px
                 margin-left: 5px                
                 cursor: pointer
                 vertical-align: middle
-                text-shadow: none
-                color: $light-text
-                
+                color: #fff
+                box-shadow: 0px 0px 10px grey
 
             input[type=file]
                 display: none
 
-    .landing-info
-        margin: 50px auto
-        max-width: 700px
-        padding: 5px
-        padding-bottom: 50px
+            h2
+                text-align: center
+                margin: 10px
+                font-size: 24px
 
-        h2
-            text-align: center
-            margin: 10px
-            font-size: 24px
+            ul
+                margin: 10px
 
-        ul
-            margin: 10px
-            li
-                margin: 14px 0
-                line-height: 15px
+                li
+                    margin: 14px 0
+                    line-height: 15px
 
-        #more-info
-            float: right
-            color: $blue
-            text-decoration: underline
-            cursor: pointer
-            font-size: 10px
+            #more-info
+                position: absolute
+                top: 5px
+                right: 5px
+                color: $blue
+                text-decoration: underline
+                cursor: pointer
+                font-size: 10px
 
 /* Profession Selector
 .profession-selector
+    padding-top: 20px
     .desktop-professions
         width: 740px
         margin: auto
@@ -135,13 +142,13 @@ a
             cursor: pointer
             transition: 300ms
             &.selected-profession
-                border: 2px solid $blue
-                color: $blue
+                border: 2px solid $teal
+                color: $teal
                 box-shadow: inset 0 0 4px $grey
             &:hover
-                border: 2px solid $blue
-                color: $blue
-                box-shadow: 0 0 5px $grey
+                border: 2px solid $teal
+                color: $teal
+                box-shadow: 0 0 5px $teal
 
     .mobile-professions
         display: none
@@ -152,6 +159,8 @@ a
         text-transform: capitalize
 
 @media(max-width: 800px) 
+    .landing .container
+        padding: 50px 5px 50px !important
     .desktop-professions
         display: none
     .mobile-professions

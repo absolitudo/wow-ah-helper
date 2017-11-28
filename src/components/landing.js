@@ -19,12 +19,18 @@ const Landing = (props) => {
     return (
         <header className='landing'>
             {console.log('landing rendering')}
-            <div className="container">
-                <div className="get-data">
-                    <p>Data is stored at:</p>
-                    <code><span className="highlight">YOURWOWCLIENT</span>/WTF/Account/<span className="highlight">YOURACCOUNTNAME</span>/SavedVariables/Auc-ScanData.lua</code>
-                    
-            
+            <div className="landing-background">
+                <div className="landing-container">
+                    <h2>What to craft</h2>
+                    <ul>
+                        <li>Use the <a href="https://wow.curseforge.com/projects/auctioneer/files" target='_blank' rel='noopener noreferrer'>Auctioneer</a> addon to scan the auction house for data.</li>
+                        <li>Provide your data for this aplication to help you decide which items are profitable to craft.</li>
+                    </ul>
+                    <span id="more-info">More info</span>
+                    <div className="url-code">
+                        <p>Data is stored at:</p>
+                        <code><span className="highlight">YOURWOWCLIENT</span>/WTF/Account/<span className="highlight">YOURACCOUNTNAME</span>/SavedVariables/Auc-ScanData.lua</code>
+                    </div>
                     <form onSubmit={(event) => handleSubmit(props, event)}>
                         <label htmlFor="file-input">
                             <p>
@@ -39,14 +45,6 @@ const Landing = (props) => {
                         />
                         <button type='submit'>Provide Data</button>
                     </form>
-                </div>
-                <div className="landing-info">
-                    <h2>What to craft</h2>
-                    <ul>
-                        <li>Use the <a href="https://wow.curseforge.com/projects/auctioneer/files" target='_blank' rel='noopener noreferrer'>Auctioneer</a> addon to scan the auction house for data.</li>
-                        <li>Provide your data for this aplication to help you decide which items are profitable to craft.</li>
-                    </ul>
-                    <span id="more-info">More info</span>
                 </div>
             </div>
         </header>
