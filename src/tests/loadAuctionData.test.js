@@ -29,7 +29,7 @@ describe('Auction Data price tests: ', () => {
     /* Data for price tests */
     loadAuctionData.payload = priceTestDataLua
     let priceTestData = reducers.loadAuctionData(state, loadAuctionData).auctionData
-    
+
     it('average buyout', () => {
         expect(priceTestData['Copper Ore'].avgBuyout).toBe(3.0642)
     })
@@ -37,9 +37,11 @@ describe('Auction Data price tests: ', () => {
     it('minimum buyout', () => {
         expect(priceTestData['Copper Ore'].minBuyout).toBe(0.1000)
     })
+
     it('median buyout', () => {
         expect(priceTestData['Copper Ore'].medianBuyout).toBe(3.0000)
     })
+    
     it('amount of items', () => {
         expect(priceTestData['Copper Ore'].amount).toBe(53)
     })
