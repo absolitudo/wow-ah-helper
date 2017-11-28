@@ -13,9 +13,6 @@ describe('Auction data types:', () => {
     loadAuctionData.payload = auctionDataLua
     let auctionData = reducers.loadAuctionData(state, loadAuctionData).auctionData
 
-    /* Data for price tests */
-    loadAuctionData.payload = priceTestDataLua
-    let priceTestData = reducers.loadAuctionData(state, loadAuctionData).auctionData
     it('is object', () => {
         expect(typeof auctionData).toBe('object')
     })
@@ -24,6 +21,15 @@ describe('Auction data types:', () => {
         expect(areKeysOfAuctionDataAreObjects(auctionData)).toBe(true)
     })
 
+    
+})
+
+describe('Auction Data price tests: ', () => {
+    
+    /* Data for price tests */
+    loadAuctionData.payload = priceTestDataLua
+    let priceTestData = reducers.loadAuctionData(state, loadAuctionData).auctionData
+    
     it('average buyout', () => {
         expect(priceTestData['Copper Ore'].avgBuyout).toBe(3.0642)
     })
