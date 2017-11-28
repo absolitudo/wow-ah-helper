@@ -7,10 +7,17 @@ const ProfessionSelector = (props) => {
             <div className='profession-selector'>
                 <ul className='desktop-professions'>
                     {props.professions.map((profession, index) => (
-                        <li key={index}>{profession}</li>
+                        <li 
+                            key={index}
+                            className={props.selectedProfession === profession ? 'profession selected-profession' : 'profession'}
+                            >
+                            {profession}
+                        </li>
                     ))}
                 </ul>
-                <select name="" id="" className='mobile-professions'>sad</select>
+                <select name="" id="" className='mobile-professions'>
+                    <div className='profession'></div>
+                </select>
             </div>
         )
     } else {
@@ -21,7 +28,8 @@ const ProfessionSelector = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    professions: state.professions
+    professions: state.professions,
+    selectedProfession: state.selectedProfession
 })
 
 export default connect(mapStateToProps)(ProfessionSelector)
