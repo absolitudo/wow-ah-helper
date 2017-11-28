@@ -1,5 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+/* Action creators*/
+import { selectProfession } from '../redux/actions'
 
 const ProfessionSelector = (props) => {
     if(props.professions) {
@@ -10,6 +14,7 @@ const ProfessionSelector = (props) => {
                         <li 
                             key={index}
                             className={props.selectedProfession === profession ? 'profession selected-profession' : 'profession'}
+                            onClick={() => props.selectProfession(profession)}
                             >
                             {profession}
                         </li>
@@ -32,4 +37,6 @@ const mapStateToProps = (state) => ({
     selectedProfession: state.selectedProfession
 })
 
-export default connect(mapStateToProps)(ProfessionSelector)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ selectProfession }, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfessionSelector)

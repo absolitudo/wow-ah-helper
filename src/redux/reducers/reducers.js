@@ -15,6 +15,10 @@ const reducers = {
         professionData: action.payload,
         professions: getProfessions(action.payload),
         selectedProfession: 'all'
+    }),
+
+    selectProfession: (state, action) => ({...state,
+        selectedProfession: action.payload
     })
 }
 
