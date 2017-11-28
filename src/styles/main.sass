@@ -6,20 +6,18 @@
     margin: 0
     padding: 0
     box-sizing: border-box
-    font-size: 14px
     outline: none
     font-family: roboto, helvetica, sans-serif
-    color: $light-text
+    font-size: 14px
 
 html
     min-height: 100%
-    cursor: url('../assets/gam372.cur'), auto !important
+    cursor: url('../assets/gam372.cur'), auto
+    color: $dark-text
 
 a
-    color: $blue
+    color: $blue 
 
-.highlight
-    color: $deep-orange 
 
 /* Landing */
 .landing
@@ -29,6 +27,12 @@ a
     background-repeat: no-repeat
     width: 100%
     min-height: 300px
+    
+    .highlight
+        color: $deep-orange
+
+    *
+        color: $light-text
 
     .container
         background-color: rgba(0, 0, 0, 0.8)
@@ -106,3 +110,16 @@ a
             text-decoration: underline
             cursor: pointer
             font-size: 10px
+
+/* Profession Selector
+.profession-selector
+    .desktop-professions
+    .mobile-professions
+        display: none
+    .professions-skeleton
+
+@media(max-width: 800px) 
+    .desktop-professions
+        display: none
+    .mobile-professions
+        display: block !important
