@@ -5,44 +5,53 @@ import { bindActionCreators } from 'redux'
 /* Action creators */
 import {
     getDataFileName,
-    loadAuctionData
+    loadAuctionData,
+    getProfessionData
 } from './../redux/actions'
 
-const Landing = (props) => (
-    <header className='landing'>
-        {console.log('landing rendering')}
-        <div className="container">
-            <div className="get-data">
-                <p>Data is stored at:</p>
-                <code><span className="highlight">YOURWOWCLIENT</span>/WTF/Account/<span className="highlight">YOURACCOUNTNAME</span>/SavedVariables/Auc-ScanData.lua</code>
-                
-         
-                <form onSubmit={(event) => handleSubmit(props, event)}>
-                    <label htmlFor="file-input">
-                        <p>
-                            {props.dataFileName ? props.dataFileName : 'Select Data'}
-                        </p>
-                    </label>
-    
-                    <input
-                        type="file"
-                        id='file-input'
-                        onChange={(event) => handleFileChange(event, props.getDataFileName)}
-                    />
-                    <button type='submit'>Provide Data</button>
-                </form>
+const Landing = (props) => {
+        
+    /* MAKE API REQUEST TO GET PROFESSION DATA */
+    fetch('https://my-wow-api.herokuapp.com/professions/all')
+        .then(res => res.json())
+        .then(res => props.getProfessionData(res))
+
+    return (
+        <header className='landing'>
+            {console.log('landing rendering')}
+            <div className="container">
+                <div className="get-data">
+                    <p>Data is stored at:</p>
+                    <code><span className="highlight">YOURWOWCLIENT</span>/WTF/Account/<span className="highlight">YOURACCOUNTNAME</span>/SavedVariables/Auc-ScanData.lua</code>
+                    
+            
+                    <form onSubmit={(event) => handleSubmit(props, event)}>
+                        <label htmlFor="file-input">
+                            <p>
+                                {props.dataFileName ? props.dataFileName : 'Select Data'}
+                            </p>
+                        </label>
+        
+                        <input
+                            type="file"
+                            id='file-input'
+                            onChange={(event) => handleFileChange(event, props.getDataFileName)}
+                        />
+                        <button type='submit'>Provide Data</button>
+                    </form>
+                </div>
+                <div className="landing-info">
+                    <h2>What to craft</h2>
+                    <ul>
+                        <li>Use the <a href="https://wow.curseforge.com/projects/auctioneer/files" target='_blank' rel='noopener noreferrer'>Auctioneer</a> addon to scan the auction house for data.</li>
+                        <li>Provide your data for this aplication to help you decide which items are profitable to craft.</li>
+                    </ul>
+                    <span id="more-info">More info</span>
+                </div>
             </div>
-            <div className="landing-info">
-                <h2>What to craft</h2>
-                <ul>
-                    <li>Use the <a href="https://wow.curseforge.com/projects/auctioneer/files" target='_blank' rel='noopener noreferrer'>Auctioneer</a> addon to scan the auction house for data.</li>
-                    <li>Provide your data for this aplication to help you decide which items are profitable to craft.</li>
-                </ul>
-                <span id="more-info">More info</span>
-            </div>
-        </div>
-    </header>
-)
+        </header>
+    )
+}
 
 const handleSubmit = (props, event) => {
     event.preventDefault()
@@ -81,7 +90,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     getDataFileName,
-    loadAuctionData
+    loadAuctionData,
+    getProfessionData
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)

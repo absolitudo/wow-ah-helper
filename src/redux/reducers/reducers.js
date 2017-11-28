@@ -9,10 +9,13 @@ const reducers = {
 
     getDataFileName: (state, action) => ({...state,
             dataFileName: action.payload
+    }),
+
+    getProfessionData: (state, action) => ({...state,
+        professionData: action.payload,
+        professions: getProfessions(action.payload)
     })
 }
-
-
 
 const convertToAuctionData = (data) => {
     const NoReturns = data.match(/"return/g).length
@@ -80,5 +83,13 @@ const getMedian = (arr) =>  {
         return (arr[half-1] + arr[half]) / 2.0
     }
 }
+
+const getProfessions = (professionsData) => {
+    let professions = ['all']
+    for(let profession in professionsData) {
+        professions.push(profession)
+    }
+    return professions
+ }
 
 export default reducers
