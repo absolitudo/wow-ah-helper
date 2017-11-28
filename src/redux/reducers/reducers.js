@@ -62,7 +62,7 @@ const convertToAuctionData = (data) => {
             .sort((a, b) => a - b)
         auctionData[auction].avgBuyout = +getAvgBuyout(auctionData[auction].buyouts).toFixed(4)
         auctionData[auction].minBuyout = +auctionData[auction].buyouts[0]
-        auctionData[auction].medianBuyout = +((auctionData[auction].buyouts[Math.floor((auctionData[auction].buyouts.length + 1)/2) - 1] + auctionData[auction].buyouts[Math.ceil((auctionData[auction].buyouts.length + 1)/2) - 1]) / 2).toFixed(4)
+        auctionData[auction].medianBuyout = +getMedian(auctionData[auction].buyouts)
         auctionData[auction].amount = auctionData[auction].buyouts.length
     }
 
@@ -70,5 +70,15 @@ const convertToAuctionData = (data) => {
 }
 
 const getAvgBuyout = (buyouts) => buyouts.reduce((acc, curr) => +acc + +curr, 0) / buyouts.length
+
+const getMedian = (arr) =>  {
+    let half = Math.floor(arr.length/2)
+
+    if(arr.length % 2) {
+        return arr[half]
+    } else {
+        return (arr[half-1] + arr[half]) / 2.0
+    }
+}
 
 export default reducers
