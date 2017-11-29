@@ -4,9 +4,9 @@ import React from 'react'
 import ProfessionSelector from './professionSelector'
 
 const MainContent = (props) => (
-    <div>
+    <main>
         <ProfessionSelector />
-    </div>
+    </main>
 )
 
 

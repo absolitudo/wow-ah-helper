@@ -20,8 +20,16 @@ const ProfessionSelector = (props) => {
                         </li>
                     ))}
                 </ul>
-                <select name="" id="" className='mobile-professions'>
-                    <div className='profession'></div>
+                <select className='mobile-professions' onChange={(event) => handleSelectChange(event, props.selectProfession)}>
+                    {props.professions.map((profession, index) => (
+                        <option
+                            value={profession}
+                            key={index}
+                            className={props.selectedProfession === profession ? 'profession selected-profession' : 'profession'}
+                        >
+                            {profession}    
+                        </option>
+                    ))}
                 </select>
             </div>
         )
@@ -30,6 +38,10 @@ const ProfessionSelector = (props) => {
             <div className='professions-skeleton'>profession selection skeleton</div>
         )
     }
+}
+
+const handleSelectChange = (event, selectProfession) => {
+    selectProfession(event.target.value)
 }
 
 const mapStateToProps = (state) => ({
