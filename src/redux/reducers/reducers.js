@@ -23,7 +23,16 @@ const reducers = {
 
     updateSearchTerm: (state, action) => ({...state,
         searchTerm: action.payload
+    }),
+
+    updateMinProfReq: (state, action) => ({...state,
+        minProfReq: action.payload
+    }),
+
+    updateMaxProfReq: (state, action) => ({...state,
+        maxProfReq: action.payload
     })
+
 }
 
 const convertToAuctionData = (data) => {
