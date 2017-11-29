@@ -30,7 +30,7 @@ const ProfessionSelector = (props) => {
                             key={index}
                             className={props.selectedProfession === profession ? 'profession selected-profession' : 'profession'}
                             >
-                            {profession}    
+                            {profession.replace(/\w/, letter => letter.toUpperCase())}    
                         </option>
                     ))}
                 </select>
