@@ -15,6 +15,7 @@ const SearchItem = (props) => (
             type="text"
             value={props.searchTerm}
             onChange={(event) => props.updateSearchTerm(event.target.value)}
+            placeholder={'Search by item name...'}
             />
         <div className="prof-req">
             <input 

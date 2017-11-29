@@ -185,11 +185,25 @@ ul
     width: 300px
     margin: 20px auto 50px
 
+    input[type=text]
+        border: 2px solid $teal
+        border-radius: 5px
+        height: 25px
+        padding: 0 3px
+        &:focus
+            box-shadow: inset 0px 0px 3px grey
+
     .prof-req
         display: inline-block
         input
             display: inline-block
             width: 45px
+            border: 2px solid $teal
+            border-radius: 5px
+            height: 25px
+            margin: 0px 5px
+            &:focus
+                box-shadow: inset 0px 0px 3px grey
 
 @media(max-width: 800px) 
     .landing .container
