@@ -19,6 +19,10 @@ const reducers = {
 
     selectProfession: (state, action) => ({...state,
         selectedProfession: action.payload
+    }),
+
+    updateSearchTerm: (state, action) => ({...state,
+        searchTerm: action.payload
     })
 }
 
