@@ -20,13 +20,16 @@ const ProfessionSelector = (props) => {
                         </li>
                     ))}
                 </ul>
-                <select className='mobile-professions' onChange={(event) => handleSelectChange(event, props.selectProfession)}>
+                <select 
+                    className='mobile-professions' 
+                    onChange={(event) => props.selectProfession(event.target.value)}
+                    >
                     {props.professions.map((profession, index) => (
                         <option
                             value={profession}
                             key={index}
                             className={props.selectedProfession === profession ? 'profession selected-profession' : 'profession'}
-                        >
+                            >
                             {profession}    
                         </option>
                     ))}
@@ -40,9 +43,6 @@ const ProfessionSelector = (props) => {
     }
 }
 
-const handleSelectChange = (event, selectProfession) => {
-    selectProfession(event.target.value)
-}
 
 const mapStateToProps = (state) => ({
     professions: state.professions,
