@@ -20,6 +20,15 @@ a
 ul
     list-style: none
 
+.item-quality-1
+    color: $dark-text
+.item-quality-2
+    color: #1eff00 
+.item-quality-3
+    color: #0070dd
+.item-quality-4
+    color: #a335ee
+
 /* Landing */
 .landing
     background-image: url('../assets/landing.jpg') 
@@ -211,20 +220,29 @@ ul
     .item
         width: 600px
         margin: 20px auto
-        background-color: yellow 
+        background-color: $light
+        box-shadow: 0px 0px 10px $dark-text 
         height: 600px
         .item-left
             margin: 0 5px
             width: 290px
             display: inline-block
-            background-color: red 
             height: inherit
             float: left
             
             .item-left-upper
-                background-color: forestgreen
                 height: 50%
                 width: 100%
+                .item-header
+                    display: flex
+                    padding: 5px
+                    h2
+                        text-align: center
+                        line-height: 36px
+                        flex-grow: 1
+                .item-content
+                    .item-level
+                        color: #ffd100
             .item-left-lower
                 background-color: dodgerblue
                 width: 100%
