@@ -13,12 +13,13 @@ const ItemsContainer = (props) => {
         for(let prof in props.professionData) {
             if(professions.includes(prof)) {
                 for(let itemName in props.professionData[prof]) {
-                    if(index < props.numberOfItems) {
+                    if(index < props.numberOfItems && itemName.toLocaleLowerCase().includes(props.searchTerm.toLocaleLowerCase()) && (props.professionData[prof][itemName].profReq ? (props.professionData[prof][itemName].profReq >= props.minProfReq && props.professionData[prof][itemName].profReq <= props.maxProfReq) : true)) {
                         items.push({...props.professionData[prof][itemName],
                             itemName: itemName
                         })
                         index += 1
-                    } else {
+                    } 
+                    if(index >= props.numberOfItems) {
                         break
                     }
                 }
@@ -44,7 +45,10 @@ const ItemsContainer = (props) => {
 const mapStateToProps = (state) => ({
     professionData: state.professionData,
     selectedProfession: state.selectedProfession,
-    numberOfItems: state.numberOfItems
+    numberOfItems: state.numberOfItems,
+    searchTerm: state.searchTerm,
+    minProfReq: state.minProfReq,
+    maxProfReq: state.maxProfReq
 })
 
 export default connect(mapStateToProps)(ItemsContainer)
