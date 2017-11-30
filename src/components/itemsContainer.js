@@ -4,6 +4,21 @@ import { connect } from 'react-redux'
 import Item from './item'
 
 const ItemsContainer = (props) => {
+   
+    let items = returnItemsToDisplay(props)
+
+
+    return (
+        <section className='items-container'>
+            {console.log('itemscontainer rendering')}
+            {props.professionData && items.map((item, i) => (
+                <Item item={item} key={i}/>
+            ))}
+        </section>
+    )
+}
+
+export const returnItemsToDisplay = (props) => {
     let items = []
     if(props.professionData) {
 
@@ -13,7 +28,7 @@ const ItemsContainer = (props) => {
         for(let prof in props.professionData) {
             if(professions.includes(prof)) {
                 for(let itemName in props.professionData[prof]) {
-                    if(index < props.numberOfItems && itemName.toLocaleLowerCase().includes(props.searchTerm.toLocaleLowerCase()) && (props.professionData[prof][itemName].profReq ? (props.professionData[prof][itemName].profReq >= props.minProfReq && props.professionData[prof][itemName].profReq <= props.maxProfReq) : true)) {
+                    if(index < props.numberOfItems && itemName.toLocaleLowerCase().includes(props.searchTerm.toLocaleLowerCase().trim()) && (props.professionData[prof][itemName].profReq ? (props.professionData[prof][itemName].profReq >= props.minProfReq && props.professionData[prof][itemName].profReq <= props.maxProfReq) : true)) {
                         items.push({...props.professionData[prof][itemName],
                             itemName: itemName
                         })
@@ -28,19 +43,10 @@ const ItemsContainer = (props) => {
                 }
             }
         }
-        console.log(index)
     }
-
-
-    return (
-        <section>
-            {console.log('itemscontainer rendering')}
-            {props.professionData && items.map((item, i) => (
-                <Item item={item} key={i}/>
-            ))}
-        </section>
-    )
+    return items
 }
+
 
 const mapStateToProps = (state) => ({
     professionData: state.professionData,
