@@ -26,7 +26,7 @@ const Item = (props) => (
                         <p key={index}>{description}</p>
                     ))}
                     {props.item.tooltip.requiredLevel && <p>Requires Level {props.item.tooltip.requiredLevel}</p>}
-                    {props.item.tooltip.vendorSellPrice && <p>Sell Price: {props.item.tooltip.vendorSellPrice}</p>}
+                    {props.item.tooltip.vendorSellPrice && <p>Sell Price: <SellPrice price={props.item.tooltip.vendorSellPrice}/></p>}
                 </div>
             </div>
             <div className="item-left-lower">
@@ -39,5 +39,20 @@ const Item = (props) => (
         </div>
     </div>
 )
+
+const SellPrice = (props) => {
+    let gold = Math.floor(props.price)
+    let price = props.price.toFixed(4).toString()
+    let silver = +price.slice(price.length - 4, price.length - 2)
+    let copper = +price.slice(price.length -2, price.length)
+    
+    return (
+        <span>
+            {gold > 0 && <span className='moneygold'>{gold}</span>}
+            {silver > 0 && <span className='moneysilver'>{silver}</span>}
+            {copper > 0 && <span className='moneycopper'>{copper}</span>}
+        </span>
+    )
+}
 
 export default Item

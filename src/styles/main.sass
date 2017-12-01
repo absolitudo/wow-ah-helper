@@ -20,6 +20,7 @@ a
 ul
     list-style: none
 
+/* Item name color based on item quality */
 .item-quality-1
     color: $dark-text
 .item-quality-2
@@ -29,6 +30,19 @@ ul
 .item-quality-4
     color: #a335ee
 
+/* Cost price styles
+.moneygold
+    padding-right: 15px
+    background: no-repeat right center
+    background-image: url('../assets/money_gold.gif')
+.moneysilver
+    padding-right: 15px
+    background: no-repeat right center
+    background-image: url('../assets/money_silver.gif')
+.moneycopper
+    padding-right: 15px
+    background: no-repeat right center
+    background-image: url('../assets/money_copper.gif')
 /* Landing */
 .landing
     background-image: url('../assets/landing.jpg') 
@@ -220,8 +234,6 @@ ul
     .item
         width: 600px
         margin: 20px auto
-        background-color: $light
-        box-shadow: 0px 0px 10px $dark-text 
         height: 600px
         .item-left
             margin: 0 5px
@@ -231,8 +243,11 @@ ul
             float: left
             
             .item-left-upper
+                padding: 5px
                 height: 50%
                 width: 100%
+                background-size: 100%
+                
                 .item-header
                     display: flex
                     padding: 5px
