@@ -23,7 +23,7 @@ const Item = (props) => (
                     {props.item.tooltip.castTime && <p>Cast Time: {props.item.tooltip.castTime}</p>}
                     {props.item.tooltip.itemLevel && <p className='item-level'>Item Level {props.item.tooltip.itemLevel}</p>}
                     {props.item.tooltip.description.map((description, index) => (
-                        <p key={index}>{description}</p>
+                        <p key={index} dangerouslySetInnerHTML={{__html: description}}></p>
                     ))}
                     {props.item.tooltip.requiredLevel && <p>Requires Level {props.item.tooltip.requiredLevel}</p>}
                     {props.item.tooltip.vendorSellPrice && <p>Sell Price: <SellPrice price={props.item.tooltip.vendorSellPrice}/></p>}
