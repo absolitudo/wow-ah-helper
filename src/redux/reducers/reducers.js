@@ -3,14 +3,26 @@ const reducers = {
         
         let auctionData = convertToAuctionData(action.payload)
         let newProfessionData = {}
-        
+        let emptyPrice = {
+            setPrice: 0,
+            minBuyout: 0,
+            avgBuyout: 0,
+            medianBuyout: 0,
+            buyouts: [],
+            amount: 0
+        }
+
         for(let profession in state.professionData) {
             newProfessionData[profession] = {}
             for(let item in state.professionData[profession]) {
                 newProfessionData[profession][item] = {...state.professionData[profession][item],
-                    prices: auctionData[item],
+                    prices: auctionData[item] ? {...auctionData[item],
+                            setPrice: auctionData[item].medianBuyout
+                        } : {...emptyPrice},
                     reagents: state.professionData[profession][item].reagents.map((reagent) => ({...reagent,
-                        prices: auctionData[reagent.name]
+                        prices: auctionData[reagent.name] ? {...auctionData[reagent.name],
+                                setPrice: auctionData[reagent.name].medianBuyout
+                            } : {...emptyPrice}
                     }))
                 }
             }

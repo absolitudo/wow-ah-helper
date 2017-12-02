@@ -2,6 +2,7 @@ import React from 'react'
 
 const Item = (props) => (
     <div className='item'>
+        {console.log(props.item)}
         <div className='item-left'>
             <div className="item-left-upper">
                 <div className="item-header">
@@ -30,7 +31,7 @@ const Item = (props) => (
                 </div>
             </div>
             <div className="item-left-lower">
-                sdlkfsdfjaslkjdfléksdflkjéslkjdflé
+                {props.item.prices && <Prices prices={props.item.prices}/>}
             </div>
         </div>
 
@@ -79,5 +80,15 @@ const ColoredSocket = (props) => {
         <p><span className={socketClass}>{props.description}</span></p>
     )
 }
+
+const Prices = (props) => (
+    <div>
+        <p>min: <SellPrice price={props.prices.minBuyout} /></p>
+        <p>avg: <SellPrice price={props.prices.avgBuyout} /></p>
+        <p>median: <SellPrice price={props.prices.medianBuyout}/></p>
+        <p>custom: <SellPrice price={props.prices.setPrice}/></p>
+        <p>amount: {props.prices.amount}</p>
+    </div>
+)
 
 export default Item
