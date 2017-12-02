@@ -23,7 +23,7 @@ const Item = (props) => (
                     {props.item.tooltip.castTime && <p>Cast Time: {props.item.tooltip.castTime}</p>}
                     {props.item.tooltip.itemLevel && <p className='item-level'>Item Level {props.item.tooltip.itemLevel}</p>}
                     {props.item.tooltip.description.map((description, index) => (
-                        <p key={index} dangerouslySetInnerHTML={{__html: description}}></p>
+                        !/(Blue|Yellow|Meta|Cogwheel|Red) Socket/g.test(description) ? <p key={index} dangerouslySetInnerHTML={{__html: description}}></p> : setSocketColor(description)
                     ))}
                     {props.item.tooltip.requiredLevel && <p>Requires Level {props.item.tooltip.requiredLevel}</p>}
                     {props.item.tooltip.vendorSellPrice && <p>Sell Price: <SellPrice price={props.item.tooltip.vendorSellPrice}/></p>}
@@ -52,6 +52,31 @@ const SellPrice = (props) => {
             {silver > 0 && <span className='moneysilver'>{silver}</span>}
             {copper > 0 && <span className='moneycopper'>{copper}</span>}
         </span>
+    )
+}
+
+const setSocketColor = (description) => {
+    let color = description.replace(/ Socket/, '')
+    let socketClass
+    switch(color) {
+        case 'Cogwheel':
+            socketClass = 'socket-cogwheel'
+            break
+        case 'Blue':
+            socketClass = 'socket-blue'
+            break
+        case 'Yellow':
+            socketClass = 'socket-yellow'
+            break
+        case 'Red':
+            socketClass = 'socket-red'
+            break
+        case 'Meta':
+            socketClass = 'socket-meta'
+            break
+    }
+    return (
+        <p><span className={socketClass}>{description}</span></p>
     )
 }
 
