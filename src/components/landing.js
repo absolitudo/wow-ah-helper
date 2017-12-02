@@ -43,7 +43,7 @@ const Landing = (props) => {
                             id='file-input'
                             onChange={(event) => handleFileChange(event, props.getDataFileName)}
                         />
-                        <button type='submit'>Provide Data</button>
+                        <button type='submit' disabled={!props.professionData} className={!props.professionData ? 'disabled-submit' : ''}>Provide Data</button>
                     </form>
                 </div>
             </div>
@@ -83,7 +83,8 @@ const handleSubmit = (props, event) => {
 const handleFileChange = (event, getDataFileName) => getDataFileName(event.target.files[0] ? event.target.files[0].name : 'Select Data')
 
 const mapStateToProps = (state) => ({
-    dataFileName: state.dataFileName
+    dataFileName: state.dataFileName,
+    professionData: state.professionData ? true : false
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
