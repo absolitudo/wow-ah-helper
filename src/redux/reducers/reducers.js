@@ -1,8 +1,22 @@
 const reducers = {
     loadAuctionData: (state, action) => {
+        
         let auctionData = convertToAuctionData(action.payload)
+        let newProfessionData = {}
+        
+        for(let profession in state.professionData) {
+            newProfessionData[profession] = {}
+            for(let item in state.professionData[profession]) {
+                newProfessionData[profession][item] = {...state.professionData[profession][item],
+                    prices: auctionData[item],
+                    reagents: state.professionData[profession][item].reagents.map((reagent) => ({...reagent,
+                        prices: auctionData[reagent.name]
+                    }))
+                }
+            }
+        }
         return {...state,
-            auctionData: auctionData,
+            professionData: newProfessionData,
         }
     },
 
@@ -62,12 +76,12 @@ export const convertToAuctionData = (data) => {
             auction = auction.split(',')
             if(auctionData[auction[8]]) {
                 for(let i = 0; i < +auction[10]; i += 1) {
-                    auctionData[auction[8]].buyouts.push(((+auction[16] / +auction[10]) / 10000).toFixed(4))
+                    auctionData[auction[8]].buyouts.push(+((+auction[16] / +auction[10]) / 10000).toFixed(4))
                 }
             } else {
                 let buyouts = []
                 for(let i = 0; i < +auction[10]; i += 1) {
-                    buyouts.push(((+auction[16] / +auction[10]) / 10000).toFixed(4))
+                    buyouts.push(+((+auction[16] / +auction[10]) / 10000).toFixed(4))
                 }
                 auctionData[auction[8]] = {
                     buyouts: buyouts
