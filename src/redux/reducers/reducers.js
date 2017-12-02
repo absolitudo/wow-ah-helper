@@ -1,6 +1,5 @@
 const reducers = {
     loadAuctionData: (state, action) => {
-        
         let auctionData = convertToAuctionData(action.payload)
         return {...state,
             auctionData: auctionData,
@@ -35,7 +34,7 @@ const reducers = {
 
 }
 
-const convertToAuctionData = (data) => {
+export const convertToAuctionData = (data) => {
     const NoReturns = data.match(/"return/g).length
     let returnIndex = data.indexOf('"return') + 9
     let rawData = ''

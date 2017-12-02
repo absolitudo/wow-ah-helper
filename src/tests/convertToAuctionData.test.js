@@ -1,5 +1,4 @@
-import { loadAuctionData } from './../redux/actions'
-import reducers from '../redux/reducers/reducers.js'
+import { convertToAuctionData } from '../redux/reducers/reducers'
 import fs from 'fs'
 
 let auctionDataLua = fs.readFileSync(__dirname + '/testDependencies/Auc-ScanData.lua').toString()
@@ -10,8 +9,7 @@ let state = {}
 describe('Auction data types:', () => {
 
     /* Data for general tests */
-    loadAuctionData.payload = auctionDataLua
-    let auctionData = reducers.loadAuctionData(state, loadAuctionData).auctionData
+    let auctionData = convertToAuctionData(auctionDataLua)
 
     it('is object', () => {
         expect(typeof auctionData).toBe('object')
@@ -20,15 +18,13 @@ describe('Auction data types:', () => {
     it('are keys objects', () => {
         expect(areKeysOfAuctionDataAreObjects(auctionData)).toBe(true)
     })
-
     
 })
 
 describe('Auction Data price tests: ', () => {
     
     /* Data for price tests */
-    loadAuctionData.payload = priceTestDataLua
-    let priceTestData = reducers.loadAuctionData(state, loadAuctionData).auctionData
+    let priceTestData = convertToAuctionData(priceTestDataLua)
 
     it('average buyout', () => {
         expect(priceTestData['Copper Ore'].avgBuyout).toBe(3.0642)
