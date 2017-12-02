@@ -23,14 +23,14 @@ const Item = (props) => (
                     {props.item.tooltip.castTime && <p>Cast Time: {props.item.tooltip.castTime}</p>}
                     {props.item.tooltip.itemLevel && <p className='item-level'>Item Level {props.item.tooltip.itemLevel}</p>}
                     {props.item.tooltip.description.map((description, index) => (
-                        !/(Blue|Yellow|Meta|Cogwheel|Red) Socket/g.test(description) ? <p key={index} dangerouslySetInnerHTML={{__html: description}}></p> : setSocketColor(description)
+                        !/(Blue|Yellow|Meta|Cogwheel|Red) Socket/g.test(description) ? <p key={index} dangerouslySetInnerHTML={{__html: description}}></p> : <ColoredSocket description={description} />
                     ))}
                     {props.item.tooltip.requiredLevel && <p>Requires Level {props.item.tooltip.requiredLevel}</p>}
                     {props.item.tooltip.vendorSellPrice && <p>Sell Price: <SellPrice price={props.item.tooltip.vendorSellPrice}/></p>}
                 </div>
             </div>
             <div className="item-left-lower">
-                item price shits
+                sdlkfsdfjaslkjdfléksdflkjéslkjdflé
             </div>
         </div>
 
@@ -55,8 +55,8 @@ const SellPrice = (props) => {
     )
 }
 
-const setSocketColor = (description) => {
-    let color = description.replace(/ Socket/, '')
+const ColoredSocket = (props) => {
+    let color = props.description.replace(/ Socket/, '')
     let socketClass
     switch(color) {
         case 'Cogwheel':
@@ -76,7 +76,7 @@ const setSocketColor = (description) => {
             break
     }
     return (
-        <p><span className={socketClass}>{description}</span></p>
+        <p><span className={socketClass}>{props.description}</span></p>
     )
 }
 
