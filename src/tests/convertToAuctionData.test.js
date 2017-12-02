@@ -3,6 +3,8 @@ import fs from 'fs'
 
 let auctionDataLua = fs.readFileSync(__dirname + '/testDependencies/Auc-ScanData.lua').toString()
 let priceTestDataLua = fs.readFileSync(__dirname + '/testDependencies/price-test.lua').toString()
+let priceFilterDataLua = fs.readFileSync(__dirname + '/testDependencies/price-test-filter-bo-buyout.lua').toString()
+
 
 let state = {}
 
@@ -41,6 +43,13 @@ describe('Auction Data price tests: ', () => {
     it('amount of items', () => {
         expect(priceTestData['Copper Ore'].amount).toBe(53)
     })
+
+    priceTestData = convertToAuctionData(priceFilterDataLua)
+
+    it('filtering no buyouts', () => {
+        expect(priceTestData['Copper Ore'].amount).toBe(53)
+    })
+
 })
 
 const areKeysOfAuctionDataAreObjects = (auctionData) => {
