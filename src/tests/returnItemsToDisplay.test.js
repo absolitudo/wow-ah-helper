@@ -1,1 +1,0 @@
-import { returnItemsToDisplay } from '../components/itemsContainer'

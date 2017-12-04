@@ -51,7 +51,7 @@ class PriceChart extends React.Component {
             .call(xAxis)
 
         svg.append("g")
-            .attr("transform", "translate(" + width - margin  +", 0)")
+            .attr("transform", "translate(" + (width - margin)  +", 0)")
             .call(yAxis)
 
         svg.append("g")
@@ -75,8 +75,25 @@ class PriceChart extends React.Component {
 }
 
 export const countBuyouts = (data) => {
-    
-    return data
+    let newData = []
+    let prev
+
+    for (let i = 0; i < data.length; i++ ) {
+
+        if (data[i] !== prev) {
+            newData.push({
+                price: data[i],
+                amount: 1
+            })
+
+        } else {
+            newData[newData.length - 1].amount += 1
+        }
+
+        prev = data[i]
+    }
+
+    return newData
 }
 
 export default PriceChart
