@@ -75,6 +75,7 @@ class PriceChart extends React.Component {
 }
 
 export const countBuyouts = (data) => {
+    
     return data
 }
 
