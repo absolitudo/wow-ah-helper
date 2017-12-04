@@ -1,8 +1,10 @@
 import React from 'react'
 
+/* Components */
+import PriceChart from './priceChart'
+
 const Item = (props) => (
     <div className='item'>
-        {console.log(props.item)}
         <div className='item-left'>
             <div className="item-left-upper">
                 <div className="item-header">
@@ -75,7 +77,7 @@ const ColoredSocket = (props) => {
         case 'Meta':
             socketClass = 'socket-meta'
             break
-    }
+    } 
     return (
         <p><span className={socketClass}>{props.description}</span></p>
     )
@@ -88,6 +90,8 @@ const Prices = (props) => (
         <p>median: <SellPrice price={props.prices.medianBuyout}/></p>
         <p>custom: <SellPrice price={props.prices.setPrice}/></p>
         <p>amount: {props.prices.amount}</p>
+        {props.prices.buyouts.length !== 0 && <PriceChart data={props.prices.buyouts} />}
+        
     </div>
 )
 
