@@ -41,7 +41,7 @@ describe('Count buyouts:', () => {
         }])
     })
 
-    if('lot of prices, lots of times', () => {
+    it('lot of prices, lots of times', () => {
         expect(countBuyouts(lotOfPriceManyTimes)).toBe([{
             price: 1,
             amount: 1
