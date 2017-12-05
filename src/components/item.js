@@ -2,7 +2,6 @@ import React from 'react'
 
 /* Components */
 import PriceChart from './priceChart'
-
 const Item = (props) => (
     <div className='item'>
         <div className='item-left'>
@@ -94,5 +93,4 @@ const Prices = (props) => (
         
     </div>
 )
-
 export default Item
