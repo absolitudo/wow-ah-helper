@@ -22,8 +22,10 @@ const reducers = {
                     reagents: state.professionData[profession][item].reagents.map((reagent) => ({...reagent,
                         prices: auctionData[reagent.name] ? {...auctionData[reagent.name],
                                 setPrice: auctionData[reagent.name].medianBuyout
-                            } : {...emptyPrice}
-                    }))
+                            } : {...emptyPrice},
+                        chartData: auctionData[reagent.name] ? countBuyouts(auctionData[reagent.name].buyouts) : false
+                    })),
+                    chartData: auctionData[item] ? countBuyouts(auctionData[item].buyouts) : false
                 }
             }
         }
@@ -133,6 +135,28 @@ const getProfessions = (professionsData) => {
         professions.push(profession)
     }
     return professions
- }
+}
+
+export const countBuyouts = (data) => {
+    let newData = []
+    let prev
+
+    for (let i = 0; i < data.length; i++ ) {
+
+        if (data[i] !== prev) {
+            newData.push({
+                price: data[i],
+                amount: 1
+            })
+
+        } else {
+            newData[newData.length - 1].amount += 1
+        }
+
+        prev = data[i]
+    }
+
+    return newData
+}
 
 export default reducers

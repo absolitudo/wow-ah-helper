@@ -32,7 +32,7 @@ const Item = (props) => (
                 </div>
             </div>
             <div className="item-left-lower">
-                {props.item.prices && <Prices prices={props.item.prices}/>}
+                {props.item.prices ? <Prices prices={props.item.prices} chartData={props.item.chartData}/> : ''}
             </div>
         </div>
 
@@ -89,7 +89,7 @@ const Prices = (props) => (
         <p>median: <SellPrice price={props.prices.medianBuyout}/></p>
         <p>custom: <SellPrice price={props.prices.setPrice}/></p>
         <p>amount: {props.prices.amount}</p>
-        {props.prices.buyouts.length !== 0 && <PriceChart data={props.prices.buyouts} />}
+        {props.chartData !== false ? <PriceChart data={props.chartData} /> : ''}
         
     </div>
 )
