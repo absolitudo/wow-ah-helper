@@ -89,7 +89,7 @@ const Prices = (props) => (
         <p>median: <SellPrice price={props.prices.medianBuyout}/></p>
         <p>custom: <SellPrice price={props.prices.setPrice}/></p>
         <p>amount: {props.prices.amount}</p>
-        {props.chartData !== false ? <PriceChart data={props.chartData} /> : ''}
+        {props.chartData !== false ? <PriceChart data={props.chartData} amount={props.prices.amount}/> : ''}
         
     </div>
 )
