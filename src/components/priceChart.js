@@ -70,8 +70,6 @@ const createChart = (data, svgNode) => {
         .domain(xDomain)
         .range(['#dbca30', '#db6969'])
 
-    
-
     /* Groups */
     svg.append('g')
         .attr('transform', 'translate(0,' + (height - margin) +')')

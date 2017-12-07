@@ -32,7 +32,7 @@ const Item = (props) => (
                 </div>
             </div>
             <div className="item-left-lower">
-                {props.item.prices ? <Prices prices={props.item.prices} chartData={props.item.chartData}/> : ''}
+                {(props.item.chartData !== false && props.item.prices) ? <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/> : ''}
             </div>
         </div>
 
@@ -82,15 +82,4 @@ const ColoredSocket = (props) => {
     )
 }
 
-const Prices = (props) => (
-    <div>
-        <p>min: <SellPrice price={props.prices.minBuyout} /></p>
-        <p>avg: <SellPrice price={props.prices.avgBuyout} /></p>
-        <p>median: <SellPrice price={props.prices.medianBuyout}/></p>
-        <p>custom: <SellPrice price={props.prices.setPrice}/></p>
-        <p>amount: {props.prices.amount}</p>
-        {props.chartData !== false ? <PriceChart data={props.chartData} amount={props.prices.amount}/> : ''}
-        
-    </div>
-)
 export default Item
