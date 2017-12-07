@@ -25,14 +25,17 @@ const Item = (props) => (
                     {props.item.tooltip.castTime && <p>Cast Time: {props.item.tooltip.castTime}</p>}
                     {props.item.tooltip.itemLevel && <p className='item-level'>Item Level {props.item.tooltip.itemLevel}</p>}
                     {props.item.tooltip.description.map((description, index) => (
-                        !/(Blue|Yellow|Meta|Cogwheel|Red) Socket/g.test(description) ? <p key={index} dangerouslySetInnerHTML={{__html: description}}></p> : <ColoredSocket description={description} />
+                        !/(Blue|Yellow|Meta|Cogwheel|Red) Socket/g.test(description) ? <p key={index} dangerouslySetInnerHTML={{__html: description}}></p> : <ColoredSocket key={index} description={description} />
                     ))}
                     {props.item.tooltip.requiredLevel && <p>Requires Level {props.item.tooltip.requiredLevel}</p>}
                     {props.item.tooltip.vendorSellPrice && <p>Sell Price: <SellPrice price={props.item.tooltip.vendorSellPrice}/></p>}
                 </div>
             </div>
             <div className="item-left-lower">
-                {(props.item.chartData !== false && props.item.prices) ? <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/> : ''}
+                
+                {(props.item.chartData !== false && props.item.prices) && <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/> }
+                
+                {props.item.prices && <p>display the profit</p>}
             </div>
         </div>
 
