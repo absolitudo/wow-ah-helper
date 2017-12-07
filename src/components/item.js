@@ -9,13 +9,13 @@ const Item = (props) => (
                 <div className="item-header">
                     <img src={'https://my-wow-api.herokuapp.com/icon?name=' + props.item.iconName + '.png'}
                         alt='Icon of the item'
-                        />
+                    />
                     <h2>
                         <a href={'http://mop-shoot.tauri.hu/?item=' + props.item.id}
                             rel='noreferrer noopener'
                             target='_blank'
                             className={'item-quality-' + props.item.quality}
-                            >
+                        >
                             {props.item.itemName}
                         </a>
                     </h2>
@@ -25,7 +25,9 @@ const Item = (props) => (
                     {props.item.tooltip.castTime && <p>Cast Time: {props.item.tooltip.castTime}</p>}
                     {props.item.tooltip.itemLevel && <p className='item-level'>Item Level {props.item.tooltip.itemLevel}</p>}
                     {props.item.tooltip.description.map((description, index) => (
-                        !/(Blue|Yellow|Meta|Cogwheel|Red) Socket/g.test(description) ? <p key={index} dangerouslySetInnerHTML={{__html: description}}></p> : <ColoredSocket key={index} description={description} />
+                        !/(Blue|Yellow|Meta|Cogwheel|Red) Socket/g.test(description)
+                            ? <p key={index} dangerouslySetInnerHTML={{__html: description}}></p>
+                            : <ColoredSocket key={index} description={description} />
                     ))}
                     {props.item.tooltip.requiredLevel && <p>Requires Level {props.item.tooltip.requiredLevel}</p>}
                     {props.item.tooltip.vendorSellPrice && <p>Sell Price: <SellPrice price={props.item.tooltip.vendorSellPrice}/></p>}
@@ -35,7 +37,7 @@ const Item = (props) => (
                 
                 {(props.item.chartData !== false && props.item.prices) && <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/> }
                 
-                {props.item.prices && <p>display the profit</p>}
+                {props.item.prices && <p>Expected profit: <SellPrice price={props.item.profit}/></p>}
             </div>
         </div>
 

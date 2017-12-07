@@ -4,27 +4,28 @@ const reducers = {
         let auctionData = convertToAuctionData(action.payload)
         let newProfessionData = {}
         let emptyPrice = {
-            setPrice: 0,
             minBuyout: 0,
             avgBuyout: 0,
             medianBuyout: 0,
             buyouts: [],
-            amount: 0
+            amount: 0,
+            profit: undefined,
+            calculateBy: 'medianBuyout'
         }
 
         for(let profession in state.professionData) {
             newProfessionData[profession] = {}
             for(let item in state.professionData[profession]) {
                 newProfessionData[profession][item] = {...state.professionData[profession][item],
-                    prices: auctionData[item] ? {...auctionData[item],
-                            setPrice: auctionData[item].medianBuyout
-                        } : {...emptyPrice},
+                    prices: auctionData[item] ? {...auctionData[item]} : {...emptyPrice},
                     reagents: state.professionData[profession][item].reagents.map((reagent) => ({...reagent,
-                        prices: auctionData[reagent.name] ? {...auctionData[reagent.name],
-                                setPrice: auctionData[reagent.name].medianBuyout
-                            } : {...emptyPrice},
+                        prices: auctionData[reagent.name] ? {...auctionData[reagent.name]} : {...emptyPrice},
                         chartData: auctionData[reagent.name] ? countBuyouts(auctionData[reagent.name].buyouts) : false
                     })),
+                    profit: (auctionData[item] ? auctionData[item].medianBuyout : 0) - state.professionData[profession][item].reagents.reduce((acc, reagent) => (
+                        auctionData[reagent.name] ? acc + auctionData[reagent.name].medianBuyout : acc
+                    ), 0),
+                    calculateBy: 'medianBuyout',
                     chartData: auctionData[item] ? countBuyouts(auctionData[item].buyouts) : false
                 }
             }
@@ -35,7 +36,7 @@ const reducers = {
     },
 
     getDataFileName: (state, action) => ({...state,
-            dataFileName: action.payload
+        dataFileName: action.payload
     }),
 
     getProfessionData: (state, action) => ({...state,
