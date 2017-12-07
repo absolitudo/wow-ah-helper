@@ -3,12 +3,12 @@ import * as d3 from 'd3'
 
 class PriceChart extends React.Component {
     componentDidMount() {
-        d3.select(this.refs.svg).selectAll("*").remove()
+        d3.select(this.refs.svg).selectAll('*').remove()
         createChart(this.props.data, this.refs.svg)
     }
 
     componentDidUpdate() {
-        d3.select(this.refs.svg).selectAll("*").remove()
+        d3.select(this.refs.svg).selectAll('*').remove()
         createChart(this.props.data, this.refs.svg)
     }
 
@@ -45,11 +45,15 @@ const createChart = (data, svgNode) => {
         .domain(xDomain[0], xDomain[1])
         .range([margin, width - margin])
 
-        /* Y scale */
+    /* Y scale */
     let yScale = d3.scaleLinear()
         .domain([0, yDomain[1]])
         .range([height - margin, margin])
 
+    /* Tooltip scale */
+    let tooltipScale = d3.scaleLinear()
+        .domain([margin, width - margin])
+        .range([0, data.length])
 
     /* X axis */
     let xAxis = d3.axisBottom()
@@ -66,9 +70,7 @@ const createChart = (data, svgNode) => {
         .domain(xDomain)
         .range(['#dbca30', '#db6969'])
 
-    let tooltip = d3.select(svgNode.parentNode).append("div")
-        .attr("class", "chart-tooltip")
-        .style("display", "none")
+    
 
     /* Groups */
     svg.append('g')
@@ -93,18 +95,32 @@ const createChart = (data, svgNode) => {
                 .attr('height', (d) => height - margin - yScale(d.amount))
                 .attr('x', (d, i) => margin + i * (width - margin * 2) / data.length)
                 .attr('y', (d) => yScale(d.amount))
-                .on("mouseover", (d, i) => {
-                    d3.select(d3.event.currentTarget).attr("fill", "#e0a3af")
-                    tooltip
-                        .style("display", null)
-                        .style("left", (margin + i * (width - margin * 2) / data.length) + "px")
-                        .html('Price: ' + getPrice(d.price) + '</br>Amount: ' + d.amount)
+               
+    /* Tooltip */
+    let tooltip = d3.select(svgNode.parentNode).append('div')
+        .attr('class', 'chart-tooltip')
+        .style('display', 'none')
 
-                })
-                .on("mouseout", (d) => {
-                    tooltip.style("display", "none")
-                    d3.select(d3.event.currentTarget).attr("fill", (d) => colorScale(d.price))
-                })
+    let currentTooltipIndex = -1
+    
+    svg.on('mousemove', () => {
+        let mouseX = d3.mouse(d3.event.currentTarget)[0]
+        let mouseY = d3.mouse(d3.event.currentTarget)[1]
+        if(mouseX > margin && mouseX < width - margin && mouseY > margin && mouseY < height - margin) {
+            let index = Math.floor(tooltipScale(mouseX))
+            if(index !== currentTooltipIndex) {
+                let item = data[index]
+                tooltip
+                    .style('display', null)
+                    .style('left', (margin + index * (width - margin * 2) / data.length) + 'px')
+                    .html('Price: ' + getPrice(item.price) + '</br>Amount: ' + item.amount)
+                currentTooltipIndex = index
+            }
+        } else {
+            tooltip.style('display', 'none')
+            currentTooltipIndex = -1
+        } 
+    })
 }
 
 const getPrice = (price) => {
