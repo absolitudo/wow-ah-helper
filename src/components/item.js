@@ -41,13 +41,16 @@ const Item = (props) => (
             </div>
             <div className="item-left-lower">
                 
-                {(props.item.chartData !== false && props.item.prices) && <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/>}
-                {console.log(props.item)}
-                <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'minBuyout'})}>Minimum buyout</button>
-                <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'avgBuyout'})}>Average buyout</button>
-                <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'medianBuyout'})}>Median buyout</button>
+                {(props.item.chartData !== false && props.item.prices) && (
+                    <div>
+                    <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/>
+                        <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'minBuyout'})}>Minimum buyout</button>
+                        <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'avgBuyout'})}>Average buyout</button>
+                        <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'medianBuyout'})}>Median buyout</button>
+                        <p>Expected profit: <SellPrice price={props.item.profit}/></p>
+                    </div>
+                )}
 
-                {props.item.prices && <p>Expected profit: <SellPrice price={props.item.profit}/></p>}
 
             </div>
         </div>
