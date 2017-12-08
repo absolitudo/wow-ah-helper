@@ -23,7 +23,7 @@ const reducers = {
                         chartData: auctionData[reagent.name] ? countBuyouts(auctionData[reagent.name].buyouts) : false
                     })),
                     profit: (auctionData[item] ? auctionData[item].medianBuyout : 0) - state.professionData[profession][item].reagents.reduce((acc, reagent) => (
-                        auctionData[reagent.name] ? acc + auctionData[reagent.name].medianBuyout * reagent.quantity  : acc
+                        auctionData[reagent.name] ? acc + (auctionData[reagent.name].medianBuyout * reagent.quantity * 0.95)  : acc
                     ), 0),
                     calculateBy: 'medianBuyout',
                     chartData: auctionData[item] ? countBuyouts(auctionData[item].buyouts) : false
@@ -76,7 +76,7 @@ const reducers = {
                     [action.payload.itemName]: {...state.professionData[profession][action.payload.itemName],
                         calculateBy: action.payload.calculateBy,
                         profit: state.professionData[profession][action.payload.itemName].prices[action.payload.calculateBy] - state.professionData[profession][action.payload.itemName].reagents.reduce((acc, reagent) => (
-                            acc + reagent.prices[action.payload.calculateBy] * reagent.quantity
+                            acc + (reagent.prices[action.payload.calculateBy] * reagent.quantity * 0.95)
                         ), 0)
                     }
                 }
