@@ -10,7 +10,8 @@ const reducers = {
             buyouts: [],
             amount: 0,
             profit: undefined,
-            calculateBy: 'medianBuyout'
+            calculateBy: 'medianBuyout',
+            calculationPrice: 0
         }
 
         for(let profession in state.professionData) {
@@ -75,8 +76,11 @@ const reducers = {
                 [profession]: {...state.professionData[profession],
                     [action.payload.itemName]: {...state.professionData[profession][action.payload.itemName],
                         calculateBy: action.payload.calculateBy,
-                        profit: state.professionData[profession][action.payload.itemName].prices[action.payload.calculateBy] - state.professionData[profession][action.payload.itemName].reagents.reduce((acc, reagent) => (
-                            acc + (reagent.prices[action.payload.calculateBy] * reagent.quantity * 0.95)
+                        prices: {...state.professionData[profession][action.payload.itemName].prices,
+                            calculationPrice: action.payload.calculationPrice
+                        },
+                        profit: action.payload.calculationPrice - state.professionData[profession][action.payload.itemName].reagents.reduce((acc, reagent) => (
+                            acc + (reagent.prices.calculationPrice * reagent.quantity * 0.95)
                         ), 0)
                     }
                 }
@@ -135,6 +139,7 @@ export const convertToAuctionData = (data) => {
         auctionData[auction].minBuyout = +auctionData[auction].buyouts[0]
         auctionData[auction].medianBuyout = +getMedian(auctionData[auction].buyouts)
         auctionData[auction].amount = auctionData[auction].buyouts.length
+        auctionData[auction].calculationPrice = auctionData[auction].medianBuyout
     }
 
     return auctionData
