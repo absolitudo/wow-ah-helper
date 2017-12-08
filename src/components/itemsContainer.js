@@ -29,9 +29,7 @@ export const returnItemsToDisplay = (props) => {
             if(professions.includes(prof)) {
                 for(let itemName in props.professionData[prof]) {
                     if(index < props.numberOfItems && itemName.toLocaleLowerCase().includes(props.searchTerm.toLocaleLowerCase().trim()) && (props.professionData[prof][itemName].profReq ? (props.professionData[prof][itemName].profReq >= props.minProfReq && props.professionData[prof][itemName].profReq <= props.maxProfReq) : true)) {
-                        items.push({...props.professionData[prof][itemName],
-                            itemName: itemName
-                        })
+                        items.push({...props.professionData[prof][itemName]})
                         index += 1
                     } 
                     if(index >= props.numberOfItems) {

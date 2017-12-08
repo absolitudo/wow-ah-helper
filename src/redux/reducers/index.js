@@ -10,7 +10,8 @@ export default handleActions({
     SELECT_PROFESSION: reducers.selectProfession,
     UPDATE_SEARCH_TERM: reducers.updateSearchTerm,
     UPDATE_MIN_PROF_REQ: reducers.updateMinProfReq,
-    UPDATE_MAX_PROF_REQ: reducers.updateMaxProfReq
+    UPDATE_MAX_PROF_REQ: reducers.updateMaxProfReq,
+    CHANGE_CALCULATION: reducers.changeCalculation
 }, {
     searchTerm: '',
     minProfReq: '0',

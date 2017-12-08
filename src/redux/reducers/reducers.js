@@ -23,7 +23,7 @@ const reducers = {
                         chartData: auctionData[reagent.name] ? countBuyouts(auctionData[reagent.name].buyouts) : false
                     })),
                     profit: (auctionData[item] ? auctionData[item].medianBuyout : 0) - state.professionData[profession][item].reagents.reduce((acc, reagent) => (
-                        auctionData[reagent.name] ? acc + auctionData[reagent.name].medianBuyout : acc
+                        auctionData[reagent.name] ? acc + auctionData[reagent.name].medianBuyout * reagent.quantity  : acc
                     ), 0),
                     calculateBy: 'medianBuyout',
                     chartData: auctionData[item] ? countBuyouts(auctionData[item].buyouts) : false
@@ -59,8 +59,30 @@ const reducers = {
 
     updateMaxProfReq: (state, action) => ({...state,
         maxProfReq: action.payload
-    })
+    }),
 
+    changeCalculation: (state, action) => {
+
+        let profession
+        for(let professionName in state.professionData) {
+            if(state.professionData[professionName][action.payload.itemName]){
+                profession = professionName
+            }
+        }
+    
+        return {...state,
+            professionData: {...state.professionData,
+                [profession]: {...state.professionData[profession],
+                    [action.payload.itemName]: {...state.professionData[profession][action.payload.itemName],
+                        calculateBy: action.payload.calculateBy,
+                        profit: state.professionData[profession][action.payload.itemName].prices[action.payload.calculateBy] - state.professionData[profession][action.payload.itemName].reagents.reduce((acc, reagent) => (
+                            acc + reagent.prices[action.payload.calculateBy] * reagent.quantity
+                        ), 0)
+                    }
+                }
+            }
+        }
+    }
 }
 
 export const convertToAuctionData = (data) => {
