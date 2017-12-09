@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 
 /* Components */
 import PriceChart from './priceChart'
+import Reagent from './reagent'
 
 /* Action creators */
 import { changeCalculation } from '../redux/actions'
@@ -47,7 +48,9 @@ const Item = (props) => (
                         <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'minBuyout', calculationPrice: props.item.prices.minBuyout})}>Minimum buyout</button>
                         <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'avgBuyout', calculationPrice: props.item.prices.avgBuyout})}>Average buyout</button>
                         <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'medianBuyout', calculationPrice: props.item.prices.medianBuyout})}>Median buyout</button>
-                        <input type="number" value={props.item.prices.calculationPrice} onChange={(event) => props.changeCalculation({itemName: props.item.name, calculateBy: 'custom', calculationPrice: event.target.value})}/>
+                        <p>
+                            Recipe Price: <input type="number" value={props.item.prices.calculationPrice} onChange={(event) => props.changeCalculation({itemName: props.item.name, calculateBy: 'custom', calculationPrice: event.target.value})}/>
+                        </p>
                         <p>Expected profit: <SellPrice price={props.item.profit}/></p>
                     </div>
                 )}
@@ -55,9 +58,8 @@ const Item = (props) => (
 
             </div>
         </div>
-
         <div className='item-right'>
-            
+            {props.item.reagents.map((reagent, index) => <Reagent key={index} reagent={reagent} itemName={props.item.name} />)}
         </div>
     </div>
 )
