@@ -275,19 +275,7 @@ ul
                 width: 100%
                 background-size: 100%
                 
-                .item-header
-                    display: flex
-                    padding: 5px
-                    img
-                        height: 36px
-                        width: 36px
-                    h2
-                        text-align: center
-                        line-height: 36px
-                        flex-grow: 1
-                .item-content
-                    .item-level
-                        color: #ffd100
+                
             .item-left-lower
                 background-color: dodgerblue
                 width: 100%
@@ -321,7 +309,25 @@ ul
     border-radius: 5px
     box-shadow: 0 0 5px $grey
 
-
+/* Item name */
+.item-info
+    padding: 5px
+    position: relative
+    .item-name
+        display: flex
+        img
+            height: 36px    
+            width: 36px
+            
+        h2
+            line-height: 36px
+            text-align: center
+            flex-grow: 1
+    .item-content
+        .item-level
+            color: #ffd100
+    .item-content.tooltip
+        display: none
 @media(max-width: 800px) 
     .landing .container
         padding: 50px 5px 50px !important
