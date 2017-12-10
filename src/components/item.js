@@ -28,7 +28,7 @@ const Item = (props) => (
                         <p>
                             Recipe Price: <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeCalculation({itemName: props.item.name, calculateBy: 'custom', value: event.target.value})}/>
                         </p>
-                        <p>Expected profit: <SellPrice price={calculateProfit(100)}/></p>
+                        <p>Expected profit: <SellPrice price={calculateProfit(props.item)}/></p>
                     </div>
                 )}
 
@@ -41,8 +41,13 @@ const Item = (props) => (
     </div>
 )
 
-const calculateProfit = (someshit) => {
-    let profit = someshit
+const calculateProfit = (item) => {
+    let profit
+    if(item.calculateBy !== 'custom') {
+        profit = item.prices[item.calculateBy] - item.reagents.reduce((acc, reagent) => acc + (reagent.prices[item.calculateBy] * reagent.quantity), 0)
+    } else {
+        profit = item.prices.customPrice - item.reagents.reduce((acc, reagent) => acc + (reagent.prices.customPrice * reagent.quantity), 0)
+    }
     return profit
 }
 
