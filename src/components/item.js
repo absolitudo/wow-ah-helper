@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 /* Components */
 import PriceChart from './priceChart'
 import Reagent from './reagent'
-import ItemName from './itemName'
+import ItemInfo from './itemInfo'
 import SellPrice from './sellPrice'
 
 /* Action creators */
@@ -15,7 +15,7 @@ const Item = (props) => (
     <div className='item'>
         <div className='item-left'>
             <div className="item-left-upper">
-                <ItemName item={props.item} />
+                <ItemInfo item={props.item} />
             </div>
             <div className="item-left-lower">
                 

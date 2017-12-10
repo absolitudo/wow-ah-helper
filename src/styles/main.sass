@@ -20,6 +20,8 @@ a
 ul
     list-style: none
 
+.no-display
+    display: none !important
 /* Disabled button */
 .disabled-submit
     color: #777 !important
@@ -323,11 +325,27 @@ ul
             line-height: 36px
             text-align: center
             flex-grow: 1
+        .tooltip
+            display: none
+            line-height: 16px
+            text-align: left
+            position: absolute
+            top: 50px
+            left: 5px
+            z-index: 1
+            background-color: black
+            width: 280px
+            padding: 5px
+            h3
+                line-height: 26px
+
+        a:hover + .tooltip
+            display: block
+
     .item-content
         .item-level
             color: #ffd100
-    .item-content.tooltip
-        display: none
+    
 @media(max-width: 800px) 
     .landing .container
         padding: 50px 5px 50px !important

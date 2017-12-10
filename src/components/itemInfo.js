@@ -17,9 +17,22 @@ const ItemName = (props) => (
                 >
                     {props.item.name}
                 </a>
+                <div className={!props.tooltip ? 'no-display' : 'tooltip' } >
+                    <h3 className={'item-quality-' + props.item.quality}>{props.item.name}</h3>
+                    {props.item.tooltip.castTime && <p>Cast Time: {props.item.tooltip.castTime}</p>}
+                    {props.item.tooltip.itemLevel && <p className='item-level'>Item Level {props.item.tooltip.itemLevel}</p>}
+                    {props.item.tooltip.description.map((description, index) => (
+                        !/(Blue|Yellow|Meta|Cogwheel|Red) Socket/g.test(description)
+                            ? <p key={index} dangerouslySetInnerHTML={{__html: description}}></p>
+                            : <ColoredSocket key={index} description={description} />
+                    ))}
+                    {props.item.tooltip.requiredLevel && <p>Requires Level {props.item.tooltip.requiredLevel}</p>}
+                    {props.item.tooltip.vendorSellPrice && <p>Sell Price: <SellPrice price={props.item.tooltip.vendorSellPrice}/></p>}
+                </div>
             </h2>
         </div>
-        <div className={!props.tooltip ? 'item-content' : 'item-content tooltip' } >
+        <div className={!props.tooltip ? 'item-content' : 'no-display' } >
+            
             {props.item.tooltip.castTime && <p>Cast Time: {props.item.tooltip.castTime}</p>}
             {props.item.tooltip.itemLevel && <p className='item-level'>Item Level {props.item.tooltip.itemLevel}</p>}
             {props.item.tooltip.description.map((description, index) => (
