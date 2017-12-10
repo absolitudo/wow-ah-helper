@@ -58,7 +58,7 @@ const reducers = {
         maxProfReq: action.payload
     }),
 
-    changeCalculation: (state, action) => {
+    changeCalculateBy: (state, action) => {
 
         let profession
         for(let professionName in state.professionData) {

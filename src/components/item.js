@@ -9,7 +9,7 @@ import ItemInfo from './itemInfo'
 import SellPrice from './sellPrice'
 
 /* Action creators */
-import { changeCalculation } from '../redux/actions'
+import { changeCalculateBy } from '../redux/actions'
 
 const Item = (props) => (
     <div className='item'>
@@ -22,13 +22,13 @@ const Item = (props) => (
                 {(props.item.chartData !== false && props.item.prices) && (
                     <div>
                         <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/>
-                        <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'minBuyout', calculationPrice: props.item.prices.minBuyout})}>Minimum buyout</button>
-                        <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'avgBuyout', calculationPrice: props.item.prices.avgBuyout})}>Average buyout</button>
-                        <button onClick={() => props.changeCalculation({itemName: props.item.name, calculateBy: 'medianBuyout', calculationPrice: props.item.prices.medianBuyout})}>Median buyout</button>
+                        <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'minBuyout'})}>Minimum buyout</button>
+                        <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'avgBuyout'})}>Average buyout</button>
+                        <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'medianBuyout'})}>Median buyout</button>
                         <p>
-                            Recipe Price: <input type="number" value={props.item.prices.calculationPrice} onChange={(event) => props.changeCalculation({itemName: props.item.name, calculateBy: 'custom', calculationPrice: event.target.value})}/>
+                            Recipe Price: <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeCalculation({itemName: props.item.name, calculateBy: 'custom', value: event.target.value})}/>
                         </p>
-                        <p>Expected profit: <SellPrice price={props.item.profit}/></p>
+                        <p>Expected profit: <SellPrice price={calculateProfit(100)}/></p>
                     </div>
                 )}
 
@@ -41,7 +41,11 @@ const Item = (props) => (
     </div>
 )
 
+const calculateProfit = (someshit) => {
+    let profit = someshit
+    return profit
+}
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ changeCalculation }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({ changeCalculateBy }, dispatch)
 
 export default connect(null, mapDispatchToProps)(Item)

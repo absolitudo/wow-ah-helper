@@ -11,7 +11,7 @@ export default handleActions({
     UPDATE_SEARCH_TERM: reducers.updateSearchTerm,
     UPDATE_MIN_PROF_REQ: reducers.updateMinProfReq,
     UPDATE_MAX_PROF_REQ: reducers.updateMaxProfReq,
-    CHANGE_CALCULATION: reducers.changeCalculation
+    CHANGE_CALCULATE_BY: reducers.changeCalculateBy
 }, {
     searchTerm: '',
     minProfReq: '0',
