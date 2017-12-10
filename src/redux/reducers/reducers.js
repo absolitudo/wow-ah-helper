@@ -76,6 +76,36 @@ const reducers = {
                 }
             }
         }
+    },
+
+    changeReagentCustomPrice: (state, action) => {
+        let profession
+        for(let professionName in state.professionData) {
+            if(state.professionData[professionName][action.payload.itemName]){
+                profession = professionName
+            }
+        }
+
+        return {...state,
+            professionData: {...state.professionData,
+                [profession]: {...state.professionData[profession],
+                    [action.payload.itemName]: {...state.professionData[profession][action.payload.itemName],
+                        reagents: state.professionData[profession][action.payload.itemName].reagents.map(reagent => {
+                            if(reagent.name === action.payload.reagentName) {
+                                console.log('hi')
+                                let newReagent = {...reagent,
+                                    prices: {...reagent.prices,
+                                        customPrice: +action.payload.value
+                                    }
+                                }
+                                return newReagent
+                            }
+                            return reagent
+                        })
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -8,6 +8,8 @@ export const updateSearchTerm = createAction('UPDATE_SEARCH_TERM')
 export const updateMinProfReq = createAction('UPDATE_MIN_PROF_REQ')
 export const updateMaxProfReq = createAction('UPDATE_MAX_PROF_REQ')
 export const changeCalculateBy = createAction('CHANGE_CALCULATE_BY')
+export const changeReagentCustomPrice = createAction('CHANGE_REAGENT_CUSTOM_PRICE')
+
 
 
 
