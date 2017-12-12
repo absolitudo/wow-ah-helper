@@ -92,7 +92,6 @@ const reducers = {
                     [action.payload.itemName]: {...state.professionData[profession][action.payload.itemName],
                         reagents: state.professionData[profession][action.payload.itemName].reagents.map(reagent => {
                             if(reagent.name === action.payload.reagentName) {
-                                console.log('hi')
                                 let newReagent = {...reagent,
                                     prices: {...reagent.prices,
                                         customPrice: +action.payload.value
@@ -101,7 +100,8 @@ const reducers = {
                                 return newReagent
                             }
                             return reagent
-                        })
+                        }),
+                        calculateBy: 'customPrice'
                     }
                 }
             }
