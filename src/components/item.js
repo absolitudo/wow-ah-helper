@@ -9,7 +9,10 @@ import ItemInfo from './itemInfo'
 import SellPrice from './sellPrice'
 
 /* Action creators */
-import { changeCalculateBy } from '../redux/actions'
+import {
+    changeCalculateBy,
+    changeRecipeCustomPrice
+} from '../redux/actions'
 
 const Item = (props) => (
     <div className='item'>
@@ -26,7 +29,7 @@ const Item = (props) => (
                         <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'avgBuyout'})}>Average buyout</button>
                         <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'medianBuyout'})}>Median buyout</button>
                         <p>
-                            Recipe Price: <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'custom', value: event.target.value})}/>
+                            Recipe Price: <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeRecipeCustomPrice({itemName: props.item.name, value: event.target.value})}/>
                         </p>
                         <p>Expected profit: <SellPrice price={calculateProfit(props.item)}/></p>
                     </div>
@@ -49,6 +52,9 @@ const calculateProfit = (item) => {
     return profit
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ changeCalculateBy }, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    changeCalculateBy,
+    changeRecipeCustomPrice
+}, dispatch)
 
 export default connect(null, mapDispatchToProps)(Item)

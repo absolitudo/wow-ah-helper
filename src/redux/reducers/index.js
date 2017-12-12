@@ -12,7 +12,8 @@ export default handleActions({
     UPDATE_MIN_PROF_REQ: reducers.updateMinProfReq,
     UPDATE_MAX_PROF_REQ: reducers.updateMaxProfReq,
     CHANGE_CALCULATE_BY: reducers.changeCalculateBy,
-    CHANGE_REAGENT_CUSTOM_PRICE: reducers.changeReagentCustomPrice
+    CHANGE_REAGENT_CUSTOM_PRICE: reducers.changeReagentCustomPrice,
+    CHANGE_RECIPE_CUSTOM_PRICE: reducers.changeRecipeCustomPrice
 }, {
     searchTerm: '',
     minProfReq: '0',

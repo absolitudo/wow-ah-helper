@@ -109,6 +109,28 @@ const reducers = {
                 }
             }
         }
+    },
+
+    changeRecipeCustomPrice: (state, action) => {
+        let profession
+        for(let professionName in state.professionData) {
+            if(state.professionData[professionName][action.payload.itemName]){
+                profession = professionName
+            }
+        }
+
+        return {...state,
+            professionData: {...state.professionData,
+                [profession]: {...state.professionData[profession],
+                    [action.payload.itemName]: {...state.professionData[profession][action.payload.itemName],
+                        calculateBy: 'custom',
+                        prices: {...state.professionData[profession][action.payload.itemName].prices,
+                            customPrice: action.payload.value
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -9,6 +9,8 @@ export const updateMinProfReq = createAction('UPDATE_MIN_PROF_REQ')
 export const updateMaxProfReq = createAction('UPDATE_MAX_PROF_REQ')
 export const changeCalculateBy = createAction('CHANGE_CALCULATE_BY')
 export const changeReagentCustomPrice = createAction('CHANGE_REAGENT_CUSTOM_PRICE')
+export const changeRecipeCustomPrice = createAction('CHANGE_RECIPE_CUSTOM_PRICE')
+
 
 
 
