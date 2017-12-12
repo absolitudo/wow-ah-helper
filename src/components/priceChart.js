@@ -119,6 +119,30 @@ const createChart = (data, svgNode) => {
             currentTooltipIndex = -1
         } 
     })
+
+    svg.on('mouseout', () => {
+        tooltip.style('display', 'none')
+        currentTooltipIndex = -1
+    })
+
+    svg.on('mouseenter', () => {
+        let mouseX = d3.mouse(d3.event.currentTarget)[0]
+        let mouseY = d3.mouse(d3.event.currentTarget)[1]
+        if(mouseX > margin && mouseX < width - margin && mouseY > margin && mouseY < height - margin) {
+            let index = Math.floor(tooltipScale(mouseX))
+            if(index !== currentTooltipIndex) {
+                let item = data[index]
+                tooltip
+                    .style('display', null)
+                    .style('left', (margin + index * (width - margin * 2) / data.length) + 'px')
+                    .html('Price: ' + getPrice(item.price) + '</br>Amount: ' + item.amount)
+                currentTooltipIndex = index
+            }
+        } else {
+            tooltip.style('display', 'none')
+            currentTooltipIndex = -1
+        } 
+    })
 }
 
 const getPrice = (price) => {
