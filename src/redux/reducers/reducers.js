@@ -71,7 +71,10 @@ const reducers = {
             professionData: {...state.professionData,
                 [profession]: {...state.professionData[profession],
                     [action.payload.itemName]: {...state.professionData[profession][action.payload.itemName],
-                        calculateBy: action.payload.calculateBy
+                        calculateBy: action.payload.calculateBy,
+                        prices: {...state.professionData[profession][action.payload.itemName].prices,
+                            customPrice: state.professionData[profession][action.payload.itemName].prices[action.payload.calculateBy]
+                        }
                     }
                 }
             }
