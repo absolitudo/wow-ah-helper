@@ -74,7 +74,15 @@ const reducers = {
                         calculateBy: action.payload.calculateBy,
                         prices: {...state.professionData[profession][action.payload.itemName].prices,
                             customPrice: state.professionData[profession][action.payload.itemName].prices[action.payload.calculateBy]
-                        }
+                        },
+                        reagents: state.professionData[profession][action.payload.itemName].reagents.map(reagent => {
+                            reagent = {...reagent,
+                                prices: {...reagent.prices,
+                                    customPrice: reagent.prices[action.payload.calculateBy]   
+                                }
+                            }
+                            return reagent
+                        }),
                     }
                 }
             }
