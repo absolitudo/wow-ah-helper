@@ -18,5 +18,6 @@ export default handleActions({
     searchTerm: '',
     minProfReq: '0',
     maxProfReq: '600',
-    numberOfItems: 10
+    numberOfItems: 10,
+    shouldItemsContainerUpdate: true
 })

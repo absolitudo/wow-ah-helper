@@ -3,19 +3,25 @@ import { connect } from 'react-redux'
 
 import Item from './item'
 
-const ItemsContainer = (props) => {
-   
-    let items = returnItemsToDisplay(props)
+class ItemsContainer extends React.Component {
+    
+    shouldComponentUpdate(nextProps) {
+        return nextProps.shouldItemsContainerUpdate
+    }
 
-
-    return (
-        <section className='items-container'>
-            {console.log('itemscontainer rendering')}
-            {props.professionData && items.map((item, i) => (
-                <Item item={item} key={i}/>
-            ))}
-        </section>
-    )
+    render() {
+        let items = returnItemsToDisplay(this.props)
+        
+        
+        return (
+            <section className='items-container'>
+                {console.log('itemscontainer rendering')}
+                {this.props.professionData && items.map((item, i) => (
+                    <Item item={item} key={i}/>
+                ))}
+            </section>
+        )
+    }
 }
 
 export const returnItemsToDisplay = (props) => {
@@ -52,7 +58,8 @@ const mapStateToProps = (state) => ({
     numberOfItems: state.numberOfItems,
     searchTerm: state.searchTerm,
     minProfReq: state.minProfReq,
-    maxProfReq: state.maxProfReq
+    maxProfReq: state.maxProfReq,
+    shouldItemsContainerUpdate: state.shouldItemsContainerUpdate
 })
 
 export default connect(mapStateToProps)(ItemsContainer)
