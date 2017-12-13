@@ -47,7 +47,9 @@ const reducers = {
     }),
 
     updateSearchTerm: (state, action) => ({...state,
-        searchTerm: action.payload
+        searchTerm: action.payload.searchTerm,
+        searchItemsTimeout: action.payload.timeout,
+        shouldItemsContainerUpdate: false
     }),
 
     updateMinProfReq: (state, action) => ({...state,
@@ -139,7 +141,12 @@ const reducers = {
                 }
             }
         }
-    }
+    },
+
+    setShouldItemsContainerUpdate: (state, action) => ({...state,
+        shouldItemsContainerUpdate: action.payload,
+        searchItemsTimeout: false
+    })
 }
 
 export const convertToAuctionData = (data) => {

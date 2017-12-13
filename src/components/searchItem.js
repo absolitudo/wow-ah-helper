@@ -6,7 +6,8 @@ import { bindActionCreators } from 'redux'
 import { 
     updateSearchTerm,
     updateMinProfReq,
-    updateMaxProfReq
+    updateMaxProfReq,
+    setShouldItemsContainerUpdate
 } from '../redux/actions'
 
 const SearchItem = (props) => (
@@ -14,7 +15,7 @@ const SearchItem = (props) => (
         <input 
             type="text"
             value={props.searchTerm}
-            onChange={(event) => props.updateSearchTerm(event.target.value)}
+            onChange={(event) => handleSearchInputChange(event, props)}
             placeholder={'Search by item name...'}
             />
         <div className="prof-req">
@@ -36,6 +37,21 @@ const SearchItem = (props) => (
     </div>
 )
 
+const handleSearchInputChange = (event, props) => {
+    if(props.searchItemsTimeout) {
+        clearTimeout(props.searchItemsTimeout)
+    }
+
+    var newTimeout = setTimeout(() => {
+        props.setShouldItemsContainerUpdate(true)
+    }, 500)
+
+    props.updateSearchTerm({
+        searchTerm: event.target.value,
+        timeout: newTimeout
+    })
+}
+
 const validateNumberChange = (event, action, defaultValue) => {
     let value = event.target.value
     if (value === '') {
@@ -53,13 +69,15 @@ const validateNumberChange = (event, action, defaultValue) => {
 const mapStateToProps = (state) => ({
     searchTerm: state.searchTerm,
     minProfReq: state.minProfReq,
-    maxProfReq: state.maxProfReq
+    maxProfReq: state.maxProfReq,
+    searchItemsTimeout: state.searchItemsTimeout
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     updateSearchTerm,
     updateMinProfReq,
-    updateMaxProfReq
+    updateMaxProfReq,
+    setShouldItemsContainerUpdate
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchItem)
