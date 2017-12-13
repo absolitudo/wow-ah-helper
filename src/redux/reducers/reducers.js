@@ -53,11 +53,15 @@ const reducers = {
     }),
 
     updateMinProfReq: (state, action) => ({...state,
-        minProfReq: action.payload
+        minProfReq: action.payload.value,
+        searchItemsTimeout: action.payload.timeout,
+        shouldItemsContainerUpdate: false
     }),
 
     updateMaxProfReq: (state, action) => ({...state,
-        maxProfReq: action.payload
+        maxProfReq: action.payload.value,
+        searchItemsTimeout: action.payload.timeout,
+        shouldItemsContainerUpdate: false
     }),
 
     changeCalculateBy: (state, action) => {
