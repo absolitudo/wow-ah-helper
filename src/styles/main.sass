@@ -138,7 +138,7 @@ ul
                 height: 40px
                 line-height: 40px
                 text-align: center
-                background-color: $accentOne
+                background-color: $accentTwo
                 border: none
                 border-radius: 2px
                 margin-left: 5px                
@@ -259,7 +259,23 @@ ul
 /* Items container */
 .items-container
     position: relative
-    
+
+    .more-items
+        width: 100px
+        height: 40px
+        border: 2px solid $accentOne
+        margin: 10px calc(50% - 50px)
+        cursor: pointer
+        border-radius: 3px
+        transition: 300ms
+        box-shadow: inset 0 0 4px grey
+        color: $accentOne
+        background-color: white
+        &:hover
+            border: 2px solid $accentOne
+            color: $accentOne
+            box-shadow: 0 0 5px $accentOne
+
     .item
         width: 600px
         margin: 20px auto

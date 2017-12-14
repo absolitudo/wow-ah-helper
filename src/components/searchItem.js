@@ -52,11 +52,11 @@ const handleSearchInputChange = (event, props, action, defaultValue) => {
             timeout: newTimeout
         })
     } else {
-        validateNumberChange(event, action, defaultValue, newTimeout)
+        validateProfReqChange(event, action, defaultValue, newTimeout)
     }
 }
 
-const validateNumberChange = (event, action, defaultValue, timeout) => {
+const validateProfReqChange = (event, action, defaultValue, timeout) => {
     let value = event.target.value
     if (value === '') {
         action({

@@ -43,25 +43,29 @@ const reducers = {
     }),
 
     selectProfession: (state, action) => ({...state,
-        selectedProfession: action.payload
+        selectedProfession: action.payload,
+        numberOfItems: 20
     }),
 
     updateSearchTerm: (state, action) => ({...state,
         searchTerm: action.payload.searchTerm,
         searchItemsTimeout: action.payload.timeout,
-        shouldItemsContainerUpdate: false
+        shouldItemsContainerUpdate: false,
+        numberOfItems: 20
     }),
 
     updateMinProfReq: (state, action) => ({...state,
         minProfReq: action.payload.value,
         searchItemsTimeout: action.payload.timeout,
-        shouldItemsContainerUpdate: false
+        shouldItemsContainerUpdate: false,
+        numberOfItems: 20
     }),
 
     updateMaxProfReq: (state, action) => ({...state,
         maxProfReq: action.payload.value,
         searchItemsTimeout: action.payload.timeout,
-        shouldItemsContainerUpdate: false
+        shouldItemsContainerUpdate: false,
+        numberOfItems: 20
     }),
 
     changeCalculateBy: (state, action) => {
@@ -150,6 +154,10 @@ const reducers = {
     setShouldItemsContainerUpdate: (state, action) => ({...state,
         shouldItemsContainerUpdate: action.payload,
         searchItemsTimeout: false
+    }),
+
+    loadMoreItems: (state, action) => ({...state,
+        numberOfItems: state.numberOfItems + 10
     })
 }
 
