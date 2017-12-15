@@ -16,7 +16,7 @@ const ProfessionSelector = (props) => {
                             className={props.selectedProfession === profession ? 'profession selected-profession' : 'profession'}
                             onClick={() => props.selectProfession(profession)}
                             >
-                            {profession}
+                            {applyEllipsis(profession)}
                         </li>
                     ))}
                 </ul>
@@ -43,6 +43,12 @@ const ProfessionSelector = (props) => {
     }
 }
 
+const applyEllipsis = (professionName) => {
+    if(professionName.length > 9) {
+        return professionName.slice(0, 9) + '...'
+    }
+    return professionName
+}
 
 const mapStateToProps = (state) => ({
     professions: state.professions,
