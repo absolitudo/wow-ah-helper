@@ -28,7 +28,7 @@ ul
 
 /* Item name color based on item quality */
 .item-quality-1
-    color: $dark-text
+    color: white
 .item-quality-2
     color: #1eff00 
 .item-quality-3
@@ -69,6 +69,7 @@ ul
 .socket-cogwheel 
     padding-left: 26px
     background: url(../assets/socket_cogwheel.gif) no-repeat left center
+
 /* Landing */
 .landing
     background-image: url('../assets/landing.jpg') 
@@ -79,19 +80,14 @@ ul
     min-height: 300px
     color: $dark-text
     box-shadow: 0px 0px 7px black
-    
     .highlight
         color: $blue
         font-size: 12px
-
-    
-
     .landing-background
         background-color: rgba(0, 0, 0, 0.5)
         min-height: 300px
         width: 100%
         padding: 150px 5px 150px
-
         .landing-container
             max-width: 700px
             margin: auto
@@ -109,7 +105,6 @@ ul
                     margin: 2px 0 10px
                 p
                     margin-bottom: -5px
-
             label
                 display: inline-block
                 text-align: center
@@ -122,7 +117,6 @@ ul
                 transition: 300ms
                 &:hover
                     box-shadow: 0px 0px 5px $dark-text
-                
                 p
                     height: 100%
                     line-height: 40px             
@@ -131,8 +125,7 @@ ul
                     color: #fff
                     overflow: hidden
                     white-space: nowrap
-                    text-overflow: ellipsis
-                    
+                    text-overflow: ellipsis                   
             button
                 width: 90px
                 height: 40px
@@ -148,23 +141,17 @@ ul
                 transition: 300ms
                 &:hover
                     box-shadow: 0px 0px 5px $dark-text
-                
-
             input[type=file]
                 display: none
-
             h2
                 text-align: center
                 margin: 10px
                 font-size: 24px
-
             ul
                 margin: 10px
-
                 li
                     margin: 14px 0
                     line-height: 15px
-
             #more-info
                 position: absolute
                 top: 5px
@@ -202,7 +189,6 @@ ul
                 border: 2px solid $accentOne
                 color: $accentOne
                 box-shadow: 0 0 5px $accentOne
-
     .mobile-professions
         display: none
         margin: auto
@@ -220,10 +206,7 @@ ul
             box-shadow: 0 0 5px $accentOne
         option
             color: $dark-text
-
-
     .professions-skeleton
-
     .profession
         text-transform: capitalize
 
@@ -232,7 +215,6 @@ ul
     width: 300px
     margin: 20px auto 50px
     padding-left: 5px
-
     input[type=text]
         border: 2px solid $accentOne
         border-radius: 5px
@@ -240,7 +222,6 @@ ul
         padding: 0 3px
         &:focus
             box-shadow: inset 0px 0px 3px grey
-
     .prof-req
         display: inline-block
         input
@@ -257,7 +238,6 @@ ul
 .items-container
     position: relative
     min-height: 80vh
-
     .more-items
         width: 100px
         height: 40px
@@ -273,7 +253,6 @@ ul
             border: 2px solid $accentOne
             color: $accentOne
             box-shadow: 0 0 5px $accentOne
-
     .item
         width: 600px
         margin: 20px auto
@@ -284,32 +263,28 @@ ul
             display: inline-block
             height: inherit
             float: left
-            
             .item-left-upper
                 padding: 5px
                 height: 50%
                 width: 100%
                 background-size: 100%
-                
-                
             .item-left-lower
                 background-color: dodgerblue
                 width: 100%
                 height: 50%
-                
         .item-right
             margin: 0 5px
             width: 290px
             display: inline-block
             background-color: green
             height: inherit
+
 /* Chart styles */
 .price-chart-container
     width: 290px
     position: relative
     p
         text-align: center
-
     .price-chart
         .axis-y
             path
@@ -334,7 +309,6 @@ ul
         img
             height: 36px    
             width: 36px
-            
         h2
             line-height: 36px
             text-align: center
@@ -354,13 +328,12 @@ ul
             padding: 5px
             h3
                 line-height: 26px
-
         a:hover + .tooltip
             display: block
-
     .item-content
         .item-level
             color: #ffd100
+
     
 @media(max-width: 800px) 
     .landing .container
