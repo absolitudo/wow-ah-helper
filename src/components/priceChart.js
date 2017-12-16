@@ -68,7 +68,7 @@ const createChart = (data, svgNode) => {
     /* Color scale */
     let colorScale = d3.scaleLinear()
         .domain(xDomain)
-        .range(['#dbca30', '#db6969'])
+        .range(['#ccc', '#777'])
 
     /* Groups */
     svg.append('g')
