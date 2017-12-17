@@ -305,7 +305,7 @@ ul
     background-color: transparent
     background: url(../assets/tooltip.png)
     background-repeat: no-repeat
-    background-size: 100% 100%
+    background-size: calc(100% + 5px) calc(100% + 5px)
     border: 4px solid transparent
     border-image: url(../assets/tooltip.png) 4 round
 /* Item name */
@@ -332,10 +332,11 @@ ul
             width: 280px
             padding: 5px
             background: url(../assets/tooltip.png)
+            background-position: center
             background-repeat: no-repeat
-            background-size: 100% 100%
+            background-size: 101% 101%
             border: 4px solid transparent
-            border-image: url(../assets/tooltip.png) 4 round
+            border-image: url(../assets/tooltip.png) 4 stretch
             h3
                 line-height: 26px
         a:hover + .tooltip
