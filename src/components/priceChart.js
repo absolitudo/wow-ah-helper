@@ -19,8 +19,9 @@ class PriceChart extends React.Component {
             <div className='price-chart-container'>
                 <svg ref='svg' className='price-chart'>
                 </svg>
-                <p dangerouslySetInnerHTML={{'__html': getPrice(this.props.data[0].price) + ' => ' + getPrice(this.props.data[this.props.data.length - 1].price)}}></p>
-                <p>Amount: {this.props.amount}</p>
+                {this.props.data[0] && <p dangerouslySetInnerHTML={{'__html': getPrice(this.props.data[0].price) + ' => ' + getPrice(this.props.data[this.props.data.length - 1].price)}}></p>}
+                {this.props.amount && <p>Amount: {this.props.amount}</p>}
+                
             </div>
         )
     }

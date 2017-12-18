@@ -22,7 +22,7 @@ const Item = (props) => (
             </div>
             <div className="item-left-lower">
                 
-                {(props.item.chartData !== false && props.item.prices) && (
+                {(props.item.chartData && props.item.prices) && (
                     <div>
                         <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'minBuyout'})}>Minimum buyout</button>
                         <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'avgBuyout'})}>Average buyout</button>
@@ -31,7 +31,7 @@ const Item = (props) => (
                             Recipe Price: <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeRecipeCustomPrice({itemName: props.item.name, value: event.target.value})}/>
                         </p>
                         <p>Expected profit: <SellPrice price={calculateProfit(props.item)}/></p>
-                        <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/>
+                        {props.item.chartData[0] && <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/>}
                     </div>
                 )}
 

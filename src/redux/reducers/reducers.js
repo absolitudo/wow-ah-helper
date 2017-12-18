@@ -207,13 +207,12 @@ export const convertToAuctionData = (data) => {
         auctionData[auction].buyouts = auctionData[auction].buyouts
             .filter(buyout => buyout !== 0)
             .sort((a, b) => a - b)
-        auctionData[auction].avgBuyout = +getAvgBuyout(auctionData[auction].buyouts).toFixed(4)
-        auctionData[auction].minBuyout = +auctionData[auction].buyouts[0]
-        auctionData[auction].medianBuyout = +getMedian(auctionData[auction].buyouts)
-        auctionData[auction].amount = auctionData[auction].buyouts.length
-        auctionData[auction].customPrice = auctionData[auction].medianBuyout
+        auctionData[auction].avgBuyout = +getAvgBuyout(auctionData[auction].buyouts).toFixed(4) || 0
+        auctionData[auction].minBuyout = +auctionData[auction].buyouts[0] || 0
+        auctionData[auction].medianBuyout = +getMedian(auctionData[auction].buyouts) || 0
+        auctionData[auction].amount = auctionData[auction].buyouts.length || 0
+        auctionData[auction].customPrice = auctionData[auction].medianBuyout || 0
     }
-
     return auctionData
 }
 

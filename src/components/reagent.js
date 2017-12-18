@@ -18,8 +18,8 @@ const Reagent = (props) => (
                 <input type="number" value={props.reagent.prices.customPrice} onChange={(event) => props.changeReagentCustomPrice({itemName: props.itemName, reagentName: props.reagent.name, value: event.target.value})}/>
             </p>
         )}
-        {(props.reagent.chartData !== false && props.reagent.prices) && (
-            <PriceChart data={props.reagent.chartData} amount={props.reagent.prices.amount} />
+        {(props.reagent.chartData && props.reagent.prices) && (
+            props.reagent.chartData[0] && <PriceChart data={props.reagent.chartData} amount={props.reagent.prices.amount} />
         )}
     </div>
 )
