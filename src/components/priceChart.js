@@ -28,7 +28,7 @@ class PriceChart extends React.Component {
 }
 
 const createChart = (data, svgNode) => {
-    const width = 290
+    const width = 280
     const height = 50
     const margin = 5
 
