@@ -6,7 +6,7 @@
     margin: 0
     padding: 0
     box-sizing: border-box
-    outline: none
+    outline: none 
     font-family: roboto, helvetica, sans-serif
     font-size: 14px
 
@@ -20,6 +20,10 @@ a
     color: $blue 
 ul
     list-style: none
+
+/* Firefox default button focus */
+button::-moz-focus-inner
+    border: 0
 
 .no-display
     display: none !important
@@ -293,7 +297,12 @@ ul
                         height: 20px
                         &:hover
                             cursor: pointer
-                            box-shadow: 0 0 4px grey
+                            box-shadow: 0 0 4px $light
+                        &.selected-calculation
+                            box-shadow: 0 0 4px $light
+                        
+                        
+                            
         .item-right
             border-radius: 5px
             padding: 0 5px
