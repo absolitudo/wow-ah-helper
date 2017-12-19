@@ -265,10 +265,11 @@ ul
     .item
         width: 600px
         margin: 20px auto
-        background-color: $accentOne
+        background-color: $dark-background
         color: $light
-        box-shadow: 0 0 3px 1px $dark-text
         display: flex
+        border-radius: 5px
+        box-shadow: 0 0 4px 0 $dark-text
         .item-left
             margin: 0 5px
             width: 290px
@@ -280,9 +281,18 @@ ul
             .item-left-lower
                 width: 100%
         .item-right
-            margin: 0 5px
-            width: 290px
+            border-radius: 5px
+            padding: 0 5px
+            width: 300px
             display: inline-block
+            background: url(../assets/gold-background.jpg)
+            background-repeat: no-repeat
+            background-size: cover
+            .reagent-container
+                background-color: rgba(0, 0, 0, 0.85)
+                margin: 10px 0
+                border-radius: 5px
+                box-shadow: 0 0 5px 1px black
 
 /* Chart styles */
 .price-chart-container
@@ -309,6 +319,7 @@ ul
     background-size: 101% 101%
     border: 4px solid transparent
     border-image: url(../assets/tooltip.png) 4 stretch
+
 /* Item name */
 .item-info
     padding: 5px
@@ -356,4 +367,6 @@ ul
         display: block !important
     .item
         display: block !important
+        width: 290px !important
+    .item-right
         width: 290px !important

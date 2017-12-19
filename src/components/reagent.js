@@ -10,7 +10,7 @@ import ItemInfo from './itemInfo'
 import { changeReagentCustomPrice } from '../redux/actions'
 
 const Reagent = (props) => (
-    <div>
+    <div className='reagent-container'>
         <ItemInfo item={props.reagent} tooltip={true} />
         {props.reagent.prices && (
             <p>
