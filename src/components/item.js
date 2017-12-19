@@ -24,9 +24,31 @@ const Item = (props) => (
                 
                 {(props.item.chartData && props.item.prices) && (
                     <div>
-                        <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'minBuyout'})}>Minimum</button>
-                        <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'avgBuyout'})}>Average</button>
-                        <button onClick={() => props.changeCalculateBy({itemName: props.item.name, calculateBy: 'medianBuyout'})}>Median</button>
+                        <div className='price-button-container'>
+                            <CalculateByButton
+                                itemName={props.item.name}
+                                buttonType='minBuyout'
+                                buttonText='Minimum'
+                                changeCalculateBy={props.changeCalculateBy}
+                                calculateBy={props.item.calculateBy}
+                            />
+                            <CalculateByButton
+                                itemName={props.item.name}
+                                buttonType='avgBuyout'
+                                buttonText='Average'
+                                changeCalculateBy={props.changeCalculateBy}
+                                calculateBy={props.item.calculateBy}
+                                
+                            />
+                            <CalculateByButton
+                                itemName={props.item.name}
+                                buttonType='medianBuyout'
+                                buttonText='Median'
+                                changeCalculateBy={props.changeCalculateBy}
+                                calculateBy={props.item.calculateBy}
+                                
+                            />
+                        </div>
                         <p>
                             Recipe Price: <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeRecipeCustomPrice({itemName: props.item.name, value: event.target.value})}/>
                         </p>
@@ -42,6 +64,12 @@ const Item = (props) => (
             {props.item.reagents.map((reagent, index) => <Reagent key={index} reagent={reagent} itemName={props.item.name} />)}
         </div>
     </div>
+)
+
+const CalculateByButton = (props) => (
+    <button className={(props.calculateBy === props.buttonType) ? 'selected-calculation' : ''} onClick={() => props.changeCalculateBy({itemName: props.itemName, calculateBy: props.buttonType})}>
+        {props.buttonText}
+    </button>
 )
 
 const calculateProfit = (item) => {
