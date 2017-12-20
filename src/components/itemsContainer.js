@@ -38,9 +38,13 @@ export const returnItemsToDisplay = (props) => {
         
         for(let prof in props.professionData) {
             if(professions.includes(prof)) {
+                let profKeys = []
                 for(let itemName in props.professionData[prof]) {
-                    if(index < props.numberOfItems && itemName.toLocaleLowerCase().includes(props.searchTerm.toLocaleLowerCase().trim())) {
-                        items.push({...props.professionData[prof][itemName]})
+                    profKeys.push(itemName)
+                }
+                for(let i = profKeys.length - 1; i > 0; i -= 1) {
+                    if(index < props.numberOfItems && profKeys[i].toLocaleLowerCase().includes(props.searchTerm.toLocaleLowerCase().trim())) {
+                        items.push({...props.professionData[prof][profKeys[i]]})
                         index += 1
                     } 
                     if(index >= props.numberOfItems) {
