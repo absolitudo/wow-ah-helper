@@ -8,7 +8,6 @@ import ItemInfo from './itemInfo'
 
 /* Action creators */
 import { changeReagentCustomPrice } from '../redux/actions'
-import { pack } from 'd3-hierarchy';
 
 const Reagent = (props) => (
     <div className='reagent-container'>
@@ -25,7 +24,7 @@ const Reagent = (props) => (
             ? <PriceChart data={props.reagent.chartData} amount={props.reagent.prices.amount} />
             : <p className='no-data'>No data!</p>
         ) : (
-            <p className='no-data'>No data!</p>
+            props.reagent.prices && <p className='no-data'>No data!</p>
         )}
         <hr/>
     </div>
