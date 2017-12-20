@@ -22,6 +22,7 @@ const Reagent = (props) => (
         {(props.reagent.chartData && props.reagent.prices) && (
             props.reagent.chartData[0] && <PriceChart data={props.reagent.chartData} amount={props.reagent.prices.amount} />
         )}
+        <hr/>
     </div>
 )
 
