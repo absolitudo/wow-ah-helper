@@ -54,20 +54,6 @@ const reducers = {
         numberOfItems: 20
     }),
 
-    updateMinProfReq: (state, action) => ({...state,
-        minProfReq: action.payload.value,
-        searchItemsTimeout: action.payload.timeout,
-        shouldItemsContainerUpdate: false,
-        numberOfItems: 20
-    }),
-
-    updateMaxProfReq: (state, action) => ({...state,
-        maxProfReq: action.payload.value,
-        searchItemsTimeout: action.payload.timeout,
-        shouldItemsContainerUpdate: false,
-        numberOfItems: 20
-    }),
-
     changeCalculateBy: (state, action) => {
 
         let profession

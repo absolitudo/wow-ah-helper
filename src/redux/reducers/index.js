@@ -9,8 +9,6 @@ export default handleActions({
     GET_PROFESSION_DATA: reducers.getProfessionData,
     SELECT_PROFESSION: reducers.selectProfession,
     UPDATE_SEARCH_TERM: reducers.updateSearchTerm,
-    UPDATE_MIN_PROF_REQ: reducers.updateMinProfReq,
-    UPDATE_MAX_PROF_REQ: reducers.updateMaxProfReq,
     CHANGE_CALCULATE_BY: reducers.changeCalculateBy,
     CHANGE_REAGENT_CUSTOM_PRICE: reducers.changeReagentCustomPrice,
     CHANGE_RECIPE_CUSTOM_PRICE: reducers.changeRecipeCustomPrice,
@@ -18,8 +16,6 @@ export default handleActions({
     LOAD_MORE_ITEMS: reducers.loadMoreItems
 }, {
     searchTerm: '',
-    minProfReq: '0',
-    maxProfReq: '600',
     numberOfItems: 20,
     shouldItemsContainerUpdate: true,
     searchItemsTimeout: false

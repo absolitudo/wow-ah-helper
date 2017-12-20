@@ -39,7 +39,7 @@ export const returnItemsToDisplay = (props) => {
         for(let prof in props.professionData) {
             if(professions.includes(prof)) {
                 for(let itemName in props.professionData[prof]) {
-                    if(index < props.numberOfItems && itemName.toLocaleLowerCase().includes(props.searchTerm.toLocaleLowerCase().trim()) && (props.professionData[prof][itemName].profReq ? (props.professionData[prof][itemName].profReq >= props.minProfReq && props.professionData[prof][itemName].profReq <= props.maxProfReq) : true)) {
+                    if(index < props.numberOfItems && itemName.toLocaleLowerCase().includes(props.searchTerm.toLocaleLowerCase().trim())) {
                         items.push({...props.professionData[prof][itemName]})
                         index += 1
                     } 
@@ -62,8 +62,6 @@ const mapStateToProps = (state) => ({
     selectedProfession: state.selectedProfession,
     numberOfItems: state.numberOfItems,
     searchTerm: state.searchTerm,
-    minProfReq: state.minProfReq,
-    maxProfReq: state.maxProfReq,
     shouldItemsContainerUpdate: state.shouldItemsContainerUpdate
 })
 

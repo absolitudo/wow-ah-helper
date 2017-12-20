@@ -29,7 +29,7 @@ button::-moz-focus-inner
     display: none !important
 /* Disabled button */
 .disabled-submit
-    color: #777 !important
+    color: $dark-text !important
 
 /* Item name color based on item quality */
 .item-quality-1
@@ -74,6 +74,20 @@ button::-moz-focus-inner
 .socket-cogwheel 
     padding-left: 26px
     background: url(../assets/socket_cogwheel.gif) no-repeat left center
+/* Number input general styles */
+input[type=number]
+    display: inline-block
+    width: 45px
+    border: 2px solid $grey
+    border-radius: 5px
+    height: 25px
+    margin: 0px 5px
+    background-color: $light
+    &:focus
+        border: 2px solid $accentOne
+        box-shadow: inset 0px 0px 3px grey
+    &:hover
+        box-shadow: 0 0 4px grey
 
 /* Landing */
 .landing
@@ -142,7 +156,7 @@ button::-moz-focus-inner
                 margin-left: 5px                
                 cursor: pointer
                 vertical-align: middle
-                color: #fff
+                color: white
                 transition: 300ms
                 &:hover
                     box-shadow: 0px 0px 5px $dark-text
@@ -217,9 +231,8 @@ button::-moz-focus-inner
 
 /* Search item */
 .search-container
-    width: 300px
-    margin: 20px auto 50px
-    padding-left: 5px
+    margin: 20px 0
+    text-align: center
     input[type=text]
         border: 2px solid $grey
         border-radius: 5px
@@ -231,21 +244,6 @@ button::-moz-focus-inner
             box-shadow: inset 0px 0px 3px grey
         &:hover
             box-shadow: 0 0 4px grey
-    .prof-req
-        display: inline-block
-        input
-            display: inline-block
-            width: 45px
-            border: 2px solid $grey
-            border-radius: 5px
-            height: 25px
-            margin: 0px 5px
-            background-color: $light
-            &:focus
-                border: 2px solid $accentOne
-                box-shadow: inset 0px 0px 3px grey
-            &:hover
-                box-shadow: 0 0 4px grey
 
 /* Items container */
 .items-container
