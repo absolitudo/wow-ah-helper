@@ -13,9 +13,10 @@ const Reagent = (props) => (
     <div className='reagent-container'>
         <ItemInfo item={props.reagent} tooltip={true} />
         {props.reagent.prices && (
-            <p>
-                Reagent price: 
+            <p className='price-container'>
+                Price: 
                 <input type="number" value={props.reagent.prices.customPrice} onChange={(event) => props.changeReagentCustomPrice({itemName: props.itemName, reagentName: props.reagent.name, value: event.target.value})}/>
+                <span className='moneygold'></span>
             </p>
         )}
         {(props.reagent.chartData && props.reagent.prices) && (

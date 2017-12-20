@@ -22,7 +22,7 @@ const Item = (props) => (
             </div>
             <div className="item-left-lower">
                 
-                {(props.item.chartData && props.item.prices) && (
+                {(props.item.prices) && (
                     <div>
                         <div className='price-button-container'>
                             <CalculateByButton
@@ -49,11 +49,15 @@ const Item = (props) => (
                                 
                             />
                         </div>
-                        <p>
-                            Recipe Price: <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeRecipeCustomPrice({itemName: props.item.name, value: event.target.value})}/>
+                        <p className='price-container'>
+                            Price:
+                            <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeRecipeCustomPrice({itemName: props.item.name, value: event.target.value})}/>
+                            <span className='moneygold'></span>
                         </p>
                         <p>Expected profit: <SellPrice price={calculateProfit(props.item)}/></p>
-                        {props.item.chartData[0] && <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/>}
+                        {props.item.chartData && (
+                            props.item.chartData[0] && <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/>
+                        )}
                     </div>
                 )}
 
