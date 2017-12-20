@@ -54,7 +54,7 @@ const Item = (props) => (
                             <input type="number" value={props.item.prices.customPrice} onChange={(event) => props.changeRecipeCustomPrice({itemName: props.item.name, value: event.target.value})}/>
                             <span className='moneygold'></span>
                         </p>
-                        <p>Expected profit: <SellPrice price={calculateProfit(props.item)}/></p>
+                        <p className='profit'>Profit: <br/><SellPrice price={calculateProfit(props.item)}/></p>
                         {props.item.chartData && (
                             props.item.chartData[0] && <PriceChart data={props.item.chartData} amount={props.item.prices.amount}/>
                         )}
