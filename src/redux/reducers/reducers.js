@@ -16,14 +16,15 @@ const reducers = {
         for(let profession in state.professionData) {
             newProfessionData[profession] = {}
             for(let item in state.professionData[profession]) {
+                let itemObj = state.professionData[profession][item]
                 newProfessionData[profession][item] = {...state.professionData[profession][item],
-                    prices: auctionData[item] ? {...auctionData[item]} : {...emptyPrice},
+                    prices: auctionData[itemObj.productName] ? {...auctionData[itemObj.productName]} : {...emptyPrice},
                     reagents: state.professionData[profession][item].reagents.map((reagent) => ({...reagent,
                         prices: auctionData[reagent.name] ? {...auctionData[reagent.name]} : {...emptyPrice},
                         chartData: auctionData[reagent.name] ? countBuyouts(auctionData[reagent.name].buyouts) : false
                     })),
                     calculateBy: 'medianBuyout',
-                    chartData: auctionData[item] ? countBuyouts(auctionData[item].buyouts) : false
+                    chartData: auctionData[itemObj.productName] ? countBuyouts(auctionData[itemObj.productName].buyouts) : false
                 }
             }
         }
