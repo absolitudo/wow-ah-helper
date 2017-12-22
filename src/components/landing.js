@@ -7,15 +7,27 @@ import {
     getDataFileName,
     loadAuctionData,
     getProfessionData,
-    setMoreinfoDisplay
+    setMoreinfoDisplay,
+    addNotification,
+    removeNotification
 } from './../redux/actions'
 
 const Landing = (props) => {
         
     /* MAKE API REQUEST TO GET PROFESSION DATA */
-    fetch('https://my-wow-api.herokuapp.com/professions/all')
-        .then(res => res.json())
-        .then(res => props.getProfessionData(res))
+    if(!props.professionData) {
+        fetch('https://my-wow-api.herokuapp.com/professions/all')
+            .then(res => res.json())
+            .then(res => props.getProfessionData(res))
+            .then(() => {
+                let newNoti = {
+                    type: 'info',
+                    message: 'Profession data loaded.'
+                }
+                setTimeout(() => props.removeNotification(newNoti), 2500)
+                props.addNotification(newNoti)
+            })
+    }
 
     return (
         <header className='landing'>
@@ -92,7 +104,9 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
     getDataFileName,
     loadAuctionData,
     getProfessionData,
-    setMoreinfoDisplay
+    setMoreinfoDisplay,
+    addNotification,
+    removeNotification
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)

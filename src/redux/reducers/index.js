@@ -24,28 +24,5 @@ export default handleActions({
     searchItemsTimeout: false,
     selectedProfession: 'all',
     displayMoreinfo: false,
-    notifications: [{
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
-    },
-    {
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
-    },
-    {
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
-    },
-    {
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
-    },
-    {
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
-    },
-    {
-        type: 'info',
-        message: 'sending some info'
-    }]
+    notifications: []
 })
