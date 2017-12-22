@@ -468,15 +468,19 @@ input[type=number]
         padding: 4px
         cursor: pointer
         margin: 20px 0
+        opacity: 1
+        animation: fadeIn 300ms
         &:hover
             box-shadow: 0 0 6px 1px black
-
     .notification-error
         background-color: $red
     .notification-info
         background-color: $blue            
-
-
+@keyframes fadeIn
+    0%
+        opacity: 0
+    100%
+        opacity: 1
 @media(max-width: 800px) 
     .landing .container
         padding: 50px 5px 50px !important
