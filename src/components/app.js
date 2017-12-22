@@ -6,17 +6,22 @@ import Landing from './landing'
 import MainContent from './mainContent'
 import MoreInfo from './moreInfo'
 
+let noScrollStyles = {
+    overflow: 'hidden',
+    height: '100vh'
+}
+
 const App = (props) => (
-    <div style={{overflow: props.displayMoreInfo ? 'hidden' : '', height: '100vh'}}>
+    <div style={props.displayMoreinfo ? noScrollStyles : {}}>
         {console.log('app rendering')}
-        {props.displayMoreInfo && <MoreInfo />}
+        {props.displayMoreinfo && <MoreInfo />}
         <Landing />
         <MainContent />
     </div>
 )
 
 const mapStateToProps = (state) => ({
-    displayMoreInfo: state.displayMoreInfo
+    displayMoreinfo: state.displayMoreinfo
 })
 
 export default connect(mapStateToProps)(App)

@@ -13,12 +13,13 @@ export default handleActions({
     CHANGE_REAGENT_CUSTOM_PRICE: reducers.changeReagentCustomPrice,
     CHANGE_RECIPE_CUSTOM_PRICE: reducers.changeRecipeCustomPrice,
     SET_SHOULD_ITEMS_CONTAINER_UPDATE: reducers.setShouldItemsContainerUpdate,
-    LOAD_MORE_ITEMS: reducers.loadMoreItems
+    LOAD_MORE_ITEMS: reducers.loadMoreItems,
+    SET_MOREINFO_DISPLAY: reducers.setMoreinfoDisplay
 }, {
     searchTerm: '',
     numberOfItems: 20,
     shouldItemsContainerUpdate: true,
     searchItemsTimeout: false,
     selectedProfession: 'all',
-    displayMoreInfo: true
+    displayMoreinfo: false
 })

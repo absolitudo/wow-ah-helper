@@ -144,6 +144,10 @@ const reducers = {
 
     loadMoreItems: (state, action) => ({...state,
         numberOfItems: state.numberOfItems + 10
+    }),
+
+    setMoreinfoDisplay: (state, action) => ({...state,
+        displayMoreinfo: action.payload
     })
 }
 

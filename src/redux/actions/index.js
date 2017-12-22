@@ -12,3 +12,4 @@ export const changeReagentCustomPrice = createAction('CHANGE_REAGENT_CUSTOM_PRIC
 export const changeRecipeCustomPrice = createAction('CHANGE_RECIPE_CUSTOM_PRICE')
 export const setShouldItemsContainerUpdate = createAction('SET_SHOULD_ITEMS_CONTAINER_UPDATE')
 export const loadMoreItems = createAction('LOAD_MORE_ITEMS')
+export const setMoreinfoDisplay = createAction('SET_MOREINFO_DISPLAY')
