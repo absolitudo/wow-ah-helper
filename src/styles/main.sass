@@ -97,6 +97,10 @@ input[type=number]
         box-shadow: 0 0 4px grey
     &:-moz-ui-invalid
         box-shadow: none
+        
+/* No scroll background */
+.modal-open
+    overflow: hidden
 
 /* Landing */
 .landing
@@ -450,9 +454,14 @@ input[type=number]
             display: block
             margin: 5px 0
 
-/* No scroll background */
-.modal-open
-    overflow: hidden
+/* Notification styles */
+.notification-container
+    position: fixed
+    top: 20px
+    right: 20px
+    .notification-error
+
+
 
 @media(max-width: 800px) 
     .landing .container

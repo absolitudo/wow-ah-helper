@@ -21,5 +21,9 @@ export default handleActions({
     shouldItemsContainerUpdate: true,
     searchItemsTimeout: false,
     selectedProfession: 'all',
-    displayMoreinfo: false
+    displayMoreinfo: false,
+    notifications: [{
+        type: 'error',
+        message: 'Data error :('
+    }]
 })
