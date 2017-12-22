@@ -74,6 +74,12 @@ button::-moz-focus-inner
 .socket-cogwheel 
     padding-left: 26px
     background: url(../assets/socket_cogwheel.gif) no-repeat left center
+
+/* Hightlighted text */
+.highlight
+    color: $blue
+    font-size: 12px
+
 /* Number input general styles */
 input[type=number]
     display: inline-block
@@ -102,9 +108,7 @@ input[type=number]
     min-height: 300px
     color: $dark-text
     box-shadow: 0px 0px 7px black
-    .highlight
-        color: $blue
-        font-size: 12px
+    
     .landing-background
         background-color: rgba(0, 0, 0, 0.8)
         min-height: 300px
@@ -414,6 +418,22 @@ input[type=number]
         margin: 40px auto
         background-color: $light
         overflow-y: scroll
+        padding: 10px
+        h2
+            
+            font-size: 18px
+        p
+            margin-bottom: 20px
+            color: $p-color
+        ul
+            list-style: disc
+            margin-left: 15px
+        ol
+            margin-left: 10px
+            margin-bottom: 50px
+        code
+            display: block
+            margin: 5px 0
 
 /* No scroll background */
 .modal-open

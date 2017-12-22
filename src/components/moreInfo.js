@@ -19,17 +19,17 @@ class Moreinfo extends React.Component {
             <div className='more-info-container' onClick={() => this.props.setMoreinfoDisplay(false)}>
                 <section className='more-info' onClick={(e) => e.stopPropagation()}>
                     <ol>
-                        <li>What is WoW?</li>
-                        <li>What is an addon?</li>
-                        <li>What is Auctioneer?</li>
-                        <li>What is Auc-ScanData.lua</li>
-                        <li>How to use Auc-ScanData.lua?</li>
+                        <li><a href="#what-is-wow">What is WoW?</a></li>
+                        <li><a href="#what-is-an-addon">What is an addon?</a></li>
+                        <li><a href="#what-is-auctioneer">What is Auctioneer?</a></li>
+                        <li><a href="#what-is-data">What is Auc-ScanData.lua</a></li>
+                        <li><a href="#how-to-data">How to use Auc-ScanData.lua?</a></li>
                     </ol>
-                    <h2>What is WoW?</h2>
+                    <h2 id='what-is-wow'>1. What is WoW?</h2>
                     <p>
                         WoW is an acronym for World of Warcraft. It's an online computer game that many people can play on the internet together. 
                     </p>
-                    <h2>What is an adddon?</h2>
+                    <h2 id='what-is-an-addon'>2. What is an adddon?</h2>
                     <p>
                         An addon is an extension for WoW that adds extra functionality to the game that you don't have by default. There are many kind of addons for example:
                         <ul>
@@ -38,11 +38,11 @@ class Moreinfo extends React.Component {
                             <li>Let's you know how much damage you have dealt.</li>
                         </ul>
                     </p>
-                    <h2>What is Auctioneer?</h2>
+                    <h2 id='what-is-auctioneer'>3. What is Auctioneer?</h2>
                     <p>Auctioneer is an addon that makes using the auction house of WoW a lot more convenient. Among many other functionalites it also lets you to scan the auction house for data that we can use later. This website uses that data to calculate what items are worth crafting if you buy the ingredients from the auction house for it.</p>
-                    <h2>What is Auc-ScanData.lua</h2>
+                    <h2 id='what-is-data'>4. What is Auc-ScanData.lua</h2>
                     <p>Auc-ScanData.lua is the file that holds the information of the items in the auction house. You can find this file at: <code><span className="highlight">YOURWOWCLIENT</span>/WTF/Account/<span className="highlight">YOURACCOUNTNAME</span>/SavedVariables/Auc-ScanData.lua</code></p>
-                    <h2>How to use What is Auc-ScanData.lua?</h2>
+                    <h2 id='how-to-data'>5. How to use What is Auc-ScanData.lua?</h2>
                     <p>Just click on the Select data button, find and select the file, then click provide data.</p>
                 </section>
             </div>
