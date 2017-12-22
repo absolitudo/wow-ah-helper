@@ -19,5 +19,6 @@ export default handleActions({
     numberOfItems: 20,
     shouldItemsContainerUpdate: true,
     searchItemsTimeout: false,
-    selectedProfession: 'all'
+    selectedProfession: 'all',
+    displayMoreInfo: true
 })

@@ -397,7 +397,24 @@ input[type=number]
         .item-level
             color: #ffd100
 
-    
+/* More info */
+.more-info-container
+    position: fixed
+    height: 100vh
+    width: 100vw
+    top: 0
+    left: 0
+    background: rgba(0, 0, 0, 0.85)
+    z-index: 2
+    .more-info
+        min-width: 280px
+        max-width: 600px
+        height: 60vh
+        min-height: 300px
+        margin: 40px auto
+        background-color: $light
+        overflow-y: scroll
+
 @media(max-width: 800px) 
     .landing .container
         padding: 50px 5px 50px !important
