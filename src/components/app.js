@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 /* Components */
 import Landing from './landing'
 import MainContent from './mainContent'
-import MoreInfo from './moreInfo'
+import Moreinfo from './moreInfo'
 
 const App = (props) => (
-    <div className={props.displayMoreinfo ? 'no-scroll-background' : ''}>
+    <div /*className={props.displayMoreinfo ? 'no-scroll-background' : ''}*/>
         {console.log('app rendering')}
-        {props.displayMoreinfo && <MoreInfo />}
+        {props.displayMoreinfo && <Moreinfo />}
         <Landing />
         <MainContent />
     </div>
