@@ -419,6 +419,21 @@ input[type=number]
         background-color: $light
         overflow-y: scroll
         padding: 10px
+        position: relative
+        .close-moreinfo
+            height: 50px
+            width: 50px
+            position: absolute
+            top: 10px
+            right: 10px
+            font-size: 20px
+            background: $red
+            color: $light
+            border: none
+            border-radius: 5px
+            cursor: pointer
+            &:hover
+                box-shadow: 0 0 4px grey
         h2
             
             font-size: 18px

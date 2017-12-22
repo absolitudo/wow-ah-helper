@@ -18,6 +18,7 @@ class Moreinfo extends React.Component {
         return (
             <div className='more-info-container' onClick={() => this.props.setMoreinfoDisplay(false)}>
                 <section className='more-info' onClick={(e) => e.stopPropagation()}>
+                    <button onClick={() => this.props.setMoreinfoDisplay(false)} className='close-moreinfo'>X</button>
                     <ol>
                         <li><a href="#what-is-wow">What is WoW?</a></li>
                         <li><a href="#what-is-an-addon">What is an addon?</a></li>
