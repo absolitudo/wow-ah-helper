@@ -1,15 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+/* Action creators */
+import { setMoreinfoDisplay } from '../redux/actions'
 
 const MoreInfo = (props) => (
-    <div className='more-info-container' onClick={(event) => backgroundClick(event)}>
-        <section className='more-info'>
+    <div className='more-info-container' onClick={() => props.setMoreinfoDisplay(false)}>
+        <section className='more-info' onClick={(e) => e.stopPropagation()}>
             info
         </section>
     </div>
 )
 
-const backgroundClick = (event) => {
-    event.stopPropagation()
-}
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    setMoreinfoDisplay
+}, dispatch)
 
-export default MoreInfo
+export default connect(null, mapDispatchToProps)(MoreInfo)

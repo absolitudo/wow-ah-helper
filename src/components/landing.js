@@ -6,7 +6,8 @@ import { bindActionCreators } from 'redux'
 import {
     getDataFileName,
     loadAuctionData,
-    getProfessionData
+    getProfessionData,
+    setMoreinfoDisplay
 } from './../redux/actions'
 
 const Landing = (props) => {
@@ -26,7 +27,7 @@ const Landing = (props) => {
                         <li>Use the <a href="https://wow.curseforge.com/projects/auctioneer/files" target='_blank' rel='noopener noreferrer'>Auctioneer</a> addon to scan the auction house for data.</li>
                         <li>Provide your data for this aplication to help you decide which items are profitable to craft.</li>
                     </ul>
-                    <span id="more-info">More info</span>
+                    <span id="more-info" onClick={() => props.setMoreinfoDisplay(true)}>More info</span>
                     <div className="url-code">
                         <p>Data is stored at:</p>
                         <code><span className="highlight">YOURWOWCLIENT</span>/WTF/Account/<span className="highlight">YOURACCOUNTNAME</span>/SavedVariables/Auc-ScanData.lua</code>
@@ -90,7 +91,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     getDataFileName,
     loadAuctionData,
-    getProfessionData
+    getProfessionData,
+    setMoreinfoDisplay
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing)
