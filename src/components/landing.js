@@ -31,7 +31,6 @@ const Landing = (props) => {
 
     return (
         <header className='landing'>
-            {console.log('landing rendering')}
             <div className="landing-background">
                 <div className="landing-container">
                     <h2>What to craft</h2>
@@ -71,7 +70,6 @@ const handleSubmit = (props, event) => {
     if(event.target['file-input'].value.includes('Auc-ScanData') && event.target['file-input'].value.includes('.lua')) {
         reader.readAsText(event.target['file-input'].files[0])
     } else {
-        alert('errur')
         let newNoti = {
             type: 'error',
             message: 'Invalid file.'
@@ -91,9 +89,7 @@ const handleSubmit = (props, event) => {
                 setTimeout(() => props.removeNotification(newNoti), 2500)
                 props.addNotification(newNoti)
             })
-            
     })
-    
 }
 
 const handleFileChange = (event, getDataFileName) => getDataFileName(event.target.files[0] ? event.target.files[0].name : 'Select Data')

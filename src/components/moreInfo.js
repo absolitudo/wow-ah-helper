@@ -51,8 +51,6 @@ class Moreinfo extends React.Component {
     }
 }
 
-
-
 const mapDispatchToProps = (dispatch) => bindActionCreators({
     setMoreinfoDisplay
 }, dispatch)

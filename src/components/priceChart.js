@@ -154,5 +154,4 @@ const getPrice = (price) => {
     return '<span>' + (gold > 0 ? '<span class=\'moneygold\'>' + gold + '</span>' : '') + (silver > 0 ? '<span class=\'moneysilver\'>' + silver + '</span>' : '') + (copper > 0 ? '<span class=\'moneycopper\'>' + copper + '</span>' : '') + '</span>'
 }
 
-
 export default PriceChart

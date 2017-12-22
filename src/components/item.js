@@ -77,10 +77,7 @@ const CalculateByButton = (props) => (
 )
 
 const calculateProfit = (item) => {
-    let profit
-
-    profit = item.prices.customPrice - item.reagents.reduce((acc, reagent) => acc + (reagent.prices.customPrice * reagent.quantity), 0)
-
+    let profit = item.prices.customPrice - item.reagents.reduce((acc, reagent) => acc + (reagent.prices.customPrice * reagent.quantity), 0)
     return profit
 }
 

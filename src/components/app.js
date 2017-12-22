@@ -8,8 +8,7 @@ import Moreinfo from './moreInfo'
 import Notification from './notification'
 
 const App = (props) => (
-    <div /*className={props.displayMoreinfo ? 'no-scroll-background' : ''}*/>
-        {console.log('app rendering')}
+    <div>
         {props.displayMoreinfo && <Moreinfo />}
         {props.notifications.length > 0 && (
             <div className="notification-container">
@@ -20,7 +19,6 @@ const App = (props) => (
         )}
         <Landing />
         <MainContent />
-
     </div>
 )
 

@@ -177,7 +177,6 @@ export const convertToAuctionData = (data) => {
 
     }
 
-
     /* Modify + make array of the data then make an object out of it */
     rawData
         .replace(/},$/, '')

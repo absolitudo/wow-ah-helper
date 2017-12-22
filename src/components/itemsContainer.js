@@ -19,7 +19,6 @@ class ItemsContainer extends React.Component {
         
         return (
             <section className='items-container'>
-                {console.log('itemscontainer rendering')}
                 {this.props.professionData && items.map((item, i) => (
                     <Item item={item} key={i}/>
                 ))}
