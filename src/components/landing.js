@@ -72,23 +72,26 @@ const handleSubmit = (props, event) => {
         reader.readAsText(event.target['file-input'].files[0])
     } else {
         alert('errur')
-        /*
-        props.showNotification({
-            type: 'Error',
+        let newNoti = {
+            type: 'error',
             message: 'Invalid file.'
-        })
-        */
+        }
+        setTimeout(() => props.removeNotification(newNoti), 2500)
+        props.addNotification(newNoti)
     }
 
     reader.addEventListener('load', (event) => {
         new Promise((resolve, reject) => {
             resolve(props.loadAuctionData(event.target.result))
-        })/*
-            .then(() => props.showNotification({
-                type: 'Notification',
-                message: 'Auction data loaded.'
-            }))
-            */
+        }).then(() => {
+                let newNoti = {
+                    type: 'info',
+                    message: 'Auction data successfully loaded.'
+                }
+                setTimeout(() => props.removeNotification(newNoti), 2500)
+                props.addNotification(newNoti)
+            })
+            
     })
     
 }
