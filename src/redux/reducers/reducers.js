@@ -157,6 +157,7 @@ const reducers = {
     removeNotification: (state, action) => ({...state,
         notifications: state.notifications.filter(notification => notification !== action.payload)
     })
+    
 }
 
 export const convertToAuctionData = (data) => {

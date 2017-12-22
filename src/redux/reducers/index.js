@@ -16,7 +16,7 @@ export default handleActions({
     LOAD_MORE_ITEMS: reducers.loadMoreItems,
     SET_MOREINFO_DISPLAY: reducers.setMoreinfoDisplay,
     ADD_NOTIFICATION: reducers.addNotification,
-    REMOVE_NOTIFICATION: reducers.removeNotificaion
+    REMOVE_NOTIFICATION: reducers.removeNotification
 }, {
     searchTerm: '',
     numberOfItems: 20,
