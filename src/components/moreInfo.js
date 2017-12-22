@@ -31,14 +31,14 @@ class Moreinfo extends React.Component {
                         WoW is an acronym for World of Warcraft. It's an online computer game that many people can play on the internet together. 
                     </p>
                     <h2 id='what-is-an-addon'>2. What is an adddon?</h2>
-                    <p>
+                    <div>
                         An addon is an extension for WoW that adds extra functionality to the game that you don't have by default. There are many kind of addons for example:
                         <ul>
                             <li>Tells you what type of ingredients there are in a certain area.</li>
                             <li>Enables you to change the fonts of the game.</li>
                             <li>Let's you know how much damage you have dealt.</li>
                         </ul>
-                    </p>
+                    </div>
                     <h2 id='what-is-auctioneer'>3. What is Auctioneer?</h2>
                     <p>Auctioneer is an addon that makes using the auction house of WoW a lot more convenient. Among many other functionalites it also lets you to scan the auction house for data that we can use later. This website uses that data to calculate what items are worth crafting if you buy the ingredients from the auction house for it.</p>
                     <h2 id='what-is-data'>4. What is Auc-ScanData.lua</h2>
