@@ -461,9 +461,8 @@ input[type=number]
     right: 20px
     width: 150px
     z-index: 3
-    .notification-error
+    .notification
         width: inherit
-        background-color: $red
         box-shadow: 0 0 6px 1px black
         padding: 4px
         cursor: pointer
@@ -471,7 +470,10 @@ input[type=number]
         &:hover
             box-shadow: 0 0 4px $accentOne
 
-            
+    .notification-error
+        background-color: $red
+    .notification-info
+        background-color: $blue            
 
 
 @media(max-width: 800px) 

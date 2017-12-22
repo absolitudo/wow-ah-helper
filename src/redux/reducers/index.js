@@ -43,19 +43,7 @@ export default handleActions({
         message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
     },
     {
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
-    },
-    {
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
-    },
-    {
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
-    },
-    {
-        type: 'error',
-        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+        type: 'info',
+        message: 'sending some info'
     }]
 })
