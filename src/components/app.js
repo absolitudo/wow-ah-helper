@@ -11,7 +11,7 @@ const App = (props) => (
     <div /*className={props.displayMoreinfo ? 'no-scroll-background' : ''}*/>
         {console.log('app rendering')}
         {props.displayMoreinfo && <Moreinfo />}
-        {props.notification.length > 0 && (
+        {props.notifications.length > 0 && (
             <div className="notification-container">
                 {props.notifications.map((notification, index) => (
                     <Notification notification={notification} key={index} />

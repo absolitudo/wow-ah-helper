@@ -24,6 +24,38 @@ export default handleActions({
     displayMoreinfo: false,
     notifications: [{
         type: 'error',
-        message: 'Data error :('
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+    },
+    {
+        type: 'error',
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+    },
+    {
+        type: 'error',
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+    },
+    {
+        type: 'error',
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+    },
+    {
+        type: 'error',
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+    },
+    {
+        type: 'error',
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+    },
+    {
+        type: 'error',
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+    },
+    {
+        type: 'error',
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
+    },
+    {
+        type: 'error',
+        message: 'Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :( Data error :('
     }]
 })

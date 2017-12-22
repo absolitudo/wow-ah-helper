@@ -459,8 +459,19 @@ input[type=number]
     position: fixed
     top: 20px
     right: 20px
+    width: 150px
+    z-index: 3
     .notification-error
+        width: inherit
+        background-color: $red
+        box-shadow: 0 0 6px 1px black
+        padding: 4px
+        cursor: pointer
+        margin: 20px 0
+        &:hover
+            box-shadow: 0 0 4px $accentOne
 
+            
 
 
 @media(max-width: 800px) 
