@@ -148,6 +148,14 @@ const reducers = {
 
     setMoreinfoDisplay: (state, action) => ({...state,
         displayMoreinfo: action.payload
+    }),
+
+    addNotification: (state, action) => ({...state,
+        notifications: [action.payload, ...state.notifications]
+    }),
+
+    removeNotification: (state, action) => ({...state,
+        notifications: state.notifications.filter(notification => notification !== action.payload)
     })
 }
 

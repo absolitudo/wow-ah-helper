@@ -13,3 +13,6 @@ export const changeRecipeCustomPrice = createAction('CHANGE_RECIPE_CUSTOM_PRICE'
 export const setShouldItemsContainerUpdate = createAction('SET_SHOULD_ITEMS_CONTAINER_UPDATE')
 export const loadMoreItems = createAction('LOAD_MORE_ITEMS')
 export const setMoreinfoDisplay = createAction('SET_MOREINFO_DISPLAY')
+export const addNotification = createAction('ADD_NOTIFICATION')
+export const removeNotification = createAction('REMOVE_NOTIFICATION')
+

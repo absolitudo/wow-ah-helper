@@ -14,7 +14,9 @@ export default handleActions({
     CHANGE_RECIPE_CUSTOM_PRICE: reducers.changeRecipeCustomPrice,
     SET_SHOULD_ITEMS_CONTAINER_UPDATE: reducers.setShouldItemsContainerUpdate,
     LOAD_MORE_ITEMS: reducers.loadMoreItems,
-    SET_MOREINFO_DISPLAY: reducers.setMoreinfoDisplay
+    SET_MOREINFO_DISPLAY: reducers.setMoreinfoDisplay,
+    ADD_NOTIFICATION: reducers.addNotification,
+    REMOVE_NOTIFICATION: reducers.removeNotificaion
 }, {
     searchTerm: '',
     numberOfItems: 20,
