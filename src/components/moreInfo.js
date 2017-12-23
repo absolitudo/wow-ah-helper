@@ -45,6 +45,9 @@ class Moreinfo extends React.Component {
                     <p>Auc-ScanData.lua is the file that holds the information of the items in the auction house. You can find this file at: <code><span className="highlight">YOURWOWCLIENT</span>/WTF/Account/<span className="highlight">YOURACCOUNTNAME</span>/SavedVariables/Auc-ScanData.lua</code></p>
                     <h2 id='how-to-data'>5. How to use What is Auc-ScanData.lua?</h2>
                     <p>Just click on the Select data button, find and select the file, then click provide data.</p>
+                    <section className='info-footer'>
+                        Made by <a href="https://www.github.com/absolitudo" className='hightlight' target='_blank' rel='noreferrer noopener'>Absolitudo</a>. <a href="https://www.github.com/absolitudo/wow-ah-helper" className='hightlight' target='_blank' rel='noreferrer noopener'>Github repo</a>
+                    </section>
                 </section>
             </div>
         )

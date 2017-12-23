@@ -38,7 +38,19 @@ const ProfessionSelector = (props) => {
         )
     } else {
         return (
-            <div className='professions-skeleton'>profession selection skeleton</div>
+            <div className='professions-skeleton'>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="profession-skeleton"></div>
+                <div className="mobile-profession-skeleton"></div>
+            </div>
         )
     }
 }
