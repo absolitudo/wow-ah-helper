@@ -15,7 +15,7 @@ const ItemName = (props) => (
                     target='_blank'
                     className={'item-quality-' + props.item.quality}
                 >
-                    {props.item.name}
+                    {props.item.name}{props.item.quantity > 1 ? (' x' + props.item.quantity) : ''}
                 </a>
                 <div className={!props.tooltip ? 'no-display' : 'tooltip' } >
                     <h3 className={'item-quality-' + props.item.quality}>{props.item.name}</h3>
