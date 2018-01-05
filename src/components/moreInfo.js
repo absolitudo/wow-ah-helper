@@ -27,8 +27,8 @@ class Moreinfo extends React.Component {
                         <li><a href="#what-is-data">What is Auc-ScanData.lua</a></li>
                         <li><a href="#how-to-data">How to use Auc-ScanData.lua?</a></li>
                     </ol>
-                    <h2 id='what-is-purpose'>What is the purpose of this web app?</h2>
-                    <p>This web app helps you to decide what items are profitable to craft in WoW by telling you the price of the item and the price of it's ingredients, then calculates the expected profit with the options you selected. It also gives you charts about an item to see how many and for how much there are in the auction house.</p>
+                    <h2 id='what-is-purpose'>1. What is the purpose of this web app?</h2>
+                    <p>This web app helps you to decide what items are profitable to craft in WoW by telling you the price of the item and the price of it's ingredients, then calculates the expected profit with the options you selected. It also gives you charts about an item to see how many and for how much there are in the auction house. This has been created for <a href='http://tauriwow.com' className='hightlight' target='_blank' rel='noreferrer noopener'>Tauri WoW</a> specifically which runs at 5.4.8 patch so the data for the items are from that patch too.</p>
                     <h2 id='what-is-wow'>2. What is WoW?</h2>
                     <p>
                         WoW is an acronym for World of Warcraft. It's an online computer game that many people can play on the internet together. 
